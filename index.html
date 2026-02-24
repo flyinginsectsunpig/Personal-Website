@@ -332,6 +332,27 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .la-packet{position:absolute;left:130px;width:10px;height:10px;border-radius:50%;display:none;z-index:2;}
 #la-log{font-family:'VT323',monospace;font-size:14px;color:#3ddc84;background:#020610;border:2px solid #0d1428;padding:8px 10px;height:90px;overflow-y:auto;white-space:pre;scrollbar-width:thin;margin-top:8px;}
 
+/* ── MOBILE OVERLAY ── */
+#mobile-overlay{display:none;position:fixed;inset:0;background:#050510;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px;text-align:center;}
+#mobile-overlay.show{display:flex;}
+.mob-icon{font-size:48px;animation:pulse 1.4s ease-in-out infinite;}
+.mob-title{font-family:'Press Start 2P',monospace;font-size:clamp(8px,3vw,13px);color:var(--yellow);text-shadow:2px 2px 0 #7a5c00;line-height:1.8;}
+.mob-sub{font-family:'VT323',monospace;font-size:clamp(16px,5vw,22px);color:var(--dim);line-height:1.6;max-width:340px;}
+.mob-btn{font-family:'Press Start 2P',monospace;font-size:8px;background:#0a0818;border:2px solid var(--green);color:var(--green);padding:10px 20px;cursor:pointer;margin-top:8px;letter-spacing:1px;}
+.mob-btn:hover{background:var(--green);color:#050510;}
+/* ── SKILL GROUPS in normal mode ── */
+.nm-skill-group{margin-bottom:16px;}
+.nm-skill-group-label{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--na);margin-bottom:8px;text-transform:uppercase;}
+/* ── INTRO HINT ── */
+#intro-hint{font-family:'VT323',monospace;font-size:17px;color:var(--dim);text-align:center;margin-top:6px;line-height:1.7;opacity:0;animation:hint-fade 1s ease 0.8s forwards;}
+@keyframes hint-fade{to{opacity:1}}
+/* ── GE LIVE DEMO BANNER ── */
+.ge-demo-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0d0820;border:2px solid #ce93d8;padding:10px 14px;margin-bottom:10px;flex-wrap:wrap;}
+.ge-demo-text{font-family:'VT323',monospace;font-size:16px;color:var(--dim);line-height:1.5;flex:1;}
+.ge-demo-text b{color:#ce93d8;}
+.ge-demo-btn{font-family:'Press Start 2P',monospace;font-size:7px;background:#1a0d2a;border:2px solid #ce93d8;color:#ce93d8;padding:9px 14px;cursor:pointer;text-decoration:none;display:inline-block;letter-spacing:1px;white-space:nowrap;flex-shrink:0;}
+.ge-demo-btn:hover{background:#ce93d8;color:#050510;}
+/* ── THEME PICKER ── */
 #theme-picker{margin-top:18px;border-top:1px solid #1a1a2e;padding-top:14px;}
 #theme-picker-hdr{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--dim);letter-spacing:1px;margin-bottom:10px;text-align:center;}
 #theme-swatches{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
@@ -344,7 +365,14 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 </head>
 <body>
 
-<!-- ── INTRO ── -->
+<!-- ── MOBILE OVERLAY ── -->
+<div id="mobile-overlay">
+  <div class="mob-icon">🎮</div>
+  <div class="mob-title">RPG MODE NEEDS A BIGGER SCREEN</div>
+  <div class="mob-sub">This portfolio runs a full tile-engine RPG — it's best experienced on a desktop or laptop browser.<br><br>The normal CV is available below ↓</div>
+  <button class="mob-btn" onclick="const o=document.getElementById('mobile-overlay');o.dataset.dismissed='1';o.classList.remove('show');isGameMode=false;document.getElementById('normal-mode').classList.add('active');document.getElementById('intro').style.display='none';">⬡ VIEW NORMAL CV</button>
+  <div style="font-family:'VT323',monospace;font-size:14px;color:var(--dim);margin-top:12px;">or rotate to landscape and zoom out for RPG mode</div>
+</div>
 <div id="intro">
   <div class="ibox">
     <canvas id="isp" width="64" height="64" style="width:112px;height:112px;display:block;margin:0 auto 14px;"></canvas>
@@ -354,6 +382,12 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
     <p style="font-family:'VT323',monospace;font-size:13px;color:var(--dim);text-align:left;border-left:2px solid var(--yellow);padding-left:8px;line-height:1.6;margin-bottom:14px;">Zero build step chosen deliberately. No bundler, no framework, instant load, maximum portability. The architecture reflects the constraint — not every system needs a scaffold.</p>
     <button class="pbtn" onclick="startWorld()">▶ PRESS START</button>
     <p style="font-size:9px;margin-top:10px;color:var(--dim);">WASD:MOVE · E:INTERACT · ESC:CLOSE · Toggle top-right for normal mode</p>
+    <div id="intro-hint">
+      <span style="color:var(--yellow)">8 zones</span> to explore ·
+      <span style="color:var(--green)">E</span> to enter glowing stations ·
+      <span style="color:var(--blue)">live demos</span> inside every zone<br>
+      <span style="color:var(--dim);font-size:14px;">ML Lab · DB Vault · DevOps Control · Game Engine · Architecture Museum · and more</span>
+    </div>
     <div id="theme-picker">
       <div id="theme-picker-hdr">◈ VISUAL STYLE — pick one</div>
       <div id="theme-swatches"></div>
@@ -448,7 +482,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
       <div>
         <div class="nm-name">Zakhir McKinnon</div>
         <div class="nm-title">Junior Software Developer</div>
-        <div class="nm-location">Cape Town, South Africa · Open to remote roles</div>
+        <div class="nm-location">Johannesburg, South Africa · Open to Cape Town &amp; remote roles</div>
         <div class="nm-links" style="margin-top:10px;">
           <a class="nm-link" href="https://github.com/flyinginsectsunpig" target="_blank">GitHub</a>
           <a class="nm-link" href="https://www.linkedin.com/in/zakhir-mckinnon-ba20ab300/" target="_blank">LinkedIn</a>
@@ -465,14 +499,58 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
     <div class="nm-section">
       <div class="nm-section-title">Skills</div>
-      <div class="nm-skills-grid">
-        <span class="nm-skill hi">Java</span><span class="nm-skill hi">TypeScript</span><span class="nm-skill hi">JavaScript</span>
-        <span class="nm-skill hi">C#</span><span class="nm-skill hi">Python</span><span class="nm-skill">PHP</span>
-        <span class="nm-skill hi">SQL / Oracle</span><span class="nm-skill hi">React</span><span class="nm-skill hi">Spring Boot</span>
-        <span class="nm-skill">Three.js</span><span class="nm-skill hi">Azure DevOps</span><span class="nm-skill">Blue Prism RPA</span>
-        <span class="nm-skill">ABP Framework</span><span class="nm-skill hi">HTML5 Canvas API</span><span class="nm-skill">Machine Learning</span>
-        <span class="nm-skill">scikit-learn · Keras</span><span class="nm-skill">Docker (concepts)</span><span class="nm-skill hi">Git</span>
-        <span class="nm-skill">AZ-900 Certified</span><span class="nm-skill">Solidity / Ethereum</span>
+
+      <div class="nm-skill-group">
+        <div class="nm-skill-group-label">Backend</div>
+        <div class="nm-skills-grid">
+          <span class="nm-skill hi">Java</span>
+          <span class="nm-skill hi">Spring Boot</span>
+          <span class="nm-skill hi">C#</span>
+          <span class="nm-skill hi">ABP Framework</span>
+          <span class="nm-skill hi">REST API Design</span>
+          <span class="nm-skill">PHP</span>
+        </div>
+      </div>
+
+      <div class="nm-skill-group">
+        <div class="nm-skill-group-label">Frontend</div>
+        <div class="nm-skills-grid">
+          <span class="nm-skill hi">TypeScript</span>
+          <span class="nm-skill hi">JavaScript</span>
+          <span class="nm-skill hi">React</span>
+          <span class="nm-skill hi">HTML5 Canvas API</span>
+          <span class="nm-skill">Three.js</span>
+        </div>
+      </div>
+
+      <div class="nm-skill-group">
+        <div class="nm-skill-group-label">Data &amp; ML</div>
+        <div class="nm-skills-grid">
+          <span class="nm-skill hi">SQL / Oracle</span>
+          <span class="nm-skill hi">Python</span>
+          <span class="nm-skill">scikit-learn</span>
+          <span class="nm-skill">Keras</span>
+          <span class="nm-skill">Pandas · BeautifulSoup</span>
+        </div>
+      </div>
+
+      <div class="nm-skill-group">
+        <div class="nm-skill-group-label">DevOps &amp; Cloud</div>
+        <div class="nm-skills-grid">
+          <span class="nm-skill hi">Azure DevOps</span>
+          <span class="nm-skill hi">Git</span>
+          <span class="nm-skill">Blue Prism RPA</span>
+          <span class="nm-skill">Docker (concepts)</span>
+          <span class="nm-skill">AZ-900 Certified</span>
+        </div>
+      </div>
+
+      <div class="nm-skill-group">
+        <div class="nm-skill-group-label">Other</div>
+        <div class="nm-skills-grid">
+          <span class="nm-skill">Solidity / Ethereum</span>
+          <span class="nm-skill">Machine Learning A-Z</span>
+        </div>
       </div>
     </div>
 
@@ -2207,6 +2285,10 @@ let geOnGround=false;
 let geFloat=false; // float mode: player ignores gravity, moves freely in all 4 directions
 
 function buildGE(){return `<div>
+<div class="ge-demo-banner">
+  <div class="ge-demo-text"><b>Vampire Survivors Clone</b> — TypeScript · Express · PostgreSQL. Custom engine, live enemies, wave AI, leaderboard backend.</div>
+  <a class="ge-demo-btn" href="https://game-demo-gray.vercel.app" target="_blank">▶ PLAY LIVE DEMO ↗</a>
+</div>
 <p style="font-family:'VT323',monospace;font-size:13px;color:var(--dim);margin-bottom:5px;line-height:1.5;">Custom 2D engine — raw Canvas API, zero frameworks. <b style="color:#ce93d8">WASD / arrow keys</b> to move · <b style="color:#ce93d8">Space/W</b> to jump (physics-based, responds to gravity) · <b style="color:#ce93d8">Float mode</b>: free movement anywhere · <b style="color:#ce93d8">Click</b> to shoot.</p>
 <canvas id="ge-c" width="680" height="260" style="display:block;width:100%;cursor:crosshair;" tabindex="0"></canvas>
 <div class="gbtns">
@@ -3372,6 +3454,7 @@ function archTab(which){
   if(which==='patterns') setTimeout(()=>startArchLatAnim(),200);
   if(which==='layers') laReset();
 }
+
 const _ARCH_FLOWS=[
   {name:'MONOLITH',col:'#90caf9',hops:[{label:'Client',ms:0},{label:'App (all-in-one)',ms:1.2},{label:'DB',ms:4.1}]},
   {name:'MVC',col:'#80cbc4',hops:[{label:'Client',ms:0},{label:'Controller',ms:0.3},{label:'Service',ms:0.8},{label:'Model',ms:0.4},{label:'DB',ms:4.1}]},
@@ -3395,19 +3478,18 @@ function startArchLatAnim(){
   const hops=flow.hops;
   const totalMs=hops.reduce((s,h)=>s+h.ms,0);
   const xs=hops.map((_,i)=>w*0.08+i*(w*0.84/(hops.length-1)));
-  let dotX=xs[0],dotSegment=0,dotProgress=0;
   let startTs=null;
   const DURATION=2200;
 
   function draw(ts){
     if(!startTs)startTs=ts;
     const t=Math.min(1,(ts-startTs)/DURATION);
-    // Which segment?
     const cumMs=[];let cum=0;
     hops.forEach((h,i)=>{if(i>0){cum+=h.ms;cumMs.push(cum);}});
     const tMs=t*totalMs;
-    let seg=0;let segT=0;
+    let seg=0;
     for(let i=0;i<cumMs.length;i++){if(tMs>=cumMs[i])seg=i+1;}
+    let segT=0;
     if(seg<hops.length-1){
       const segStart=seg>0?cumMs[seg-1]:0;
       const segEnd=cumMs[seg]||totalMs;
@@ -3416,36 +3498,30 @@ function startArchLatAnim(){
     const dotXPos=seg<xs.length-1?xs[seg]+segT*(xs[seg+1]-xs[seg]):xs[xs.length-1];
 
     ctx2.fillStyle='#020811';ctx2.fillRect(0,0,w,h);
-    // Draw lines
     ctx2.strokeStyle='#1a2040';ctx2.lineWidth=2;
     ctx2.beginPath();ctx2.moveTo(xs[0],h/2);ctx2.lineTo(xs[xs.length-1],h/2);ctx2.stroke();
-    // Completed segments glow
     const doneX=Math.min(dotXPos,xs[xs.length-1]);
     ctx2.strokeStyle=flow.col+'99';ctx2.lineWidth=2;
     ctx2.beginPath();ctx2.moveTo(xs[0],h/2);ctx2.lineTo(doneX,h/2);ctx2.stroke();
-    // Nodes
     hops.forEach((hp,i)=>{
       const x=xs[i];
       const passed=dotXPos>=x;
       ctx2.fillStyle=passed?flow.col:'#2a2a3a';
       ctx2.strokeStyle=flow.col;ctx2.lineWidth=1;
       ctx2.beginPath();ctx2.arc(x,h/2,8,0,Math.PI*2);ctx2.fill();ctx2.stroke();
-      ctx2.fillStyle=passed?'#050510':'var(--dim)';
-      ctx2.font='7px VT323,monospace';ctx2.textAlign='center';
+      ctx2.fillStyle=passed?'#050510':'#5a5068';
+      ctx2.font='9px VT323,monospace';ctx2.textAlign='center';
       ctx2.fillText(hp.label,x,h/2+22);
       if(i>0){
-        ctx2.fillStyle='#ffb74d';ctx2.font='7px VT323,monospace';
+        ctx2.fillStyle='#ffb74d';ctx2.font='9px VT323,monospace';
         ctx2.fillText('+'+hp.ms.toFixed(1)+'ms',x,h/2-16);
       }
     });
-    // Moving dot
     ctx2.shadowColor=flow.col;ctx2.shadowBlur=12;
     ctx2.fillStyle=flow.col;ctx2.beginPath();ctx2.arc(dotXPos,h/2,5,0,Math.PI*2);ctx2.fill();
     ctx2.shadowBlur=0;
-    // Info
     const infoEl=document.getElementById('arch-lat-info');
     if(infoEl) infoEl.textContent=`${flow.name} · Total: ${totalMs.toFixed(1)}ms · ${hops.length-1} hop${hops.length>2?'s':''} · click for next`;
-
     if(t<1) _archLatAnim=requestAnimationFrame(draw);
     else _archLatAnim=null;
   }
@@ -4799,6 +4875,26 @@ function loop(){
 drawIntroSprite();
 buildThemeSwatches();
 loadSavedTheme();
+
+// ── Mobile detection ──
+function checkMobile(){
+  const isMobile=window.innerWidth<768;
+  const overlay=document.getElementById('mobile-overlay');
+  if(!overlay) return;
+  // Show overlay if narrow AND we haven't explicitly dismissed it
+  if(isMobile&&isGameMode&&!overlay.dataset.dismissed){
+    overlay.classList.add('show');
+  } else if(!isMobile){
+    overlay.classList.remove('show');
+  }
+}
+// Mark dismissed when user clicks the CV button (handled inline in HTML)
+// Also listen for resize so landscape flip works
+window.addEventListener('resize',()=>{
+  if(document.getElementById('mobile-overlay').dataset.dismissed) return;
+  checkMobile();
+});
+checkMobile();
 checkMobileDefault();
 updateModeToggleLabel();
 requestAnimationFrame(loop);
