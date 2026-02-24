@@ -141,6 +141,15 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .nm-proj-name{font-size:14px;font-weight:600;color:var(--nt);margin-bottom:6px;}
 .nm-proj-tech{font-size:11px;color:var(--nc);margin-bottom:8px;}
 .nm-proj-desc{font-size:13px;color:var(--na);line-height:1.6;}
+.nm-proj-links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.nm-proj-link{font-size:11px;font-weight:500;padding:4px 10px;border:1px solid;border-radius:3px;text-decoration:none;transition:background .15s,color .15s;}
+.nm-proj-link.gh{color:#6e8caa;border-color:#1e293b;}
+.nm-proj-link.gh:hover{background:#6e8caa;color:#0a0f1a;}
+.nm-proj-link.live{color:#4ade80;border-color:#1a3a2a;}
+.nm-proj-link.live:hover{background:#4ade80;color:#0a0f1a;}
+.nm-proj-bullets{margin-top:8px;padding-left:0;list-style:none;}
+.nm-proj-bullets li{font-size:12px;color:var(--na);line-height:1.7;padding-left:14px;position:relative;}
+.nm-proj-bullets li::before{content:'▸';position:absolute;left:0;color:var(--nc);}
 .nm-game-btn{display:inline-flex;align-items:center;gap:8px;margin-top:40px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;background:transparent;border:1px solid var(--nc);color:var(--nc);padding:10px 20px;cursor:pointer;}
 .nm-game-btn:hover{background:var(--nc);color:#0a0f1a;}
 .nm-contact{display:flex;gap:16px;flex-wrap:wrap;}
@@ -294,7 +303,35 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .tradeoff-row{display:flex;gap:7px;margin-top:7px;flex-wrap:wrap;}
 .tradeoff-item{flex:1;min-width:110px;background:#050510;border-left:2px solid;padding:6px 8px;font-family:'VT323',monospace;font-size:15px;line-height:1.4;}
 
-/* ── THEME PICKER ── */
+/* ── ARCH MUSEUM TABS ── */
+.arch-tabs{display:flex;gap:0;margin-bottom:12px;border-bottom:2px solid #1a2a4a;}
+.arch-tab{font-family:'Press Start 2P',monospace;font-size:7px;background:#050d1a;border:2px solid #1a2a4a;border-bottom:none;color:var(--dim);padding:7px 10px;cursor:pointer;margin-right:2px;position:relative;bottom:-2px;letter-spacing:1px;}
+.arch-tab.on{color:#90caf9;border-color:#90caf9;background:#050d1a;}
+/* ── PROJECT VAULT CARDS ── */
+.pv-card{background:#050d1a;border:2px solid #1a2a4a;padding:12px 14px;margin-bottom:10px;transition:border-color .15s;}
+.pv-card:hover{border-color:#90caf9;}
+.pv-card-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:7px;flex-wrap:wrap;}
+.pv-card-name{font-family:'Press Start 2P',monospace;font-size:7px;color:#90caf9;letter-spacing:1px;line-height:1.6;}
+.pv-card-links{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap;}
+.pv-link{font-family:'VT323',monospace;font-size:14px;padding:3px 9px;border:2px solid;text-decoration:none;transition:background .12s,color .12s;}
+.pv-link.gh{color:#6e8caa;border-color:#1e3a5a;}
+.pv-link.gh:hover{background:#6e8caa;color:#050d1a;}
+.pv-link.live{color:#4ade80;border-color:#1a3a2a;}
+.pv-link.live:hover{background:#4ade80;color:#050d1a;}
+.pv-card-tech{font-family:'VT323',monospace;font-size:14px;color:#4fc3f7;margin-bottom:6px;}
+.pv-card-desc{font-family:'VT323',monospace;font-size:15px;color:var(--dim);line-height:1.6;margin-bottom:7px;}
+.pv-bullets{list-style:none;padding:0;margin:0;}
+.pv-bullets li{font-family:'VT323',monospace;font-size:14px;color:var(--white);line-height:1.6;padding-left:14px;position:relative;opacity:.85;}
+.pv-bullets li::before{content:'▸';position:absolute;left:0;color:#90caf9;}
+/* ── LAYERED ARCH ANIMATOR ── */
+.la-layer{display:flex;align-items:center;gap:10px;margin-bottom:6px;position:relative;}
+.la-box{font-family:'Press Start 2P',monospace;font-size:6px;padding:9px 12px;border:2px solid;min-width:130px;text-align:center;letter-spacing:1px;position:relative;transition:background .2s,box-shadow .2s;}
+.la-box.active{box-shadow:0 0 14px;}
+.la-label{font-family:'VT323',monospace;font-size:14px;color:var(--dim);flex:1;}
+.la-arrow{font-family:'VT323',monospace;font-size:22px;color:var(--dim);text-align:center;margin:2px 0;padding-left:65px;}
+.la-packet{position:absolute;left:130px;width:10px;height:10px;border-radius:50%;display:none;z-index:2;}
+#la-log{font-family:'VT323',monospace;font-size:14px;color:#3ddc84;background:#020610;border:2px solid #0d1428;padding:8px 10px;height:90px;overflow-y:auto;white-space:pre;scrollbar-width:thin;margin-top:8px;}
+
 #theme-picker{margin-top:18px;border-top:1px solid #1a1a2e;padding-top:14px;}
 #theme-picker-hdr{font-family:'Press Start 2P',monospace;font-size:7px;color:var(--dim);letter-spacing:1px;margin-bottom:10px;text-align:center;}
 #theme-swatches{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
@@ -406,15 +443,15 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
 <!-- ── NORMAL MODE PAGE ── -->
 <div id="normal-mode">
-  <div class="nm-wrap">w
+  <div class="nm-wrap">
     <div class="nm-header">
       <div>
         <div class="nm-name">Zakhir McKinnon</div>
         <div class="nm-title">Junior Software Developer</div>
-        <div class="nm-location">Cape Town, South Africa · Open to remote roles</div>
+        <div class="nm-location">Johannesburg, South Africa · Open to Cape Town &amp; remote roles</div>
         <div class="nm-links" style="margin-top:10px;">
           <a class="nm-link" href="https://github.com/flyinginsectsunpig" target="_blank">GitHub</a>
-          <a class="nm-link" href="#">LinkedIn</a>
+          <a class="nm-link" href="https://www.linkedin.com/in/zakhir-mckinnon-ba20ab300/" target="_blank">LinkedIn</a>
         </div>
         <div class="nm-hire-badge"><span class="nm-hire-dot"></span>AVAILABLE FOR HIRE — IMMEDIATELY</div>
       </div>
@@ -452,26 +489,62 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
     <div class="nm-section">
       <div class="nm-section-title">Projects</div>
       <div class="nm-projects-grid">
+
         <div class="nm-proj">
-          <div class="nm-proj-name">Custom 2D Game Engine</div>
-          <div class="nm-proj-tech">TypeScript · HTML5 Canvas API</div>
-          <div class="nm-proj-desc">Full engine from scratch: RAF game loop, entity management, AABB collision, particle pool, delta-time physics, spatial grid. Zero frameworks.</div>
+          <div class="nm-proj-name">Custom 2D Game Engine + Vampire Survivors Clone</div>
+          <div class="nm-proj-tech">TypeScript · HTML5 Canvas API · Express · PostgreSQL · Drizzle ORM</div>
+          <div class="nm-proj-desc">Full engine from scratch — RAF game loop, ECS entity management, AABB collision, delta-time physics, procedural world, wave AI. Live and playable.</div>
+          <ul class="nm-proj-bullets">
+            <li>Custom GameEngine class coordinates 6 systems per frame (input, physics, AI, collision, lifetime, render)</li>
+            <li>Express + PostgreSQL backend with session auth and Drizzle ORM for leaderboards</li>
+            <li>SylphBlooms weapon system — flower turrets with bloom-stage damage scaling</li>
+          </ul>
+          <div class="nm-proj-links">
+            <a class="nm-proj-link gh" href="https://github.com/flyinginsectsunpig/game_demo" target="_blank">⊞ GitHub</a>
+            <a class="nm-proj-link live" href="https://game-demo-gray.vercel.app" target="_blank">▶ Live Demo</a>
+          </div>
         </div>
+
         <div class="nm-proj">
-          <div class="nm-proj-name">PrintIt101</div>
-          <div class="nm-proj-tech">React · Three.js · Java Spring Boot</div>
-          <div class="nm-proj-desc">Real-time 3D t-shirt customiser. Builder + Factory patterns. Full-stack team project with REST API backend and live 3D rendering.</div>
+          <div class="nm-proj-name">PrintIt101 — 3D T-Shirt Customisation Platform</div>
+          <div class="nm-proj-tech">Java · Spring Boot · React · Three.js · REST API</div>
+          <div class="nm-proj-desc">Full-stack team project. 3D shirt model with real-time logo placement, position/rotation/scale tracking, and production-ready output. Layered Spring Boot backend.</div>
+          <ul class="nm-proj-bullets">
+            <li>Spring Boot MVC with separated controller, service, and repository layers</li>
+            <li>REST endpoints for order management, design upload, and validation</li>
+            <li>React + Three.js client consuming backend APIs with error state handling</li>
+          </ul>
+          <div class="nm-proj-links">
+            <a class="nm-proj-link gh" href="https://github.com/flyinginsectsunpig/PrintIt101" target="_blank">⊞ Backend</a>
+            <a class="nm-proj-link gh" href="https://github.com/flyinginsectsunpig/printit101client1" target="_blank">⊞ Frontend</a>
+          </div>
         </div>
+
+        <div class="nm-proj">
+          <div class="nm-proj-name">LoL Skin Buff/Nerf Tracker</div>
+          <div class="nm-proj-tech">Python · Streamlit · scikit-learn · BeautifulSoup · Pandas</div>
+          <div class="nm-proj-desc">Scrapes Riot Games patch notes, parses champion balance changes across patches, ML classifier predicts buff/nerf impact on win rates. Data analytics dashboard.</div>
+          <ul class="nm-proj-bullets">
+            <li>Multi-source scraper pipeline: patch chronology → champion history → pick rates → processed CSV</li>
+            <li>AI Change Classifier — predicts buff/nerf/bugfix from patch note text using scikit-learn</li>
+            <li>Correlation analysis between skin releases, buff timing, and win-rate shifts</li>
+          </ul>
+          <div class="nm-proj-links">
+            <a class="nm-proj-link gh" href="https://github.com/flyinginsectsunpig/LoL-Skin-Buff-Nerf" target="_blank">⊞ GitHub</a>
+          </div>
+        </div>
+
         <div class="nm-proj">
           <div class="nm-proj-name">NannyAtYourService</div>
           <div class="nm-proj-tech">Oracle SQL · PL/SQL</div>
-          <div class="nm-proj-desc">Multi-table relational DB system with stored procedures, sequences, cursors, triggers, views. Complex join and window function queries.</div>
+          <div class="nm-proj-desc">Multi-table relational database system built for a service-matching platform. Complex queries, stored procedures, and full data integrity design.</div>
+          <ul class="nm-proj-bullets">
+            <li>Sequences, triggers, cursors, and stored procedures for business logic in the database layer</li>
+            <li>Window functions and complex multi-table joins for reporting queries</li>
+            <li>Normalised schema design with enforced referential integrity constraints</li>
+          </ul>
         </div>
-        <div class="nm-proj">
-          <div class="nm-proj-name">LoL Buff/Nerf Viewer</div>
-          <div class="nm-proj-tech">Python · scikit-learn · BeautifulSoup</div>
-          <div class="nm-proj-desc">Scraped Riot Games patch notes, parsed champion changes, ML classification to predict buff/nerf impact on win rates.</div>
-        </div>
+
       </div>
     </div>
 
@@ -507,7 +580,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 'use strict';
 // ═══════════════════════════════════════════════════════════
 // WORLD CONSTANTS & TILEMAP
@@ -726,7 +799,7 @@ function isSolid(tx,ty){
 const stations=[
   {id:'pedestal',tx:39,ty:27,col:'#4fc3f7',icon:'◈',dlg:'🔮 ORACLE OF KNOWLEDGE\n"Zone-aware AI. Ask anything.\nPress E to open the interface."',modalId:'chatbot'},
   {id:'ml',      tx:14,ty:25,col:'#3ddc84',icon:'◇',dlg:'📊 ML TERMINAL\nR² metrics · K-Means++ · Train/Test split.\nLive algorithms running in your browser.',modalId:'ml'},
-  {id:'ge',      tx:64,ty:25,col:'#ce93d8',icon:'◉',dlg:'🎮 ENGINE CORE\nFrame budget profiler · ECS inspector.\nCustom engine, no frameworks.',modalId:'ge'},
+  {id:'ge',      tx:64,ty:25,col:'#ce93d8',icon:'◉',dlg:'🎮 ENGINE CORE\nFrame budget profiler · ECS inspector.\nCustom engine — live demo at game-demo-gray.vercel.app',modalId:'ge'},
   {id:'db',      tx:39,ty:11,col:'#ffb74d',icon:'▣',dlg:'🗄 VAULT TERMINAL\nEXPLAIN plans · Index toggle.\nReal SQL from NannyAtYourService.',modalId:'db'},
   {id:'devops',  tx:39,ty:47,col:'#f44336',icon:'⬡',dlg:'🖥 DEVOPS CONTROL ROOM\nCascade failures · SLO burn rate.\nCI/CD pipeline simulation.',modalId:'devops'},
   {id:'arch',    tx:9, ty:44,col:'#90caf9',icon:'◫',dlg:'🏛 ARCHITECTURE MUSEUM\nMonolith · MVC · Microservices.\nInteractive trade-off cards.',modalId:'arch'},
@@ -3152,20 +3225,19 @@ function buildArch(){
      used:'Studied as a design pattern. Applies to the LoL patch viewer — polling vs event-push for champion updates is exactly this trade-off. Event-driven is powerful but adds consistency complexity that often surprises teams who underestimate it.'},
   ];
 
-  const LATENCY_FLOWS={
-    monolith: [{label:'Client',ms:0},{label:'App',ms:1.2},{label:'DB',ms:4.1}],
-    microservices:[{label:'Client',ms:0},{label:'Gateway',ms:2.1},{label:'Auth',ms:3.4},{label:'API',ms:2.8},{label:'Data',ms:3.1},{label:'DB',ms:4.1}],
-    eventdriven:[{label:'Client',ms:0},{label:'Producer',ms:1.1},{label:'Queue',ms:18},{label:'Consumer',ms:2.3},{label:'DB',ms:4.1}],
-    mvc:[{label:'Client',ms:0},{label:'Controller',ms:0.3},{label:'Service',ms:0.8},{label:'Model',ms:0.4},{label:'DB',ms:4.1}],
-  };
-  const ARCH_LATENCY_KEY=['monolith','mvc','microservices','eventdriven'];
-
   return `<div>
-<p style="font-family:'VT323',monospace;font-size:13px;color:var(--dim);margin-bottom:10px;line-height:1.4;">Click any architecture for Zakhir's take — where he used it, what the real latency cost is, and when not to choose it.</p>
+<div class="arch-tabs">
+  <button class="arch-tab on" id="arch-tab-patterns" onclick="archTab('patterns')">◫ PATTERNS</button>
+  <button class="arch-tab" id="arch-tab-layers" onclick="archTab('layers')">⊞ LAYER FLOW</button>
+  <button class="arch-tab" id="arch-tab-projects" onclick="archTab('projects')">◈ PROJECTS</button>
+</div>
+
+<div id="arch-patterns">
+<p style="font-family:'VT323',monospace;font-size:15px;color:var(--dim);margin-bottom:10px;line-height:1.4;">Click any architecture for Zakhir's take — where he used it, what the real latency cost is, and when not to choose it.</p>
 <div style="background:#030812;border:2px solid #1a1030;padding:10px;margin-bottom:10px;">
-<div style="font-family:'Press Start 2P',monospace;font-size:6px;color:#90caf9;margin-bottom:8px;letter-spacing:1px;">▶ REQUEST LATENCY VISUALISER — click architecture to animate</div>
+<div style="font-family:'Press Start 2P',monospace;font-size:7px;color:#90caf9;margin-bottom:8px;letter-spacing:1px;">▶ REQUEST LATENCY VISUALISER — click to animate</div>
 <canvas id="arch-lat" width="680" height="80" style="display:block;width:100%;background:#020811;border:1px solid #1a1030;cursor:pointer;" onclick="cycleArchLatency()"></canvas>
-<div id="arch-lat-info" style="font-family:'VT323',monospace;font-size:13px;color:#90caf9;margin-top:5px;text-align:center;">Click to see request flow comparison</div>
+<div id="arch-lat-info" style="font-family:'VT323',monospace;font-size:15px;color:#90caf9;margin-top:5px;text-align:center;">Click to see request flow comparison</div>
 </div>
 <div class="arch-grid">${cards.map((c,i)=>`
 <div>
@@ -3174,8 +3246,8 @@ function buildArch(){
 <div class="arch-card-sub">${c.sub}</div>
 </div>
 <div class="arch-detail" id="arch-${i}">
-<div style="font-family:'Press Start 2P',monospace;font-size:6px;color:${c.col};margin-bottom:7px;">ZAKHIR'S TAKE</div>
-<div style="font-family:'VT323',monospace;font-size:13px;color:var(--white);line-height:1.6;margin-bottom:7px;border-left:2px solid ${c.col};padding-left:7px;">${c.used}</div>
+<div style="font-family:'Press Start 2P',monospace;font-size:7px;color:${c.col};margin-bottom:7px;">ZAKHIR'S TAKE</div>
+<div style="font-family:'VT323',monospace;font-size:15px;color:var(--white);line-height:1.6;margin-bottom:7px;border-left:2px solid ${c.col};padding-left:7px;">${c.used}</div>
 <div class="arch-pros-cons">
 <div class="arch-col" style="border-left:2px solid #3ddc84;"><h4 style="color:#3ddc84">✓ STRENGTHS</h4>${c.pros.map(p=>`▸ ${p}<br>`).join('')}</div>
 <div class="arch-col" style="border-left:2px solid #f44336;"><h4 style="color:#f44336">✕ COSTS</h4>${c.cons.map(p=>`▸ ${p}<br>`).join('')}</div>
@@ -3183,8 +3255,123 @@ function buildArch(){
 </div>
 </div>`).join('')}
 </div>
+</div>
+
+<div id="arch-layers" style="display:none;">
+<p style="font-family:'VT323',monospace;font-size:15px;color:var(--dim);margin-bottom:10px;line-height:1.5;">Watch a request travel through a layered Spring Boot backend — the same structure used in PrintIt101. Click to animate the flow.</p>
+<div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
+<div style="flex:0 0 auto;min-width:240px;">
+  <div class="la-layer"><div class="la-box" style="border-color:#4fc3f7;color:#4fc3f7;" id="la-box-0">CLIENT</div><div class="la-label">HTTP request from browser / mobile</div></div>
+  <div class="la-arrow">↓</div>
+  <div class="la-layer"><div class="la-box" style="border-color:#90caf9;color:#90caf9;" id="la-box-1">CONTROLLER</div><div class="la-label">Route + validate input · return DTO</div></div>
+  <div class="la-arrow">↓</div>
+  <div class="la-layer"><div class="la-box" style="border-color:#a5d6a7;color:#a5d6a7;" id="la-box-2">SERVICE</div><div class="la-label">Business logic · orchestration</div></div>
+  <div class="la-arrow">↓</div>
+  <div class="la-layer"><div class="la-box" style="border-color:#ffb74d;color:#ffb74d;" id="la-box-3">REPOSITORY</div><div class="la-label">Data access · query abstraction</div></div>
+  <div class="la-arrow">↓</div>
+  <div class="la-layer"><div class="la-box" style="border-color:#f44336;color:#f44336;" id="la-box-4">DATABASE</div><div class="la-label">Persistence · SQL · transactions</div></div>
+</div>
+<div style="flex:1;min-width:200px;">
+  <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:#90caf9;margin-bottom:8px;letter-spacing:1px;">REQUEST LOG</div>
+  <div id="la-log">$ Awaiting request...
+</div>
+  <div style="display:flex;gap:7px;margin-top:8px;flex-wrap:wrap;">
+    <button class="gb" style="border-color:#90caf9;color:#90caf9;" onclick="laRunRequest('get')">▶ GET /orders</button>
+    <button class="gb" style="border-color:#90caf9;color:#90caf9;" onclick="laRunRequest('post')">▶ POST /orders</button>
+    <button class="gb" style="border-color:#ffb74d;color:#ffb74d;" onclick="laRunRequest('err')">✕ INJECT ERROR</button>
+    <button class="gb" style="border-color:var(--dim);color:var(--dim);" onclick="laReset()">↺ RESET</button>
+  </div>
+  <div style="font-family:'VT323',monospace;font-size:13px;color:var(--dim);margin-top:8px;line-height:1.6;border-left:2px solid #1a2a4a;padding-left:8px;">In PrintIt101, each layer is a separate package. Controllers never touch the DB directly. Service layer holds all business rules. Repository handles all SQL via Spring Data JPA.</div>
+</div>
+</div>
+<div style="margin-top:12px;background:#030812;border:2px solid #1a2040;padding:10px;">
+<div style="font-family:'Press Start 2P',monospace;font-size:7px;color:#90caf9;margin-bottom:8px;letter-spacing:1px;">▶ EXAMPLE API CONTRACT — POST /api/orders</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div><div style="font-family:'Press Start 2P',monospace;font-size:6px;color:#4fc3f7;margin-bottom:5px;">REQUEST BODY</div>
+<pre style="font-family:'VT323',monospace;font-size:14px;color:#7dd3fc;line-height:1.6;white-space:pre-wrap;">{
+  "customerId": 42,
+  "designId": "shirt_v2",
+  "logoPosition": { "x": 0.5, "y": 0.3 },
+  "quantity": 3
+}</pre></div>
+<div><div style="font-family:'Press Start 2P',monospace;font-size:6px;color:#a5d6a7;margin-bottom:5px;">RESPONSE 201</div>
+<pre style="font-family:'VT323',monospace;font-size:14px;color:#a5d6a7;line-height:1.6;white-space:pre-wrap;">{
+  "orderId": 1024,
+  "status": "PROCESSING",
+  "estimatedDelivery": "2025-12-20",
+  "total": 449.85
+}</pre></div>
+</div>
+</div>
+</div>
+
+<div id="arch-projects" style="display:none;">
+<p style="font-family:'VT323',monospace;font-size:15px;color:var(--dim);margin-bottom:10px;line-height:1.5;">Real projects with GitHub links. Each one demonstrates a different area of the stack.</p>
+
+<div class="pv-card">
+  <div class="pv-card-hdr">
+    <div class="pv-card-name">🎮 GAME ENGINE + VAMPIRE SURVIVORS CLONE</div>
+    <div class="pv-card-links">
+      <a class="pv-link gh" href="https://github.com/flyinginsectsunpig/game_demo" target="_blank">⊞ GitHub</a>
+      <a class="pv-link live" href="https://game-demo-gray.vercel.app" target="_blank">▶ LIVE</a>
+    </div>
+  </div>
+  <div class="pv-card-tech">TypeScript · Canvas API · Express · PostgreSQL · Drizzle ORM · Vercel</div>
+  <div class="pv-card-desc">Custom TypeScript game engine + a Vampire Survivors-style game. Full backend with session auth and leaderboards. Live and playable now.</div>
+  <ul class="pv-bullets">
+    <li>Custom GameEngine: RAF loop, delta-time physics, ECS, AABB collision, spatial grid — zero frameworks</li>
+    <li>SylphBlooms weapon — flower turrets with bloom-stage damage scaling and homing projectiles</li>
+    <li>WaveManager spawns increasingly difficult enemy types (Basic, Fast, Tank)</li>
+    <li>Express + PostgreSQL backend with Drizzle ORM · shared type contracts between client and server</li>
+  </ul>
+</div>
+
+<div class="pv-card">
+  <div class="pv-card-hdr">
+    <div class="pv-card-name">🖨 PRINTIT101 — 3D T-SHIRT PLATFORM</div>
+    <div class="pv-card-links">
+      <a class="pv-link gh" href="https://github.com/flyinginsectsunpig/PrintIt101" target="_blank">⊞ Backend</a>
+      <a class="pv-link gh" href="https://github.com/flyinginsectsunpig/printit101client1" target="_blank">⊞ Frontend</a>
+    </div>
+  </div>
+  <div class="pv-card-tech">Java · Spring Boot · React · Three.js · TypeScript · REST API</div>
+  <div class="pv-card-desc">Full-stack team project. 3D shirt customisation with real-time logo placement. Layered Spring Boot backend with separated controller, service, and repository packages.</div>
+  <ul class="pv-bullets">
+    <li>REST endpoints for order management, design upload, validation, and status tracking</li>
+    <li>React + Three.js client consumes backend APIs with error state handling</li>
+    <li>176 commits backend · 89 commits frontend — active collaborative version control</li>
+  </ul>
+</div>
+
+<div class="pv-card">
+  <div class="pv-card-hdr">
+    <div class="pv-card-name">⚔ LOL SKIN BUFF/NERF TRACKER</div>
+    <div class="pv-card-links">
+      <a class="pv-link gh" href="https://github.com/flyinginsectsunpig/LoL-Skin-Buff-Nerf" target="_blank">⊞ GitHub</a>
+    </div>
+  </div>
+  <div class="pv-card-tech">Python · Streamlit · scikit-learn · BeautifulSoup · Pandas</div>
+  <div class="pv-card-desc">Data scraping and analytics platform. Multi-stage pipeline scrapes patch data, ML classifier predicts buff/nerf/bugfix from patch note text.</div>
+  <ul class="pv-bullets">
+    <li>Patch chronology → champion history → pick rates → merged CSV pipeline</li>
+    <li>AI Change Classifier — scikit-learn classification from raw patch note text</li>
+    <li>Streamlit dashboard: Patch History, Skin History, Data Analytics pages</li>
+  </ul>
+</div>
+</div>
+
 </div>`;}
 
+function archTab(which){
+  ['patterns','layers','projects'].forEach(t=>{
+    const el=document.getElementById('arch-'+t);
+    if(el) el.style.display=t===which?'':'none';
+    const tab=document.getElementById('arch-tab-'+t);
+    if(tab) tab.classList.toggle('on',t===which);
+  });
+  if(which==='patterns') setTimeout(()=>startArchLatAnim(),200);
+  if(which==='layers') laReset();
+}
 const _ARCH_FLOWS=[
   {name:'MONOLITH',col:'#90caf9',hops:[{label:'Client',ms:0},{label:'App (all-in-one)',ms:1.2},{label:'DB',ms:4.1}]},
   {name:'MVC',col:'#80cbc4',hops:[{label:'Client',ms:0},{label:'Controller',ms:0.3},{label:'Service',ms:0.8},{label:'Model',ms:0.4},{label:'DB',ms:4.1}]},
@@ -3270,8 +3457,132 @@ function initArch(){setTimeout(()=>startArchLatAnim(),200);}
 
 function toggleArch(i){const el=document.getElementById('arch-'+i);if(el)el.classList.toggle('show');}
 
-// ═══════════════════════════════════════════════════════════
-// PROBLEM-SOLVING ARENA — Live SRE Incident Simulator
+// ── Layered Architecture Animator ──
+const LA_LAYERS=[
+  {id:0,col:'#4fc3f7',name:'CLIENT'},
+  {id:1,col:'#90caf9',name:'CONTROLLER'},
+  {id:2,col:'#a5d6a7',name:'SERVICE'},
+  {id:3,col:'#ffb74d',name:'REPOSITORY'},
+  {id:4,col:'#f44336',name:'DATABASE'},
+];
+
+const LA_REQUESTS={
+  get:{
+    label:'GET /api/orders/42',
+    downLogs:[
+      '→ [CONTROLLER] GET /api/orders/42  validate: orderId=42 ✓',
+      '→ [SERVICE]    orderService.findById(42)  applying business rules',
+      '→ [REPOSITORY] orderRepository.findById(42)  translating to SQL',
+      '→ [DATABASE]   SELECT * FROM orders WHERE id=42  (idx scan 3.2ms)',
+    ],
+    upLogs:[
+      '← [DATABASE]   1 row returned',
+      '← [REPOSITORY] mapped to Order entity',
+      '← [SERVICE]    enriched with delivery estimate',
+      '← [CONTROLLER] serialised to OrderDTO  200 OK',
+    ],
+  },
+  post:{
+    label:'POST /api/orders',
+    downLogs:[
+      '→ [CONTROLLER] POST /api/orders  validate body: customerId, designId, qty ✓',
+      '→ [SERVICE]    orderService.create()  check inventory, apply pricing rules',
+      '→ [REPOSITORY] orderRepository.save(order)  begin transaction',
+      '→ [DATABASE]   INSERT INTO orders ...  COMMIT (4.8ms)',
+    ],
+    upLogs:[
+      '← [DATABASE]   orderId=1024 generated',
+      '← [REPOSITORY] entity saved, transaction committed',
+      '← [SERVICE]    order confirmed, email queued',
+      '← [CONTROLLER] 201 CREATED  { orderId: 1024, status: "PROCESSING" }',
+    ],
+  },
+  err:{
+    label:'POST /api/orders (bad input)',
+    downLogs:[
+      '→ [CONTROLLER] POST /api/orders  validate body...',
+      '✕ [CONTROLLER] Validation FAILED: customerId missing',
+    ],
+    upLogs:[
+      '← [CONTROLLER] 400 BAD REQUEST  { error: "customerId is required" }',
+      '  No downstream layers called — fail fast at boundary ✓',
+    ],
+    error:true,
+    stopAt:1,
+  },
+};
+
+let _laRunning=false;
+
+function laLog(msg,col=''){
+  const el=document.getElementById('la-log');
+  if(!el)return;
+  const span=col?`<span style="color:${col}">${msg}</span>`:`<span>${msg}</span>`;
+  el.innerHTML+=span+'\n';
+  el.scrollTop=el.scrollHeight;
+}
+
+function laHighlight(idx,on,col){
+  const box=document.getElementById('la-box-'+idx);
+  if(!box)return;
+  if(on){
+    box.style.background=col+'22';
+    box.style.boxShadow=`0 0 14px ${col}`;
+  } else {
+    box.style.background='';
+    box.style.boxShadow='';
+  }
+}
+
+function laReset(){
+  _laRunning=false;
+  LA_LAYERS.forEach(l=>laHighlight(l.id,false,l.col));
+  const el=document.getElementById('la-log');
+  if(el) el.innerHTML='$ Awaiting request...\n';
+}
+
+function laRunRequest(type){
+  if(_laRunning)return;
+  const req=LA_REQUESTS[type];
+  if(!req)return;
+  _laRunning=true;
+  laReset();
+  _laRunning=true;
+  const stopAt=req.stopAt??LA_LAYERS.length-1;
+  laLog(`$ ${req.label}`,'#4fc3f7');
+
+  // Animate down
+  let delay=0;
+  for(let i=0;i<=stopAt;i++){
+    const ii=i;
+    setTimeout(()=>{
+      laHighlight(ii,true,LA_LAYERS[ii].col);
+      if(req.downLogs[ii]) laLog(req.downLogs[ii], req.error&&ii===stopAt?'#f44336':'#3ddc84');
+    },delay);
+    delay+=500;
+  }
+
+  // Animate up (reversed) — skip if error stops early
+  if(!req.error||stopAt===LA_LAYERS.length-1){
+    req.upLogs.forEach((_,j)=>{
+      const revI=stopAt-j;
+      setTimeout(()=>{
+        laHighlight(revI,false,LA_LAYERS[revI]?.col||'#fff');
+        if(req.upLogs[j]) laLog(req.upLogs[j],'#90caf9');
+        if(j===req.upLogs.length-1){
+          laLog('$ ─── Request complete ───','#3ddc84');
+          _laRunning=false;
+        }
+      },delay+j*500);
+    });
+  } else {
+    setTimeout(()=>{
+      req.upLogs.forEach(l=>laLog(l,'#f44336'));
+      laLog('$ ─── Request rejected at boundary ───','#ffb74d');
+      _laRunning=false;
+    },delay);
+  }
+} // — Live SRE Incident Simulator
 // ═══════════════════════════════════════════════════════════
 
 // ── Incident definitions — each has a root cause, branching actions, and observability data ──
