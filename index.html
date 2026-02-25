@@ -1629,7 +1629,7 @@ body::before {
   <div class="particles-bg" id="particles"></div>
   <div class="select-header">
     <h2>Choose Your Realm</h2>
-    <p>// SYSTEMS · BACKEND · ML · DEVOPS · PROJECTS</p>
+    <p> SYSTEMS · BACKEND · ML · DEVOPS · PROJECTS</p>
   </div>
   <div class="cards-container" id="cards-container">
     
@@ -1789,7 +1789,7 @@ body::before {
     <!-- POSITIONING STATEMENT -->
     <div style="max-width:1100px;margin:0 auto 2.5rem auto;padding:1.8rem 2rem;border:1px solid var(--border);background:linear-gradient(135deg,#0f0505 0%,#080303 100%);position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--crimson),transparent)"></div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--blood);letter-spacing:0.2em;margin-bottom:0.8rem">// WHO I AM</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--blood);letter-spacing:0.2em;margin-bottom:0.8rem"> WHO AM I</div>
       <div style="font-family:'Cinzel',serif;font-size:clamp(0.95rem,2vw,1.3rem);color:var(--bone);letter-spacing:0.08em;line-height:1.6;margin-bottom:0.8rem">
         I build systems — the kind that handle load,<br>make intelligent decisions, and don't break in production.
       </div>
@@ -1832,7 +1832,7 @@ body::before {
     </div>
 
     <div style="text-align:center;margin-bottom:2rem">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood);letter-spacing:0.15em">// SELECTED WORKS — CLICK ANY CARD TO VIEW CODE</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood);letter-spacing:0.15em">SELECTED WORKS — CLICK ANY CARD TO VIEW CODE</div>
     </div>
     <div class="projects-grid">
 
@@ -2009,8 +2009,8 @@ body::before {
       <div class="panel-section">
         <h3>Event Log</h3>
         <div class="event-log" id="event-log">
-          <div class="log-entry">// system ready</div>
-          <div class="log-entry">// place nodes to begin</div>
+          <div class="log-entry">system ready</div>
+          <div class="log-entry">place nodes to begin</div>
         </div>
       </div>
     </div>
@@ -2075,7 +2075,7 @@ SELECT * FROM users WHERE email = 'user@test.com';
       <div class="panel-section">
         <h3>System Feedback</h3>
         <div class="feedback-box" id="db-feedback">
-          // choose a solution to defeat the boss
+          choose a solution to defeat the boss
         </div>
       </div>
     </div>
@@ -2100,7 +2100,7 @@ SELECT * FROM users WHERE email = 'user@test.com';
   </div>
   <div class="realm-content">
     <div class="ml-nav">
-      <div style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--blood);letter-spacing:0.1em;margin-bottom:1rem">// MODULES</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--blood);letter-spacing:0.1em;margin-bottom:1rem">MODULES</div>
       <div class="ml-nav-item active" onclick="switchML('regression')" id="nav-regression">
         <span class="nav-icon">📈</span> Regression
       </div>
@@ -2120,7 +2120,7 @@ SELECT * FROM users WHERE email = 'user@test.com';
     <div class="ml-workspace">
       <div class="ml-challenge-header">
         <div class="ml-challenge-title" id="ml-title">Regression Arena</div>
-        <div class="ml-challenge-subtitle" id="ml-subtitle">// Predict house prices. Minimize RMSE.</div>
+        <div class="ml-challenge-subtitle" id="ml-subtitle">Predict house prices. Minimize RMSE.</div>
       </div>
       <div class="ml-target" id="ml-target">🎯 TARGET: R² > 0.85 to unlock next module</div>
       <canvas id="ml-canvas"></canvas>
@@ -2146,13 +2146,13 @@ SELECT * FROM users WHERE email = 'user@test.com';
       <div class="panel-section">
         <h3>Insight</h3>
         <div class="feedback-box" id="ml-insight" style="min-height:100px">
-          // select an algorithm and run to see analysis
+          select an algorithm and run to see analysis
         </div>
       </div>
       <div class="panel-section">
         <h3>Modules Cleared</h3>
         <div id="ml-cleared">
-          <div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--border)">// none yet</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--border)">none yet</div>
         </div>
       </div>
     </div>
@@ -2179,7 +2179,7 @@ SELECT * FROM users WHERE email = 'user@test.com';
     <div class="pipeline-area">
       <div style="margin-bottom:1rem">
         <div style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.2em;color:var(--bone);margin-bottom:0.3rem">Build Your Pipeline</div>
-        <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood)">// drag stages into the pipeline track below, then commit</div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood)">drag stages into the pipeline track below, then commit</div>
       </div>
       <div class="pipeline-stage-pool" id="stage-pool">
         <div class="pipeline-stage" draggable="true" data-stage="source">📁 SOURCE CHECKOUT</div>
@@ -2217,7 +2217,7 @@ SELECT * FROM users WHERE email = 'user@test.com';
       <div class="panel-section">
         <h3>Pipeline Log</h3>
         <div class="event-log" id="pipeline-log">
-          <div class="log-entry">// awaiting pipeline...</div>
+          <div class="log-entry">awaiting pipeline...</div>
         </div>
       </div>
     </div>
@@ -2668,8 +2668,8 @@ function initSystemRealm() {
   const slider = $('traffic-slider');
   if (slider) slider.value = 0;
 
-  addLog('// system canvas ready');
-  addLog('// place nodes, connect them, then increase traffic');
+  addLog('system canvas ready');
+  addLog('place nodes, connect them, then increase traffic');
   stopSystemSim();
   drawSystem();
   sysTickInterval = setInterval(sysSimTick, SIM_TICK_MS);
@@ -2710,7 +2710,7 @@ function clearNodes() {
   nodes = []; connections = [];
   connectingFrom = null; selectedNodeType = null;
   document.querySelectorAll('.node-btn').forEach(b => b.classList.remove('active'));
-  addLog('// canvas cleared');
+  addLog('canvas cleared');
 }
 
 function onSysCanvasClick(e) {
@@ -2728,7 +2728,7 @@ function onSysCanvasClick(e) {
       );
       if (!alreadyLinked) {
         connections.push({ a: connectingFrom, b: clicked });
-        addLog(`// connected: ${connectingFrom.full} → ${clicked.full}`);
+        addLog(`connected: ${connectingFrom.full} → ${clicked.full}`);
         toast(`Connected: ${connectingFrom.full} ↔ ${clicked.full}`, 'success');
         gainXP('sys', 10);
         sysSimTick();
@@ -2751,7 +2751,7 @@ function onSysCanvasClick(e) {
   if (selectedNodeType) {
     const type = NODE_TYPES[selectedNodeType];
     nodes.push({ x, y, type: selectedNodeType, ...type, id: Date.now(), health: 100 });
-    addLog(`// placed: ${type.full} at (${Math.round(x)}, ${Math.round(y)})`);
+    addLog(`placed: ${type.full} at (${Math.round(x)}, ${Math.round(y)})`);
     gainXP('sys', 5);
     sysSimTick();
   }
@@ -2858,7 +2858,7 @@ function maybeFireAutoEvent(apiCount) {
       const v = live[Math.floor(Math.random() * live.length)];
       v.health = 10; v.color = '#661111';
       addLog('💀 API server under memory pressure!', 'danger');
-      setTimeout(() => { v.health = 100; v.color = NODE_TYPES['api-server'].color; addLog('// server recovered', 'good'); }, 4000);
+      setTimeout(() => { v.health = 100; v.color = NODE_TYPES['api-server'].color; addLog('server recovered', 'good'); }, 4000);
     },
   ];
   pool[Math.floor(Math.random() * pool.length)]();
@@ -2989,7 +2989,7 @@ function triggerEvent(type) {
     setTimeout(() => {
       if (slider) slider.value = old;
       updateTraffic(old);
-      addLog('// traffic spike subsided', 'good');
+      addLog('traffic spike subsided', 'good');
     }, 8000);
 
   } else if (type === 'crash') {
@@ -3000,7 +3000,7 @@ function triggerEvent(type) {
     const msg = apis.length > 1 ? 'Others absorbing load' : 'SYSTEM DOWN';
     addLog(`💀 API Server crashed! ${msg}`, 'danger');
     toast(apis.length > 1 ? 'Worker crashed — others absorbing!' : 'System down!', 'warn');
-    setTimeout(() => { victim.health = 100; victim.color = NODE_TYPES['api-server'].color; addLog('// worker auto-restarted', 'good'); }, 5000);
+    setTimeout(() => { victim.health = 100; victim.color = NODE_TYPES['api-server'].color; addLog('worker auto-restarted', 'good'); }, 5000);
 
   } else if (type === 'cache-miss') {
     addLog('⚡ Cache miss storm! All reads hitting DB', 'danger');
@@ -3049,11 +3049,11 @@ function initDBRealm() {
 async function generateDBBoss() {
   const topic = sessionTopics[dbLevel];
 
-  setText(DOM.bossName,     '// GENERATING BOSS...');
-  setText(DOM.queryDisplay, '// Gemini is crafting your query scenario...');
-  setText(DOM.dbFeedback,   '// stand by');
+  setText(DOM.bossName,     'GENERATING BOSS...');
+  setText(DOM.queryDisplay, 'Gemini is crafting your query scenario...');
+  setText(DOM.dbFeedback,   'stand by');
   setText(DOM.dbLevel,      `LEVEL ${dbLevel + 1} OF ${sessionTopics.length}`);
-  DOM.solutionGrid.innerHTML = `<div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood);padding:1rem;grid-column:span 2">// summoning boss from the void...</div>`;
+  DOM.solutionGrid.innerHTML = `<div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood);padding:1rem;grid-column:span 2">summoning boss from the void...</div>`;
 
   const prompt = `You are generating a database query boss fight for a gamified developer portfolio.
 
@@ -3172,7 +3172,7 @@ function renderDBBoss(boss) {
   setText($('boss-hp-text'), boss.ms + 'ms');
   setText(DOM.queryDisplay, boss.query);
   setText($('query-stat'),  boss.stat);
-  setText(DOM.dbFeedback,   '// choose a solution to defeat the boss');
+  setText(DOM.dbFeedback,   'choose a solution to defeat the boss');
   DOM.bossHp.style.width = '100%';
 
   const shuffled = [...boss.solutions].sort(() => Math.random() - 0.5);
@@ -3304,11 +3304,11 @@ const VAR_LABELS    = ['LOW','LOW','MED','HIGH','EXTREME'];
 const OVERFIT_LABELS= ['NONE','LOW','MED','SEVERE'];
 
 const ML_META = {
-  regression:     { title:'Regression Arena',           subtitle:'// Predict house prices. Minimize RMSE. Target changes each run.', metric:'R²',       target: () => +(0.83 + Math.random()*0.04).toFixed(2) },
-  classification: { title:'Classification Arena',       subtitle:'// Classify medical data. Maximize F1 score.',                    metric:'F1',       target: () => +(0.88 + Math.random()*0.04).toFixed(2) },
-  clustering:     { title:'Clustering Zone',            subtitle:'// Segment customers. No labels — find the natural groups.',      metric:'Silhouette',target: () => +(0.62 + Math.random()*0.06).toFixed(2) },
-  rl:             { title:'Reinforcement Learning Arena',subtitle:'// Multi-armed bandit. 1000 pulls. Maximise cumulative reward.',  metric:'Reward',   target: () => Math.floor(620 + Math.random()*60) },
-  nn:             { title:'Neural Net Lab',              subtitle:'// MNIST digit recognition. Beat the val accuracy target.',       metric:'Val Acc',  target: () => +(0.965 + Math.random()*0.02).toFixed(3) },
+  regression:     { title:'Regression Arena',           subtitle:'Predict house prices. Minimize RMSE. Target changes each run.', metric:'R²',       target: () => +(0.83 + Math.random()*0.04).toFixed(2) },
+  classification: { title:'Classification Arena',       subtitle:'Classify medical data. Maximize F1 score.',                    metric:'F1',       target: () => +(0.88 + Math.random()*0.04).toFixed(2) },
+  clustering:     { title:'Clustering Zone',            subtitle:'Segment customers. No labels — find the natural groups.',      metric:'Silhouette',target: () => +(0.62 + Math.random()*0.06).toFixed(2) },
+  rl:             { title:'Reinforcement Learning Arena',subtitle:'Multi-armed bandit. 1000 pulls. Maximise cumulative reward.',  metric:'Reward',   target: () => Math.floor(620 + Math.random()*60) },
+  nn:             { title:'Neural Net Lab',              subtitle:'MNIST digit recognition. Beat the val accuracy target.',       metric:'Val Acc',  target: () => +(0.965 + Math.random()*0.02).toFixed(3) },
 };
 
 function simulateMLResult(module, algo) {
@@ -3476,7 +3476,7 @@ function renderMLModule() {
   setText(DOM.mlOverfit,'—');
   setText(DOM.mlBias,   '—');
   setText(DOM.mlVar,    '—');
-  setText(DOM.mlInsight,'// select an algorithm and run to see analysis');
+  setText(DOM.mlInsight,'select an algorithm and run to see analysis');
 
   drawMLCanvas();
 }
@@ -3489,7 +3489,7 @@ function selectAlgo(algo) {
 function runML() {
   if (!selectedAlgo) { toast('Select an algorithm first!', 'warn'); return; }
 
-  setText(DOM.mlRunStatus, '// training...');
+  setText(DOM.mlRunStatus, 'training...');
 
   const COMPLEXITY_MS = { 'Random Forest':1600, 'CNN':2000, 'Deep (512×4)':1800, 'Thompson Sampling':1400 };
   const trainTime = COMPLEXITY_MS[selectedAlgo] ?? (1000 + Math.random() * 400);
@@ -3498,7 +3498,7 @@ function runML() {
     const result = simulateMLResult(mlModule, selectedAlgo);
     if (!result) return;
 
-    setText(DOM.mlRunStatus, '// training complete');
+    setText(DOM.mlRunStatus, 'training complete');
 
     const meta        = ML_META[mlModule];
     const targetVal   = mlTargets[mlModule];
@@ -3606,7 +3606,7 @@ function drawMLCanvas() {
   mlCtx.fillStyle = 'rgba(160,152,144,0.4)';
   mlCtx.font = '10px Share Tech Mono';
   mlCtx.textAlign = 'left';
-  mlCtx.fillText('// select algorithm to see fit', 50, 25);
+  mlCtx.fillText('select algorithm to see fit', 50, 25);
 }
 
 function generateDataPoints(module, w, h) {
@@ -3891,7 +3891,7 @@ async function _executePipeline() {
   const runStart   = Date.now();
   const commitHash = ['a3f9c12','b72e841','c91d3f7','d45ab20','e18c63f'][Math.floor(Math.random() * 5)];
 
-  plog(`// commit ${commitHash} triggered pipeline`, 'good');
+  plog(`commit ${commitHash} triggered pipeline`, 'good');
   setText($('dv-freq'), doraMetrics.deploys + ' this session');
 
   let failed     = false;
@@ -3945,7 +3945,7 @@ function _handlePipelineFailure(failedStage, hasTests, hasStaging) {
   setText($('dv-mttr'), Math.round(doraMetrics.totalMttr / doraMetrics.mttrCount) + 'min');
   setText($('dv-lead'), (doraMetrics.totalLeadTime / doraMetrics.deploys).toFixed(1) + 's');
 
-  plog(`// MTTR estimate: ${mttr}min — fix ${failedStage} and redeploy`, 'warn');
+  plog(`MTTR estimate: ${mttr}min — fix ${failedStage} and redeploy`, 'warn');
   toast(`❌ Failed at ${failedStage}! Streak reset.`, 'warn');
 
   if (failedStage === 'prod' && !hasTests)    plog('💡 Add unit-test + integration before prod', 'warn');
@@ -4050,7 +4050,7 @@ async function sendChat() {
   input.value = '';
 
   addChatMsg('user', text);
-  const typing = addChatMsg('bot', '// thinking...');
+  const typing = addChatMsg('bot', 'thinking...');
   typing.classList.add('typing');
 
   const systemPrompt = CHAT_SYSTEM_PROMPTS[chatMode]?.() ?? '';
@@ -4181,7 +4181,7 @@ function renderHireContent() {
       <a href="mailto:zakhirmckinnon2016@gmail.com" class="hire-cta-btn">✉ GET IN TOUCH</a>
       <a href="https://www.linkedin.com/in/zakhir-mckinnon-ba20ab300" target="_blank" class="hire-cta-btn">💼 LINKEDIN</a>
       <a href="https://github.com/flyinginsectsunpig" target="_blank" class="hire-cta-btn">⌥ GITHUB</a>
-      <span class="hire-cta-note">// Available for full-time roles · Open to remote</span>
+      <span class="hire-cta-note">Available for full-time roles · Open to remote</span>
     </div>
   `;
 }
@@ -4201,7 +4201,7 @@ const CODE_SNIPPETS = {
       title: 'Load Balancer (Java)',
       desc: 'Round-robin load balancer implemented in Java. Distributes requests across a pool of backend servers, tracking health and connection counts.',
       stack: ['java'],
-      code: `<span class="cm">// LoadBalancer.java — Round-Robin implementation</span>
+      code: `<span class="cm">LoadBalancer.java — Round-Robin implementation</span>
 <span class="kw">import</span> java.util.*;
 <span class="kw">import</span> java.util.concurrent.atomic.AtomicInteger;
 
@@ -4302,21 +4302,21 @@ r = redis.<span class="cls">Redis</span>(host=<span class="str">'localhost'</spa
       title: 'Query Optimizer (Java)',
       desc: 'Java implementation of N+1 query detection and batch loading using JDBC. Shows how ORMs fix N+1 at the framework level.',
       stack: ['java', 'sql'],
-      code: `<span class="cm">// QueryOptimizer.java — Fix N+1 with batched queries</span>
+      code: `<span class="cm"> QueryOptimizer.java — Fix N+1 with batched queries</span>
 <span class="kw">public class</span> <span class="cls">UserOrderRepository</span> {
 
-    <span class="cm">// ❌ BAD: N+1 problem — 101 queries for 100 users</span>
+    <span class="cm">❌ BAD: N+1 problem — 101 queries for 100 users</span>
     <span class="kw">public</span> List&lt;<span class="cls">UserWithOrders</span>&gt; <span class="fn">loadNaive</span>() {
         List&lt;<span class="cls">User</span>&gt; users = <span class="fn">executeQuery</span>(<span class="str">"SELECT * FROM users"</span>);
         <span class="kw">for</span> (<span class="cls">User</span> u : users) {
             u.orders = <span class="fn">executeQuery</span>(
                 <span class="str">"SELECT * FROM orders WHERE user_id = "</span> + u.id
-            ); <span class="cm">// 100 extra queries!</span>
+            ); <span class="cm">100 extra queries!</span>
         }
         <span class="kw">return</span> users;
     }
 
-    <span class="cm">// ✅ GOOD: Single JOIN — 1 query</span>
+    <span class="cm">✅ GOOD: Single JOIN — 1 query</span>
     <span class="kw">public</span> List&lt;<span class="cls">UserWithOrders</span>&gt; <span class="fn">loadOptimized</span>() {
         <span class="cls">String</span> sql = <span class="str">"""
             SELECT u.id, u.name, o.id AS order_id, o.total
@@ -4590,7 +4590,7 @@ const PROJECT_CODE = [
       stack: ['js', 'canvas', 'python']
     },
     snippets: [
-      `<span class="cm">// canvas_engine.js — Character movement + collision</span>
+      `<span class="cm">canvas_engine.js — Character movement + collision</span>
 <span class="kw">const</span> TILE = <span class="num">32</span>;
 <span class="kw">const</span> player = { x: <span class="num">5</span>, y: <span class="num">5</span>, speed: <span class="num">0.15</span> };
 
@@ -4610,7 +4610,7 @@ const PROJECT_CODE = [
 
 <span class="kw">function</span> <span class="fn">isBlocked</span>(x, y) {
   <span class="kw">const</span> tile = MAP[<span class="fn">Math.floor</span>(y)][<span class="fn">Math.floor</span>(x)];
-  <span class="kw">return</span> tile === <span class="num">1</span>; <span class="cm">// 1 = wall</span>
+  <span class="kw">return</span> tile === <span class="num">1</span>; <span class="cm">1 = wall</span>
 }`,
       `<span class="cm"># zone_system.py — Generates zone data loaded by the canvas engine</span>
 <span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
@@ -4698,7 +4698,7 @@ results = {}
       stack: ['java', 'sql', 'docker']
     },
     snippets: [
-      `<span class="cm">// ApiServer.java — Lightweight HTTP server with routing</span>
+      `<span class="cm">ApiServer.java — Lightweight HTTP server with routing</span>
 <span class="kw">import</span> com.sun.net.httpserver.*;
 <span class="kw">import</span> java.io.*;
 <span class="kw">import</span> java.net.InetSocketAddress;
@@ -4723,7 +4723,7 @@ results = {}
         <span class="cls">System</span>.out.<span class="fn">println</span>(<span class="str">"API server running on port "</span> + server.<span class="fn">getAddress</span>().getPort());
     }
 }`,
-      `<span class="cm">// ConnectionPool.java — JDBC connection pool</span>
+      `<span class="cm">ConnectionPool.java — JDBC connection pool</span>
 <span class="kw">import</span> java.sql.*;
 <span class="kw">import</span> java.util.concurrent.*;
 
@@ -4742,7 +4742,7 @@ results = {}
     }
 
     <span class="kw">public void</span> <span class="fn">release</span>(<span class="cls">Connection</span> conn) {
-        pool.<span class="fn">offer</span>(conn); <span class="cm">// return to pool</span>
+        pool.<span class="fn">offer</span>(conn); <span class="cm">return to pool</span>
     }
 }`
     ]
