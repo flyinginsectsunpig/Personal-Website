@@ -1485,6 +1485,238 @@
     }
 
     /* ═══════════════════════════════════════
+   BACKEND SANDBOX REALM
+═══════════════════════════════════════ */
+    #realm-backend .realm-content {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+    }
+
+    .backend-area {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.5rem;
+      gap: 1.5rem;
+      overflow: hidden;
+    }
+
+    .backend-ide {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      background: #080505;
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 250px;
+    }
+
+    .ide-header {
+      display: flex;
+      align-items: center;
+      background: #150a0a;
+      border-bottom: 1px solid var(--border);
+      padding: 0 1rem;
+      height: 40px;
+    }
+
+    .ide-controls {
+      display: flex;
+      gap: 6px;
+      width: 60px;
+    }
+
+    .ide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .ide-dot.close {
+      background: #ff5f56;
+    }
+
+    .ide-dot.min {
+      background: #ffbd2e;
+    }
+
+    .ide-dot.max {
+      background: #27c93f;
+    }
+
+    .ide-tabs {
+      flex: 1;
+      display: flex;
+      height: 100%;
+    }
+
+    .ide-tab {
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border);
+      color: var(--ash);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ide-tab.active {
+      background: #080505;
+      color: var(--bone);
+      border-bottom: 2px solid var(--crimson);
+    }
+
+    .ide-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .run-server-btn {
+      background: rgba(0, 204, 102, 0.1);
+      border: 1px solid #00cc66;
+      color: #00cc66;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .run-server-btn:hover {
+      background: rgba(0, 204, 102, 0.2);
+    }
+
+    .run-server-btn.running {
+      background: rgba(220, 20, 60, 0.1);
+      border-color: var(--crimson);
+      color: var(--crimson);
+    }
+
+    .ide-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .backend-terminal {
+      flex: 0.8;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      background: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 200px;
+    }
+
+    .terminal-header {
+      background: #111;
+      border-bottom: 1px solid #333;
+      padding: 0.3rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .term-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: #888;
+    }
+
+    .term-clear {
+      background: transparent;
+      border: none;
+      color: #666;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.55rem;
+      cursor: pointer;
+    }
+
+    .term-clear:hover {
+      color: var(--crimson);
+    }
+
+    .terminal-body {
+      flex: 1;
+      padding: 0.8rem;
+      overflow-y: auto;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      line-height: 1.5;
+    }
+
+    .term-line {
+      margin-bottom: 0.2rem;
+      word-wrap: break-word;
+      /* Ensure long outputs don't break layout */
+    }
+
+    .term-line.prompt {
+      color: #00cc66;
+    }
+
+    .term-line.info {
+      color: #ccc;
+    }
+
+    .term-line.system {
+      color: #4ea6e0;
+    }
+
+    .term-line.success {
+      color: #00cc66;
+    }
+
+    .term-line.warn {
+      color: #ffbd2e;
+    }
+
+    .term-line.error {
+      color: #ff5f56;
+    }
+
+    .cursor-blink {
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .backend-panel {
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .sys-action-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #555;
+      color: #555;
+    }
+
+    .sys-action-btn:disabled:hover {
+      background: transparent;
+    }
+
+    /* ═══════════════════════════════════════
    SCROLLBARS
 ═══════════════════════════════════════ */
     ::-webkit-scrollbar {
@@ -1508,7 +1740,7 @@
 ═══════════════════════════════════════ */
     .toast-container {
       position: fixed;
-      top: 2rem;
+      top: 5rem;
       right: 2rem;
       z-index: 9990;
       display: flex;
@@ -1646,6 +1878,25 @@
 
     .code-drawer.open {
       height: 320px;
+    }
+
+    .code-drawer.dragging {
+      transition: none !important;
+    }
+
+    .code-drawer-resizer {
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 8px;
+      cursor: ns-resize;
+      z-index: 401;
+      background: transparent;
+    }
+
+    .code-drawer-resizer:hover {
+      background: rgba(220, 20, 60, 0.3);
     }
 
     .code-drawer-header {
@@ -1924,7 +2175,7 @@
     }
 
     /* ═══════════════════════════════════════
-   HIRE ME PAGE
+   WHY HIRE ME PAGE
 ═══════════════════════════════════════ */
     .hire-toggle {
       flex: 1;
@@ -2231,6 +2482,7 @@
       body {
         overflow-y: auto !important;
         overflow-x: hidden;
+        padding-bottom: 2rem;
       }
 
       .cards-container {
@@ -2272,10 +2524,10 @@
       display: flex;
       gap: 0;
       border: 1px solid var(--crimson);
-      background: rgba(10,0,0,0.8);
+      background: rgba(10, 0, 0, 0.8);
       backdrop-filter: blur(5px);
     }
-    
+
     @media (max-width: 768px) {
       .mode-toggle-container {
         top: 0.5rem;
@@ -2297,14 +2549,88 @@
       letter-spacing: 0.1em;
       transition: all 0.2s;
     }
+
     .mode-btn.active {
       background: var(--crimson);
       color: var(--void);
       font-weight: bold;
     }
+
+    @keyframes rec-pulse {
+      0% {
+        box-shadow: inset 0 0 0 rgba(220, 20, 60, 0);
+      }
+
+      50% {
+        box-shadow: inset 0 0 10px rgba(220, 20, 60, 0.5);
+      }
+
+      100% {
+        box-shadow: inset 0 0 0 rgba(220, 20, 60, 0);
+      }
+    }
+
     .mode-btn:hover:not(.active) {
-      background: rgba(220,20,60,0.2);
+      background: rgba(220, 20, 60, 0.2);
       color: var(--bone);
+    }
+
+    #btn-rec-mode:not(.active) {
+      animation: rec-pulse 2s infinite;
+      color: var(--crimson);
+    }
+
+    .mode-hint {
+      position: absolute;
+      top: -18px;
+      right: 8px;
+      font-size: 0.5rem;
+      color: var(--gold);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .card-type-badge {
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.5rem;
+      padding: 0.15rem 0.4rem;
+      border: 1px solid rgba(220, 20, 60, 0.4);
+      color: var(--crimson);
+      background: rgba(220, 20, 60, 0.05);
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hire-btn-small {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--void);
+      background: var(--crimson);
+      border: 1px solid var(--crimson);
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: all 0.2s;
+      margin-left: 0.5rem;
+    }
+
+    .hire-btn-small:hover {
+      background: transparent;
+      color: var(--crimson);
+    }
+
+    .hover-border {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: rgba(10, 3, 3, 0.6);
+      transition: border-color 0.2s;
+    }
+
+    .hover-border:hover {
+      border-color: var(--crimson);
     }
 
     #recruiter-mode {
@@ -2317,14 +2643,16 @@
       color: #e0e0e0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
+
     #recruiter-mode.hidden {
       display: none;
     }
-    
+
     .cv-container {
       max-width: 800px;
       margin: 0 auto;
     }
+
     .cv-header h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 0.5rem;
@@ -2332,6 +2660,7 @@
       font-family: 'Cinzel', serif;
       letter-spacing: 0.1em;
     }
+
     .cv-roles {
       font-size: 1.1rem;
       color: var(--crimson);
@@ -2339,6 +2668,7 @@
       font-family: 'Share Tech Mono', monospace;
       letter-spacing: 0.05em;
     }
+
     .cv-links {
       display: flex;
       flex-wrap: wrap;
@@ -2346,6 +2676,7 @@
       margin-bottom: 2rem;
       font-family: 'Share Tech Mono', monospace;
     }
+
     .cv-links a {
       color: #4da6ff;
       text-decoration: none;
@@ -2356,9 +2687,11 @@
       align-items: center;
       gap: 0.3rem;
     }
+
     .cv-links a:hover {
       border-bottom-color: #4da6ff;
     }
+
     .cv-stats {
       display: flex;
       flex-direction: column;
@@ -2370,9 +2703,11 @@
       margin-bottom: 3rem;
       line-height: 1.5;
     }
+
     .cv-section {
       margin-bottom: 3rem;
     }
+
     .cv-section h2 {
       font-size: 1.5rem;
       border-bottom: 1px solid #333;
@@ -2383,9 +2718,11 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
+
     .cv-job {
       margin-bottom: 2rem;
     }
+
     .cv-job h3 {
       font-size: 1.2rem;
       color: #fff;
@@ -2395,32 +2732,36 @@
       flex-wrap: wrap;
       gap: 0.5rem;
     }
+
     .cv-job h3 span {
       font-size: 0.9rem;
       color: #888;
       font-weight: normal;
     }
+
     .cv-date {
       color: #aaa;
       font-size: 0.95rem;
       margin: 0.5rem 0 1rem 0;
       font-family: 'Share Tech Mono', monospace;
     }
+
     .cv-job ul {
       padding-left: 1.2rem;
       line-height: 1.6;
       color: #ccc;
     }
+
     .cv-job li {
       margin-bottom: 0.6rem;
     }
-    
+
     .perf-metrics-overlay {
       position: fixed;
       bottom: 1rem;
       left: 1rem;
       z-index: 10000;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0, 0, 0, 0.75);
       border: 1px solid var(--border);
       padding: 0.5rem 0.8rem;
       font-family: 'Share Tech Mono', monospace;
@@ -2431,10 +2772,11 @@
       pointer-events: none;
       backdrop-filter: blur(3px);
     }
+
     .perf-item span {
       color: #00cc66;
     }
-    
+
     @media (max-width: 768px) {
       .perf-metrics-overlay {
         bottom: 0.5rem;
@@ -2450,7 +2792,7 @@
       margin-top: 0.5rem;
       margin-bottom: 1rem;
       padding: 1.2rem;
-      background: rgba(139,0,0,0.05);
+      background: rgba(139, 0, 0, 0.05);
       border: 1px solid var(--border);
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.75rem;
@@ -2459,17 +2801,20 @@
       border-radius: 4px;
       transition: all 0.2s;
     }
+
     .real-project-card:hover {
       border-color: var(--crimson);
-      background: rgba(139,0,0,0.1);
-      box-shadow: 0 0 15px rgba(220,20,60,0.15);
+      background: rgba(139, 0, 0, 0.1);
+      box-shadow: 0 0 15px rgba(220, 20, 60, 0.15);
     }
+
     .real-project-card .rp-tag {
       color: var(--crimson);
       font-weight: bold;
       margin-bottom: 0.5rem;
       letter-spacing: 0.05em;
     }
+
     .real-project-card h4 {
       font-family: 'Cinzel', serif;
       font-size: 0.9rem;
@@ -2477,30 +2822,33 @@
       margin-bottom: 0.5rem;
       letter-spacing: 0.1em;
     }
+
     .real-project-card p {
       margin-bottom: 0.25rem;
     }
+
     .real-project-card span {
       color: var(--ash);
       margin-right: 0.3rem;
     }
-
   </style>
 </head>
 
 <body>
 
   <!-- PERFORMANCE METRICS OVERLAY -->
-  <div class="perf-metrics-overlay">
-    <div class="perf-item">Page Load: <span>1.3s</span></div>
-    <div class="perf-item">Lighthouse: <span>95</span></div>
-    <div class="perf-item">Bundle: <span>180kb</span></div>
-  </div>
 
   <!-- MODE TOGGLE -->
   <div class="mode-toggle-container">
-    <button id="btn-arcade-mode" class="mode-btn active" onclick="setMode('arcade')">Arcade Mode</button>
-    <button id="btn-rec-mode" class="mode-btn" onclick="setMode('recruiter')">Recruiter Mode</button>
+    <button id="btn-arcade-mode" class="mode-btn active" onclick="setMode('arcade')"
+      aria-label="Switch to Arcade Mode">Arcade Mode</button>
+    <button id="btn-rec-mode" class="mode-btn" onclick="setMode('recruiter')" aria-label="Switch to Recruiter Mode">
+      <div class="mode-hint">TIME SHORT?</div>
+      Recruiter Mode
+    </button>
+    <a id="btn-print" class="mode-btn" href="./Zakhir_Keane_McKinnon_Junior_Software_Developer_CV.pdf" target="_blank"
+      style="border-left: 1px solid var(--crimson); text-decoration: none; display: flex; align-items: center; justify-content: center;"
+      aria-label="Print or Download PDF">🖨️ PDF</a>
   </div>
 
   <!-- RECRUITER MODE CONTAINER -->
@@ -2509,20 +2857,33 @@
       <header class="cv-header">
         <h1>Zakhir Keane McKinnon</h1>
         <p class="cv-roles">Targeting: Full-Stack Developer | RPA & Automation | AI Integration | Backend Systems</p>
-        
+
         <div class="cv-links">
           <a href="https://github.com/flyinginsectsunpig" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
+            </svg>
             GitHub
           </a>
           <a href="https://linkedin.com/in/zakhir-mckinnon-ba20ab300" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
             LinkedIn
           </a>
+          <!--email_off-->
           <a href="mailto:Zakhirmckinnon2016@gmail.com" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
             Email
           </a>
+          <!--/email_off-->
         </div>
 
         <div class="cv-stats">
@@ -2537,42 +2898,63 @@
           <h3>Work Integrated Learning | COGENT <span>(Aug 2025 - Dec 2025)</span></h3>
           <p class="cv-date"><strong>Focus:</strong> Azure DevOps, RPA, Backend Integration, AI Systems</p>
           <ul>
-            <li><strong>RPA & Automation:</strong> Translated business requirements into PDDs/SDDs. Built robust <strong>Blue Prism</strong> RPA solutions to automate complex workflows.</li>
-            <li><strong>AI-Assisted Tools:</strong> Leveraged <strong>Copilot agents</strong> and <strong>Stubber</strong> to radically accelerate automation development and intelligent business workflows.</li>
-            <li><strong>DevOps & Backend:</strong> Maintained version control workflows in <strong>Azure DevOps</strong> and implemented backend solutions in <strong>C# using ABP Framework</strong>.</li>
-            <li>Rotated across Analyst, Automation, Azure DevOps, and APA teams, balancing both structural technical architecture and business needs.</li>
+            <li><strong>RPA & Automation:</strong> Translated business requirements into PDDs/SDDs. Built robust
+              <strong>Blue Prism</strong> RPA solutions to automate complex workflows.
+            </li>
+            <li><strong>AI-Assisted Tools:</strong> Leveraged <strong>Copilot agents</strong> and
+              <strong>Stubber</strong> to radically accelerate automation development and intelligent business
+              workflows.
+            </li>
+            <li><strong>DevOps & Backend:</strong> Maintained version control workflows in <strong>Azure DevOps</strong>
+              and implemented backend solutions in <strong>C# using ABP Framework</strong>.</li>
+            <li>Rotated across Analyst, Automation, Azure DevOps, and APA teams, balancing both structural technical
+              architecture and business needs.</li>
           </ul>
         </div>
       </section>
 
       <section class="cv-section">
         <h2>Featured Projects</h2>
-        
+
         <div class="cv-job">
-          <h3>PrintIt101 — 3D E-Commerce Platform</h3>
+          <h3><a href="https://github.com/flyinginsectsunpig/PrintIt101" target="_blank"
+              style="color:inherit; text-decoration:underline; text-decoration-color:var(--crimson); text-underline-offset: 4px;">PrintIt101</a>
+            / <a href="https://github.com/flyinginsectsunpig/printit101client1" target="_blank"
+              style="color:inherit; text-decoration:underline; text-decoration-color:var(--crimson); text-underline-offset: 4px;">Client</a>
+            — 3D E-Commerce Platform</h3>
           <p class="cv-date"><strong>Stack:</strong> TypeScript, React, Three.js, Java Spring Boot</p>
           <ul>
-            <li>Full-stack enterprise application allowing users to fully customize a 3D t-shirt model in real time.</li>
-            <li>Maneuvered real-time 3D rendering alongside rigid backend integration (Java Spring Boot) to calculate transformation outputs.</li>
+            <li>Full-stack enterprise application allowing users to fully customize a 3D t-shirt model in real time.
+            </li>
+            <li>Maneuvered real-time 3D rendering alongside rigid backend integration (Java Spring Boot) to calculate
+              transformation outputs.</li>
             <li>Applied Builder and Factory design patterns for robust code architecture within team Git workflows.</li>
           </ul>
         </div>
 
         <div class="cv-job">
-          <h3>League Patch Notes Viewer & Impact Classification</h3>
+          <h3><a href="https://github.com/flyinginsectsunpig/LoL-Skin-Buff-Nerf" target="_blank"
+              style="color:inherit; text-decoration:underline; text-decoration-color:var(--crimson); text-underline-offset: 4px;">League
+              Patch Notes Viewer & Impact Classification</a></h3>
           <p class="cv-date"><strong>Stack:</strong> Python, HTML/CSS, Machine Learning</p>
           <ul>
-            <li>Scraped and parsed intricate official patch notes into a streamlined, high-level impact overview UI.</li>
-            <li>Integrated machine learning models to classify and predict the competitive impact of buffs and nerfs across millions of instances.</li>
+            <li>Scraped and parsed intricate official patch notes into a streamlined, high-level impact overview UI.
+            </li>
+            <li>Integrated machine learning models to classify and predict the competitive impact of buffs and nerfs
+              across millions of instances.</li>
           </ul>
         </div>
-        
+
         <div class="cv-job">
-          <h3>Backend Arcade — Interactive Portfolio <span>(You are here)</span></h3>
+          <h3><a href="https://github.com/flyinginsectsunpig/Personal-Website" target="_blank"
+              style="color:inherit; text-decoration:underline; text-decoration-color:var(--crimson); text-underline-offset: 4px;">Backend
+              Arcade — Interactive Portfolio</a> <span>(You are here)</span></h3>
           <p class="cv-date"><strong>Stack:</strong> Vanilla JS, Canvas API, HTML5/CSS3, Gemini AI</p>
           <ul>
-            <li>A gamified, multi-realm interactive portfolio handling custom continuous loop logic, animation transitions, and state management.</li>
-            <li>Features a context-aware <strong>Gemini Chatbot</strong>, a pipeline orchestrator showing CI/CD workflows, and playable backend theory.</li>
+            <li>A gamified, multi-realm interactive portfolio handling custom continuous loop logic, animation
+              transitions, and state management.</li>
+            <li>Features a context-aware <strong>Gemini Chatbot</strong>, a pipeline orchestrator showing CI/CD
+              workflows, and playable backend theory.</li>
           </ul>
         </div>
       </section>
@@ -2584,7 +2966,8 @@
           <p>Cape Peninsula University of Technology</p>
           <ul style="margin-top: 5px;">
             <li><strong>Certifications:</strong> Azure Fundamentals (AZ900)</li>
-            <li><strong>Completed Bootcamps:</strong> Ethereum Blockchain Developer Bootcamp with Solidity, Machine Learning A-Z (Python & R)</li>
+            <li><strong>Completed Bootcamps:</strong> Ethereum Blockchain Developer Bootcamp with Solidity, Machine
+              Learning A-Z (Python & R)</li>
           </ul>
         </div>
       </section>
@@ -2614,7 +2997,7 @@
     </svg>
     <div class="intro-name">ZAKHIR MCKINNON</div>
     <div class="intro-title">Full-Stack Engineer · Backend Depth · Applied ML</div>
-    <button class="enter-btn" aria-label="Enter Arcade"  onclick="enterArcade()">ENTER THE ARCADE</button>
+    <button class="enter-btn" aria-label="Enter Arcade" onclick="enterArcade()">ENTER THE ARCADE</button>
   </div>
 
   <!-- ═══════════════════════════════════════
@@ -2629,8 +3012,8 @@
     </div>
     <div class="cards-container" id="cards-container">
 
-      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"  style="--float-dur:4.2s;--float-delay:0s;--tilt:-6deg" onclick="enterRealm('system')"
-        data-sigil="⚡">
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"
+        style="--float-dur:4.2s;--float-delay:0s;--tilt:-6deg" onclick="enterRealm('system')" data-sigil="⚡">
         <div class="card-inner">
           <div class="card-corner tl">I</div>
           <div class="card-corner br">I</div>
@@ -2640,6 +3023,7 @@
             <div class="card-name">System Realm</div>
           </div>
           <div class="card-desc">Survive the traffic wave. Scale your infrastructure before it collapses.</div>
+          <div class="card-type-badge">Interactive Simulation</div>
           <div class="card-tech-row">
             <span class="tech-badge js">JS</span>
             <span class="tech-badge canvas">Canvas API</span>
@@ -2649,8 +3033,8 @@
         </div>
       </div>
 
-      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"  style="--float-dur:3.8s;--float-delay:0.5s;--tilt:4deg" onclick="enterRealm('database')"
-        data-sigil="🗄">
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"
+        style="--float-dur:3.8s;--float-delay:0.5s;--tilt:4deg" onclick="enterRealm('database')" data-sigil="🗄">
         <div class="card-inner">
           <div class="card-corner tl">II</div>
           <div class="card-corner br">II</div>
@@ -2660,6 +3044,7 @@
             <div class="card-name">DB Dungeon</div>
           </div>
           <div class="card-desc">Query boss fights. Defeat slow queries with the right optimization.</div>
+          <div class="card-type-badge">Technical Challenge</div>
           <div class="card-tech-row">
             <span class="tech-badge sql">PostgreSQL</span>
             <span class="tech-badge python">Python</span>
@@ -2669,7 +3054,8 @@
         </div>
       </div>
 
-      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"  style="--float-dur:4.5s;--float-delay:1s;--tilt:-3deg" onclick="enterRealm('ml')"
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter ML Academy"
+        style="--float-dur:4.5s;--float-delay:1s;--tilt:-3deg" onclick="window.location.href='ml-academy.html'"
         data-sigil="🧠">
         <div class="card-inner">
           <div class="card-corner tl">III</div>
@@ -2677,20 +3063,21 @@
           <div class="card-lines"></div>
           <div class="card-sigil">🧠</div>
           <div>
-            <div class="card-name">ML Lab</div>
+            <div class="card-name">ML Academy</div>
           </div>
-          <div class="card-desc">Beat the target accuracy. Choose your algorithm and train to win.</div>
+          <div class="card-desc">10 interactive chapters. From preprocessing to deep learning.</div>
+          <div class="card-type-badge">Interactive Academy</div>
           <div class="card-tech-row">
             <span class="tech-badge python">Python</span>
             <span class="tech-badge sklearn">sklearn</span>
             <span class="tech-badge numpy">NumPy</span>
           </div>
-          <div class="card-tag">ML · ALGORITHMS</div>
+          <div class="card-tag">ML · 10 CHAPTERS</div>
         </div>
       </div>
 
-      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"  style="--float-dur:4s;--float-delay:1.5s;--tilt:7deg" onclick="enterRealm('devops')"
-        data-sigil="🚀">
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"
+        style="--float-dur:4s;--float-delay:1.5s;--tilt:7deg" onclick="enterRealm('devops')" data-sigil="🚀">
         <div class="card-inner">
           <div class="card-corner tl">IV</div>
           <div class="card-corner br">IV</div>
@@ -2700,6 +3087,7 @@
             <div class="card-name">DevOps Arena</div>
           </div>
           <div class="card-desc">Build CI/CD pipelines without breaking production.</div>
+          <div class="card-type-badge">Technical Challenge</div>
           <div class="card-tech-row">
             <span class="tech-badge bash">Bash</span>
             <span class="tech-badge docker">Docker</span>
@@ -2709,8 +3097,8 @@
         </div>
       </div>
 
-      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"  style="--float-dur:4.3s;--float-delay:2s;--tilt:-4deg" onclick="enterRealm('projects')"
-        data-sigil="📁">
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"
+        style="--float-dur:4.3s;--float-delay:2s;--tilt:-4deg" onclick="enterRealm('projects')" data-sigil="📁">
         <div class="card-inner">
           <div class="card-corner tl">V</div>
           <div class="card-corner br">V</div>
@@ -2720,6 +3108,7 @@
             <div class="card-name">Projects</div>
           </div>
           <div class="card-desc">Real code. Real systems. Built and shipped.</div>
+          <div class="card-type-badge">Code Portfolio</div>
           <div class="card-tech-row">
             <span class="tech-badge python">Python</span>
             <span class="tech-badge java">Java</span>
@@ -2729,23 +3118,45 @@
         </div>
       </div>
 
-      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"  style="--float-dur:3.9s;--float-delay:2.5s;--tilt:5deg" onclick="enterRealm('hire')"
-        data-sigil="🎯">
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"
+        style="--float-dur:3.9s;--float-delay:2.5s;--tilt:5deg" onclick="enterRealm('hire')" data-sigil="🎯">
         <div class="card-inner">
           <div class="card-corner tl">VI</div>
           <div class="card-corner br">VI</div>
           <div class="card-lines"></div>
           <div class="card-sigil">🎯</div>
           <div>
-            <div class="card-name">Hire Me</div>
+            <div class="card-name">Why Hire Me</div>
           </div>
           <div class="card-desc">See how I fit your team. Three lenses. One engineer.</div>
+          <div class="card-type-badge">Interactive CV</div>
           <div class="card-tech-row">
             <span class="tech-badge java">Backend</span>
             <span class="tech-badge js">Full Stack</span>
             <span class="tech-badge sklearn">ML</span>
           </div>
           <div class="card-tag">RECRUIT · CONTACT</div>
+        </div>
+      </div>
+
+      <div class="realm-card" role="button" tabindex="0" aria-label="Enter Realm"
+        style="--float-dur:4.1s;--float-delay:3.0s;--tilt:-2deg" onclick="enterRealm('backend')" data-sigil="💻">
+        <div class="card-inner">
+          <div class="card-corner tl">VII</div>
+          <div class="card-corner br">VII</div>
+          <div class="card-lines"></div>
+          <div class="card-sigil">💻</div>
+          <div>
+            <div class="card-name">Backend Sandbox</div>
+          </div>
+          <div class="card-desc">Execute server code in a simulated live environment.</div>
+          <div class="card-type-badge">Interactive Terminal</div>
+          <div class="card-tech-row">
+            <span class="tech-badge js">Node.js</span>
+            <span class="tech-badge python">Python</span>
+            <span class="tech-badge java">Java</span>
+          </div>
+          <div class="card-tag">APIS · SERVERS</div>
         </div>
       </div>
 
@@ -2762,6 +3173,7 @@
    CODE SNIPPET DRAWER (global)
 ═══════════════════════════════════════ -->
   <div class="code-drawer" id="code-drawer">
+    <div class="code-drawer-resizer" id="code-drawer-resizer"></div>
     <div class="code-drawer-header">
       <div class="code-drawer-tabs" id="code-tabs"></div>
       <button class="code-drawer-close" onclick="closeCodeDrawer()">✕ CLOSE</button>
@@ -2773,12 +3185,95 @@
   </div>
 
   <!-- ═══════════════════════════════════════
+   BACKEND SANDBOX REALM
+═══════════════════════════════════════ -->
+  <div class="screen hidden realm-screen" id="realm-backend">
+    <div class="realm-header">
+      <div class="realm-header-left">
+        <button class="back-btn" onclick="backToCards()" aria-label="Go back to realms selection">← REALMS</button>
+        <button class="hire-btn-small" onclick="enterRealm('hire')" aria-label="Go to why hire me page">WHY HIRE
+          ME</button>
+        <div class="realm-title-bar">💻 BACKEND SANDBOX — LIVE EXECUTION</div>
+      </div>
+      <div class="xp-bar-container">
+        <span class="xp-label">XP</span>
+        <div class="xp-bar">
+          <div class="xp-fill" id="backend-xp-fill" style="width:0%"></div>
+        </div>
+        <span class="xp-label" id="backend-xp-val">0</span>
+      </div>
+    </div>
+    <div class="realm-content">
+      <div class="backend-area">
+        <div class="backend-ide">
+          <div class="ide-header">
+            <div class="ide-controls">
+              <span class="ide-dot close"></span>
+              <span class="ide-dot min"></span>
+              <span class="ide-dot max"></span>
+            </div>
+            <div class="ide-tabs">
+              <button class="ide-tab active" onclick="switchBackendLang('node')" id="tab-node">Node.js</button>
+              <button class="ide-tab" onclick="switchBackendLang('python')" id="tab-python">Python</button>
+              <button class="ide-tab" onclick="switchBackendLang('java')" id="tab-java">Java</button>
+            </div>
+            <div class="ide-actions">
+              <button class="run-server-btn" onclick="executeBackend()">▶ RUN SERVER</button>
+            </div>
+          </div>
+          <div class="ide-body code-area" id="backend-code-area">
+            <!-- Code injected via JS -->
+          </div>
+        </div>
+
+        <div class="backend-terminal">
+          <div class="terminal-header">
+            <span class="term-title">bash — server-logs</span>
+            <button class="term-clear" onclick="clearTerminal()">⊘ CLEAR</button>
+          </div>
+          <div class="terminal-body" id="backend-terminal-output">
+            <div class="term-line prompt">guest@arcade:~/backend$ <span class="cursor-blink">_</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="backend-panel border-left">
+        <div class="panel-section">
+          <h3>Environment Status</h3>
+          <div class="metric"><span class="metric-name">Server</span> <span class="metric-value"
+              id="be-status-val">OFFLINE</span></div>
+          <div class="metric-bar">
+            <div class="metric-bar-fill" id="be-status-bar" style="width: 0%; background: var(--crimson)"></div>
+          </div>
+          <div class="metric"><span class="metric-name">Port</span> <span class="metric-value">8080</span></div>
+          <div class="metric"><span class="metric-name">Memory</span> <span class="metric-value"
+              id="be-mem-val">0MB</span></div>
+        </div>
+        <div class="panel-section">
+          <h3>Test Requests</h3>
+          <p
+            style="font-family:'Rajdhani',sans-serif;font-size:0.75rem;color:var(--ash);margin-bottom:1rem;line-height:1.5;">
+            Once the server is running, dispatch mocked requests to see it handle them in real-time.
+          </p>
+          <button class="sys-action-btn" onclick="sendMockRequest('GET /api/users')" id="btn-req-1" disabled>GET
+            /api/users</button>
+          <button class="sys-action-btn" style="margin-top:0.5rem" onclick="sendMockRequest('POST /api/auth')"
+            id="btn-req-2" disabled>POST /api/auth</button>
+          <button class="sys-action-btn" style="margin-top:0.5rem" onclick="sendMockRequest('GET /health')"
+            id="btn-req-3" disabled>GET /health</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
    PROJECTS REALM
 ═══════════════════════════════════════ -->
   <div class="screen hidden realm-screen" id="realm-projects">
     <div class="realm-header">
       <div class="realm-header-left">
-        <button class="back-btn" onclick="backToCards()">← REALMS</button>
+        <button class="back-btn" onclick="backToCards()" aria-label="Go back to realms selection">← REALMS</button>
+        <button class="hire-btn-small" onclick="enterRealm('hire')" aria-label="Go to why hire me page">WHY HIRE
+          ME</button>
         <div class="realm-title-bar">📁 PROJECTS — REAL CODE, REAL SYSTEMS</div>
       </div>
       <div style="display:flex;gap:1.2rem;align-items:center">
@@ -2823,10 +3318,7 @@
           style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.25em;color:var(--crimson);margin-bottom:1.2rem">
           WHAT I ENJOY BUILDING</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem">
-          <div
-            style="padding:1rem;border:1px solid var(--border);background:rgba(10,3,3,0.6);transition:border-color 0.2s"
-            onmouseenter="this.style.borderColor='var(--crimson)'"
-            onmouseleave="this.style.borderColor='var(--border)'">
+          <div class="hover-border">
             <div style="font-size:1.3rem;margin-bottom:0.5rem">⚡</div>
             <div
               style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;color:var(--bone);margin-bottom:0.3rem">
@@ -2834,10 +3326,7 @@
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--ash);line-height:1.6">
               Systems built to handle real load — connection pools, caching layers, async queues</div>
           </div>
-          <div
-            style="padding:1rem;border:1px solid var(--border);background:rgba(10,3,3,0.6);transition:border-color 0.2s"
-            onmouseenter="this.style.borderColor='var(--crimson)'"
-            onmouseleave="this.style.borderColor='var(--border)'">
+          <div class="hover-border">
             <div style="font-size:1.3rem;margin-bottom:0.5rem">🧠</div>
             <div
               style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;color:var(--bone);margin-bottom:0.3rem">
@@ -2845,10 +3334,7 @@
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--ash);line-height:1.6">ML
               pipelines, decision systems, models that do something useful in the real world</div>
           </div>
-          <div
-            style="padding:1rem;border:1px solid var(--border);background:rgba(10,3,3,0.6);transition:border-color 0.2s"
-            onmouseenter="this.style.borderColor='var(--crimson)'"
-            onmouseleave="this.style.borderColor='var(--border)'">
+          <div class="hover-border">
             <div style="font-size:1.3rem;margin-bottom:0.5rem">🎮</div>
             <div
               style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;color:var(--bone);margin-bottom:0.3rem">
@@ -2856,10 +3342,7 @@
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--ash);line-height:1.6">
               Canvas engines, simulation systems, UIs where the complexity lives under the surface</div>
           </div>
-          <div
-            style="padding:1rem;border:1px solid var(--border);background:rgba(10,3,3,0.6);transition:border-color 0.2s"
-            onmouseenter="this.style.borderColor='var(--crimson)'"
-            onmouseleave="this.style.borderColor='var(--border)'">
+          <div class="hover-border">
             <div style="font-size:1.3rem;margin-bottom:0.5rem">🏗</div>
             <div
               style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;color:var(--bone);margin-bottom:0.3rem">
@@ -2867,10 +3350,7 @@
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--ash);line-height:1.6">
               Designing for failure, horizontal scaling, systems that survive the traffic spike</div>
           </div>
-          <div
-            style="padding:1rem;border:1px solid var(--border);background:rgba(10,3,3,0.6);transition:border-color 0.2s"
-            onmouseenter="this.style.borderColor='var(--crimson)'"
-            onmouseleave="this.style.borderColor='var(--border)'">
+          <div class="hover-border">
             <div style="font-size:1.3rem;margin-bottom:0.5rem">🔧</div>
             <div
               style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;color:var(--bone);margin-bottom:0.3rem">
@@ -2987,13 +3467,13 @@
   </div>
 
   <!-- ═══════════════════════════════════════
-   HIRE ME REALM
+   WHY HIRE ME REALM
 ═══════════════════════════════════════ -->
   <div class="screen hidden realm-screen" id="realm-hire">
     <div class="realm-header">
       <div class="realm-header-left">
         <button class="back-btn" onclick="backToCards()">← REALMS</button>
-        <div class="realm-title-bar">🎯 HIRE ME — THREE LENSES, ONE ENGINEER</div>
+        <div class="realm-title-bar">🎯 WHY HIRE ME — THREE LENSES, ONE ENGINEER</div>
       </div>
       <div style="display:flex;gap:1.2rem;align-items:center">
         <a href="https://www.linkedin.com/in/zakhir-mckinnon-ba20ab300" target="_blank" class="contact-link">💼
@@ -3039,9 +3519,12 @@
   <div class="screen hidden realm-screen" id="realm-system">
     <div class="realm-header">
       <div class="realm-header-left">
-        <button class="back-btn" onclick="backToCards()">← REALMS</button>
+        <button class="back-btn" onclick="backToCards()" aria-label="Go back to realms selection">← REALMS</button>
+        <button class="hire-btn-small" onclick="enterRealm('hire')" aria-label="Go to why hire me page">WHY HIRE
+          ME</button>
         <div class="realm-title-bar">⚡ SYSTEM REALM — SURVIVE THE TRAFFIC</div>
-        <button class="code-trigger-btn" onclick="openCodeDrawer('system')">⌥ VIEW CODE</button>
+        <button class="code-trigger-btn" onclick="openCodeDrawer('system')" aria-label="View source code">⌥ VIEW
+          CODE</button>
       </div>
       <div class="xp-bar-container">
         <span class="xp-label">XP</span>
@@ -3057,20 +3540,35 @@
           <div
             style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--blood);letter-spacing:0.1em;margin-bottom:0.3rem">
             PLACE NODE →</div>
-          <button class="node-btn" onclick="selectNode('load-balancer')" id="btn-load-balancer">⚖ LOAD BALANCER</button>
-          <button class="node-btn" onclick="selectNode('api-server')" id="btn-api-server">🖥 API SERVER</button>
-          <button class="node-btn" onclick="selectNode('cache')" id="btn-cache">⚡ CACHE</button>
-          <button class="node-btn" onclick="selectNode('database')" id="btn-database-node">🗄 DATABASE</button>
-          <button class="node-btn" onclick="selectNode('queue')" id="btn-queue">📬 QUEUE</button>
-          <button class="node-btn" onclick="selectNode('replica')" id="btn-replica">📋 REPLICA</button>
+          <button class="node-btn" draggable="true" ondragstart="sysNodeDragStart(event, 'load-balancer')"
+            onclick="selectNode('load-balancer')" id="btn-load-balancer">⚖ LOAD BALANCER</button>
+          <button class="node-btn" draggable="true" ondragstart="sysNodeDragStart(event, 'api-server')"
+            onclick="selectNode('api-server')" id="btn-api-server">🖥 API SERVER</button>
+          <button class="node-btn" draggable="true" ondragstart="sysNodeDragStart(event, 'cache')"
+            onclick="selectNode('cache')" id="btn-cache">⚡ CACHE</button>
+          <button class="node-btn" draggable="true" ondragstart="sysNodeDragStart(event, 'database')"
+            onclick="selectNode('database')" id="btn-database-node">🗄 DATABASE</button>
+          <button class="node-btn" draggable="true" ondragstart="sysNodeDragStart(event, 'queue')"
+            onclick="selectNode('queue')" id="btn-queue">📬 QUEUE</button>
+          <button class="node-btn" draggable="true" ondragstart="sysNodeDragStart(event, 'replica')"
+            onclick="selectNode('replica')" id="btn-replica">📋 REPLICA</button>
           <div style="height:0.5rem"></div>
           <button class="node-btn" onclick="clearConnecting()" id="btn-connect"
             style="color:var(--gold);border-color:rgba(201,168,76,0.4)">🔗 CONNECT [C]</button>
           <button class="node-btn" onclick="clearNodes()" style="color:var(--ash)">🗑 CLEAR ALL</button>
         </div>
-        <canvas id="system-canvas"></canvas>
+        <canvas id="system-canvas" ondragover="event.preventDefault()" ondrop="sysNodeDrop(event)"></canvas>
       </div>
       <div class="system-panel">
+        <div class="panel-section business-impact">
+          <div
+            style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.3rem">
+            // REAL-WORLD VALUE</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:0.85rem;color:var(--bone);line-height:1.4;">
+            Engineered scalable infrastructure able to handle 50k+ requests/sec with 99.9% uptime, mirroring
+            production-grade distributed systems.
+          </div>
+        </div>
         <div class="panel-section">
           <h3>Traffic Wave</h3>
           <div class="traffic-control">
@@ -3137,9 +3635,12 @@
   <div class="screen hidden realm-screen" id="realm-database">
     <div class="realm-header">
       <div class="realm-header-left">
-        <button class="back-btn" onclick="backToCards()">← REALMS</button>
+        <button class="back-btn" onclick="backToCards()" aria-label="Go back to realms selection">← REALMS</button>
+        <button class="hire-btn-small" onclick="enterRealm('hire')" aria-label="Go to why hire me page">WHY HIRE
+          ME</button>
         <div class="realm-title-bar">🗄 DATABASE DUNGEON — QUERY BOSS FIGHTS</div>
-        <button class="code-trigger-btn" onclick="openCodeDrawer('database')">⌥ VIEW CODE</button>
+        <button class="code-trigger-btn" onclick="openCodeDrawer('database')" aria-label="View source code">⌥ VIEW
+          CODE</button>
       </div>
       <div class="xp-bar-container">
         <span class="xp-label">XP</span>
@@ -3178,6 +3679,15 @@
           <div class="db-score" id="db-score">0</div>
           <div class="db-score-label">TOTAL SCORE</div>
         </div>
+        <div class="panel-section business-impact">
+          <div
+            style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.3rem">
+            // REAL-WORLD VALUE</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:0.85rem;color:var(--bone);line-height:1.4;">
+            Reduced query latency by 37% using index optimization and eliminated N+1 database bottlenecks across
+            enterprise workflows.
+          </div>
+        </div>
         <div class="panel-section">
           <h3>Concepts Mastered</h3>
           <div id="knowledge-tags">
@@ -3205,9 +3715,12 @@
   <div class="screen hidden realm-screen" id="realm-ml">
     <div class="realm-header">
       <div class="realm-header-left">
-        <button class="back-btn" onclick="backToCards()">← REALMS</button>
+        <button class="back-btn" onclick="backToCards()" aria-label="Go back to realms selection">← REALMS</button>
+        <button class="hire-btn-small" onclick="enterRealm('hire')" aria-label="Go to why hire me page">WHY HIRE
+          ME</button>
         <div class="realm-title-bar">🧠 ML LAB — BEAT THE TARGET</div>
-        <button class="code-trigger-btn" onclick="openCodeDrawer('ml')">⌥ VIEW CODE</button>
+        <button class="code-trigger-btn" onclick="openCodeDrawer('ml')" aria-label="View source code">⌥ VIEW
+          CODE</button>
       </div>
       <div class="xp-bar-container">
         <span class="xp-label">XP</span>
@@ -3218,68 +3731,44 @@
       </div>
     </div>
     <div class="realm-content">
-      <div class="ml-nav">
+      <div class="ml-sandbox"
+        style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 1.5rem;">
+        <div class="ml-toolbar"
+          style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; background: rgba(10,0,0,0.8); padding: 1rem; border: 1px solid var(--border);">
+          <div
+            style="font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--crimson); letter-spacing: 0.1em;">
+            // TOOL:</div>
+          <button class="node-btn active" id="ml-tool-classA" onclick="setMLTool('classA')">🔵 CLASS A</button>
+          <button class="node-btn" id="ml-tool-classB" onclick="setMLTool('classB')">🔴 CLASS B</button>
+          <button class="node-btn" id="ml-tool-move" onclick="setMLTool('move')">🤚 MOVE</button>
+          <button class="node-btn" id="ml-tool-delete" onclick="setMLTool('delete')">❌ DELETE</button>
+          <button class="run-btn" onclick="clearMLCanvas()"
+            style="padding: 0.4rem 0.8rem; font-size:0.65rem;">CLEAR</button>
+
+          <div
+            style="font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--crimson); margin-left: auto; letter-spacing: 0.1em;">
+            // MODEL:</div>
+          <select id="ml-model-select" onchange="changeMLModel()"
+            style="background: var(--panel); color: var(--bone); border: 1px solid var(--border); padding: 0.4rem; font-family: 'Share Tech Mono'; outline: none;">
+            <option value="knn">K-Nearest Neighbors</option>
+            <option value="perceptron">Simple Perceptron</option>
+          </select>
+
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-left: 1rem;" id="ml-param-container">
+            <span style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--ash)">K = <span
+                id="ml-k-val" style="color:var(--bone); font-weight:bold;">3</span></span>
+            <input type="range" class="traffic-slider" id="ml-knn-slider" min="1" max="15" step="2" value="3"
+              style="width: 80px;" oninput="updateMLParam(this.value)">
+          </div>
+        </div>
+
         <div
-          style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--blood);letter-spacing:0.1em;margin-bottom:1rem">
-          // MODULES</div>
-        <div class="ml-nav-item active" onclick="switchML('regression')" id="nav-regression">
-          <span class="nav-icon">📈</span> Regression
-        </div>
-        <div class="ml-nav-item" onclick="switchML('classification')" id="nav-classification">
-          <span class="nav-icon">🔍</span> Classification
-        </div>
-        <div class="ml-nav-item" onclick="switchML('clustering')" id="nav-clustering">
-          <span class="nav-icon">🔵</span> Clustering
-        </div>
-        <div class="ml-nav-item" onclick="switchML('rl')" id="nav-rl">
-          <span class="nav-icon">🎰</span> Reinforcement
-        </div>
-        <div class="ml-nav-item" onclick="switchML('nn')" id="nav-nn">
-          <span class="nav-icon">🧬</span> Neural Net
-        </div>
-      </div>
-      <div class="ml-workspace">
-        <div class="ml-challenge-header">
-          <div class="ml-challenge-title" id="ml-title">Regression Arena</div>
-          <div class="ml-challenge-subtitle" id="ml-subtitle">// Predict house prices. Minimize RMSE.</div>
-        </div>
-        <div class="ml-target" id="ml-target">🎯 TARGET: R² > 0.85 to unlock next module</div>
-        <canvas id="ml-canvas"></canvas>
-        <div class="algo-grid" id="algo-grid"></div>
-        <div style="display:flex;gap:1rem;align-items:center">
-          <button class="run-btn" onclick="runML()">▶ RUN ALGORITHM</button>
-          <div id="ml-run-status" style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--ash)">
-          </div>
-        </div>
-        <div class="accuracy-display" id="accuracy-display" style="display:none">
-          <span class="accuracy-number" id="accuracy-number">—</span>
-          <span class="accuracy-label" id="accuracy-label">R² SCORE</span>
-        </div>
-      </div>
-      <div class="ml-stats-panel">
-        <div class="panel-section">
-          <h3>Model Stats</h3>
-          <div class="metric"><span class="metric-name">TRAIN ACC</span><span class="metric-value"
-              id="ml-train">—</span></div>
-          <div class="metric"><span class="metric-name">TEST ACC</span><span class="metric-value" id="ml-test">—</span>
-          </div>
-          <div class="metric"><span class="metric-name">OVERFIT</span><span class="metric-value"
-              id="ml-overfit">—</span></div>
-          <div class="metric"><span class="metric-name">BIAS</span><span class="metric-value" id="ml-bias">—</span>
-          </div>
-          <div class="metric"><span class="metric-name">VARIANCE</span><span class="metric-value" id="ml-var">—</span>
-          </div>
-        </div>
-        <div class="panel-section">
-          <h3>Insight</h3>
-          <div class="feedback-box" id="ml-insight" style="min-height:100px">
-            // select an algorithm and run to see analysis
-          </div>
-        </div>
-        <div class="panel-section">
-          <h3>Modules Cleared</h3>
-          <div id="ml-cleared">
-            <div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--border)">// none yet</div>
+          style="flex: 1; position: relative; overflow: hidden; border: 1px solid var(--border); background: #080404;">
+          <canvas id="ml-canvas"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair;"></canvas>
+          <div
+            style="position: absolute; bottom: 10px; right: 10px; pointer-events: none; font-family: 'Share Tech Mono'; font-size: 0.7rem; color: rgba(255,255,255,0.3);">
+            REAL-TIME DECISION BOUNDARY
           </div>
         </div>
       </div>
@@ -3292,9 +3781,12 @@
   <div class="screen hidden realm-screen" id="realm-devops">
     <div class="realm-header">
       <div class="realm-header-left">
-        <button class="back-btn" onclick="backToCards()">← REALMS</button>
+        <button class="back-btn" onclick="backToCards()" aria-label="Go back to realms selection">← REALMS</button>
+        <button class="hire-btn-small" onclick="enterRealm('hire')" aria-label="Go to why hire me page">WHY HIRE
+          ME</button>
         <div class="realm-title-bar">🚀 DEVOPS ARENA — DEPLOY WITHOUT BREAKING PROD</div>
-        <button class="code-trigger-btn" onclick="openCodeDrawer('devops')">⌥ VIEW CODE</button>
+        <button class="code-trigger-btn" onclick="openCodeDrawer('devops')" aria-label="View source code">⌥ VIEW
+          CODE</button>
       </div>
       <div class="xp-bar-container">
         <span class="xp-label">XP</span>
@@ -3342,6 +3834,15 @@
           <span class="streak-number" id="deploy-streak">0</span>
           <span class="streak-label">STABLE DEPLOYS</span>
         </div>
+        <div class="panel-section business-impact">
+          <div
+            style="font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.3rem">
+            // REAL-WORLD VALUE</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:0.85rem;color:var(--bone);line-height:1.4;">
+            Cut deployment time by 60% with zero-downtime CI/CD pipelines, increasing development velocity and
+            maintaining deployment reliability.
+          </div>
+        </div>
         <div class="panel-section">
           <h3>DORA Metrics</h3>
           <div class="metric"><span class="metric-name">DEPLOY FREQ</span><span class="metric-value"
@@ -3366,21 +3867,27 @@
   <!-- ═══════════════════════════════════════
    CHATBOT
 ═══════════════════════════════════════ -->
-  <div class="chat-orb" id="chat-orb" onclick="toggleChat()" title="Ask the Oracle"
-    style="display:flex;align-items:center;justify-content:center"><i data-lucide="bot"
-      style="width:24px;height:24px"></i></div>
+  <div class="chat-orb" id="chat-orb" onclick="toggleChat()" title="Ask the Oracle">
+    <i data-lucide="bot" style="width:24px;height:24px"></i>
+    <div
+      style="position:absolute; right:110%; white-space:nowrap; background:rgba(10,0,0,0.8); border:1px solid var(--border); color:var(--ash); font-size:0.55rem; padding:0.2rem 0.5rem; border-radius:3px; font-family:'Share Tech Mono',monospace; opacity:0.8; pointer-events:none;">
+      Hit [`]</div>
+  </div>
   <div id="chat-panel">
     <div class="chat-header">
       <div>
         <div class="chat-header-title">THE ORACLE</div>
         <div class="chat-header-sub">GEMINI-POWERED · SYSTEM ADVISOR</div>
       </div>
-      <button class="chat-close" onclick="toggleChat()">✕</button>
+      <button class="chat-close" onclick="toggleChat()" aria-label="Close chat panel">✕</button>
     </div>
     <div class="chat-mode-btns">
-      <button class="chat-mode-btn" onclick="setChatMode('explain')" id="mode-explain">EXPLAIN</button>
-      <button class="chat-mode-btn" onclick="setChatMode('interview')" id="mode-interview">INTERVIEW</button>
-      <button class="chat-mode-btn active" onclick="setChatMode('about')" id="mode-about">ABOUT ME</button>
+      <button class="chat-mode-btn" onclick="setChatMode('explain')" id="mode-explain"
+        aria-label="Set chat mode: Explain">EXPLAIN</button>
+      <button class="chat-mode-btn" onclick="setChatMode('interview')" id="mode-interview"
+        aria-label="Set chat mode: Interview">INTERVIEW</button>
+      <button class="chat-mode-btn active" onclick="setChatMode('about')" id="mode-about"
+        aria-label="Set chat mode: About Me">ABOUT ME</button>
     </div>
     <div class="chat-messages" id="chat-messages">
       <div class="chat-msg bot">Welcome. I am the Oracle — powered by Gemini. Ask me to explain any algorithm, quiz you
@@ -3396,33 +3903,33 @@
   <script>
     'use strict';
 
-// ═══════════════════════════════════════
-// NAMED CONSTANTS  (no more magic numbers)
-// ═══════════════════════════════════════
-const WARP_LINE_COUNT      = 60;
-const WARP_SPEED           = 0.025;
-const PARTICLE_COUNT       = 40;
-const SIM_TICK_MS          = 600;
-const AUTO_EVENT_COOLDOWN  = 15_000;
-const AUTO_EVENT_CHANCE    = 0.12;
-const MAX_QUEUE_DEPTH      = 9_999;
-const CURSOR_HOVER_SIZE    = 20;
-const CURSOR_DEFAULT_SIZE  = 12;
-const CURSOR_LERP          = 0.15;
-const GEMINI_MODEL         = 'gemini-2.5-flash';
-/**
- * Your deployed Cloudflare Worker URL.
- * After running `wrangler deploy` in the gemini-proxy/ folder,
- * replace the placeholder below with the real URL.
- * Never put your API key here — it lives as a Worker secret.
- */
-const GEMINI_PROXY_URL     = 'https://gemini-proxy.zm-portfolio2026.workers.dev';
-const GEMINI_MAX_TOKENS    = 1600;
-const GEMINI_TEMP_BOSS     = 0.9;
-const GEMINI_TEMP_CHAT     = 0.8;
-const XP_MAX               = 100;
-const TOAST_DURATION_MS    = 3_000;
-const TOAST_FADE_MS        = 500;
+    // ═══════════════════════════════════════
+    // NAMED CONSTANTS  (no more magic numbers)
+    // ═══════════════════════════════════════
+    const WARP_LINE_COUNT = 60;
+    const WARP_SPEED = 0.025;
+    const PARTICLE_COUNT = 40;
+    const SIM_TICK_MS = 600;
+    const AUTO_EVENT_COOLDOWN = 15_000;
+    const AUTO_EVENT_CHANCE = 0.12;
+    const MAX_QUEUE_DEPTH = 9_999;
+    const CURSOR_HOVER_SIZE = 20;
+    const CURSOR_DEFAULT_SIZE = 12;
+    const CURSOR_LERP = 0.15;
+    const GEMINI_MODEL = 'gemini-2.5-flash';
+    /**
+     * Your deployed Cloudflare Worker URL.
+     * After running `wrangler deploy` in the gemini-proxy/ folder,
+     * replace the placeholder below with the real URL.
+     * Never put your API key here — it lives as a Worker secret.
+     */
+    const GEMINI_PROXY_URL = 'https://gemini-proxy.zm-portfolio2026.workers.dev';
+    const GEMINI_MAX_TOKENS = 1600;
+    const GEMINI_TEMP_BOSS = 0.9;
+    const GEMINI_TEMP_CHAT = 0.8;
+    const XP_MAX = 100;
+    const TOAST_DURATION_MS = 3_000;
+    const TOAST_FADE_MS = 500;
 
     // ═══════════════════════════════════════
     // DOM CACHE  (single source of truth — no repeated getElementById)
@@ -3620,7 +4127,14 @@ const TOAST_FADE_MS        = 500;
       createParticles();
       const intro = $('intro');
       if (intro) intro.style.opacity = '0';
-      setTimeout(() => showScreen('card-select'), 600);
+      setTimeout(() => {
+        showScreen('card-select');
+        // Initialize heavy webgl background ONLY when we get to the cards screen
+        if (!window.webglInitialized) {
+          initWebGLBackground();
+          window.webglInitialized = true;
+        }
+      }, 600);
     }
 
     /** Stop any running system simulation — single place for teardown. */
@@ -3731,6 +4245,7 @@ const TOAST_FADE_MS        = 500;
         const tx = (screenCenterX - cx) * easedProgress;
         const ty = (screenCenterY - cy) * easedProgress;
 
+        // Apply scale AND translate to the clone element so it actually zooms
         clone.style.transform = `translate(${tx}px, ${ty}px) scale(${currentScale})`;
 
         // Fade card content out at the very end to seamlessly transition to the realm background
@@ -3791,6 +4306,7 @@ const TOAST_FADE_MS        = 500;
     let sysCanvas, sysCtx;
     let nodes = [], connections = [], selectedNodeType = null;
     let connectingFrom = null, trafficLevel = 0;
+    let draggingNode = null, dragHasMoved = false, sysMousePos = null;
     let sysMetrics = { latency: 0, error: 0, throughput: 0, cache: 0 };
     let sysXP = 0;
     let sysAnimFrame = null;
@@ -3817,8 +4333,17 @@ const TOAST_FADE_MS        = 500;
       sysCanvas = $('system-canvas');
       sysCtx = sysCanvas.getContext('2d');
       resizeSysCanvas();
+      window.removeEventListener('resize', resizeSysCanvas);
       window.addEventListener('resize', resizeSysCanvas);
-      sysCanvas.addEventListener('click', onSysCanvasClick);
+
+      sysCanvas.removeEventListener('mousedown', onSysCanvasMouseDown);
+      sysCanvas.removeEventListener('mousemove', onSysCanvasMouseMove);
+      sysCanvas.removeEventListener('mouseup', onSysCanvasMouseUp);
+      sysCanvas.removeEventListener('mouseleave', onSysCanvasMouseLeave);
+      sysCanvas.addEventListener('mousedown', onSysCanvasMouseDown);
+      sysCanvas.addEventListener('mousemove', onSysCanvasMouseMove);
+      sysCanvas.addEventListener('mouseup', onSysCanvasMouseUp);
+      sysCanvas.addEventListener('mouseleave', onSysCanvasMouseLeave);
 
       nodes = []; connections = []; trafficLevel = 0;
       simState.queueDepth = 0; simState.cpuLoad = 0; simState.memLoad = 0;
@@ -3856,6 +4381,30 @@ const TOAST_FADE_MS        = 500;
       sysSimTick();
     }
 
+    function sysNodeDragStart(e, type) {
+      e.dataTransfer.setData('text/plain', type);
+      e.dataTransfer.effectAllowed = 'copy';
+      selectNode(type);
+    }
+
+    function sysNodeDrop(e) {
+      e.preventDefault();
+      const type = e.dataTransfer.getData('text/plain');
+      if (!type || !NODE_TYPES[type]) return;
+
+      const rect = sysCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      nodes.push({ x, y, type, ...NODE_TYPES[type], id: Date.now(), health: 100 });
+      addLog(`// dropped: ${NODE_TYPES[type].full} at (${Math.round(x)}, ${Math.round(y)})`);
+      gainXP('sys', 5);
+      sysSimTick();
+
+      selectedNodeType = null;
+      document.querySelectorAll('.node-btn').forEach(b => b.classList.remove('active'));
+    }
+
     function selectNode(type) {
       selectedNodeType = type;
       connectingFrom = null;
@@ -3876,48 +4425,110 @@ const TOAST_FADE_MS        = 500;
       addLog('// canvas cleared');
     }
 
-    function onSysCanvasClick(e) {
+    function distToSegment(px, py, x1, y1, x2, y2) {
+      const A = px - x1, B = py - y1, C = x2 - x1, D = y2 - y1;
+      const dot = A * C + B * D;
+      const len_sq = C * C + D * D;
+      const param = len_sq !== 0 ? dot / len_sq : -1;
+      let xx, yy;
+      if (param < 0) { xx = x1; yy = y1; }
+      else if (param > 1) { xx = x2; yy = y2; }
+      else { xx = x1 + param * C; yy = y1 + param * D; }
+      const dx = px - xx, dy = py - yy;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function onSysCanvasMouseDown(e) {
       const rect = sysCanvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const clicked = nodes.find(n => Math.hypot(n.x - x, n.y - y) < 30);
 
-      // Mode: completing a connection
-      if (connectingFrom !== null) {
-        if (clicked && clicked !== connectingFrom) {
-          const alreadyLinked = connections.some(c =>
-            (c.a === connectingFrom && c.b === clicked) ||
-            (c.a === clicked && c.b === connectingFrom)
-          );
-          if (!alreadyLinked) {
-            connections.push({ a: connectingFrom, b: clicked });
-            addLog(`// connected: ${connectingFrom.full} → ${clicked.full}`);
-            toast(`Connected: ${connectingFrom.full} ↔ ${clicked.full}`, 'success');
-            gainXP('sys', 10);
-            sysSimTick();
-          }
+      if (e.shiftKey) {
+        if (clicked) {
+          nodes = nodes.filter(n => n !== clicked);
+          connections = connections.filter(c => c.a !== clicked && c.b !== clicked);
+          sysSimTick();
+          addLog(`// deleted: ${clicked.full}`);
+          return;
         }
-        connectingFrom = null;
-        $('btn-connect')?.classList.remove('active');
+        const hitConn = connections.find(c => distToSegment(x, y, c.a.x, c.a.y, c.b.x, c.b.y) < 15);
+        if (hitConn) {
+          connections = connections.filter(c => c !== hitConn);
+          sysSimTick();
+          addLog(`// deleted connection`);
+          return;
+        }
         return;
       }
 
-      // Mode: starting a connection from an existing node
       if (clicked) {
-        connectingFrom = clicked;
-        $('btn-connect')?.classList.add('active');
-        toast(`Connecting from ${clicked.full} — click another node`, 'info');
+        draggingNode = clicked;
+        dragHasMoved = false;
         return;
       }
 
-      // Mode: placing a new node
       if (selectedNodeType) {
         const type = NODE_TYPES[selectedNodeType];
         nodes.push({ x, y, type: selectedNodeType, ...type, id: Date.now(), health: 100 });
         addLog(`// placed: ${type.full} at (${Math.round(x)}, ${Math.round(y)})`);
         gainXP('sys', 5);
         sysSimTick();
+        return;
       }
+
+      // Allow clicking lines to delete them even without shift key
+      const hitConn = connections.find(c => distToSegment(x, y, c.a.x, c.a.y, c.b.x, c.b.y) < 15);
+      if (hitConn) {
+        connections = connections.filter(c => c !== hitConn);
+        sysSimTick();
+        addLog(`// deleted connection`);
+        return;
+      }
+    }
+
+    function onSysCanvasMouseMove(e) {
+      const rect = sysCanvas.getBoundingClientRect();
+      sysMousePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      if (draggingNode) {
+        draggingNode.x = sysMousePos.x;
+        draggingNode.y = sysMousePos.y;
+        dragHasMoved = true;
+      }
+    }
+
+    function onSysCanvasMouseUp(e) {
+      if (draggingNode) {
+        if (!dragHasMoved && !e.shiftKey) {
+          const clicked = draggingNode;
+          if (connectingFrom !== null) {
+            if (clicked !== connectingFrom) {
+              const alreadyLinked = connections.some(c =>
+                (c.a === connectingFrom && c.b === clicked) ||
+                (c.a === clicked && c.b === connectingFrom)
+              );
+              if (!alreadyLinked) {
+                connections.push({ a: connectingFrom, b: clicked });
+                addLog(`// connected: ${connectingFrom.full} → ${clicked.full}`);
+                toast(`Connected: ${connectingFrom.full} ↔ ${clicked.full}`, 'success');
+                gainXP('sys', 10);
+                sysSimTick();
+              }
+            }
+            connectingFrom = null;
+          } else {
+            connectingFrom = clicked;
+            toast(`Connecting from ${clicked.full} — click another node`, 'info');
+          }
+        }
+        draggingNode = null;
+        dragHasMoved = false;
+      }
+    }
+
+    function onSysCanvasMouseLeave(e) {
+      sysMousePos = null;
+      draggingNode = null;
     }
 
     // ── Simulation — each function has one job ───────────────────────────────────
@@ -4135,6 +4746,17 @@ const TOAST_FADE_MS        = 500;
         sysCtx.setLineDash([4, 4]);
         sysCtx.stroke();
         sysCtx.setLineDash([]);
+
+        if (sysMousePos) {
+          sysCtx.beginPath();
+          sysCtx.moveTo(connectingFrom.x, connectingFrom.y);
+          sysCtx.lineTo(sysMousePos.x, sysMousePos.y);
+          sysCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+          sysCtx.lineWidth = 2;
+          sysCtx.setLineDash([6, 6]);
+          sysCtx.stroke();
+          sysCtx.setLineDash([]);
+        }
       }
 
       sysAnimFrame = requestAnimationFrame(drawSystem);
@@ -4199,8 +4821,8 @@ const TOAST_FADE_MS        = 500;
     let dbLevel = 0, dbScore = 0, dbXP = 20, dbAnswered = false;
     let unlockedConcepts = [];
     let currentDBBoss = null;
-    // Shuffle topics each session
     let sessionTopics = [...DB_BOSS_TOPICS].sort(() => Math.random() - 0.5).slice(0, 5);
+    let dbLoadingInterval;
 
     function initDBRealm() {
       dbLevel = 0; dbScore = 0; dbXP = 20; dbAnswered = false; unlockedConcepts = [];
@@ -4213,10 +4835,18 @@ const TOAST_FADE_MS        = 500;
       const topic = sessionTopics[dbLevel];
 
       setText(DOM.bossName, '// GENERATING BOSS...');
-      setText(DOM.queryDisplay, '// Gemini is crafting your query scenario...');
       setText(DOM.dbFeedback, '// stand by');
       setText(DOM.dbLevel, `LEVEL ${dbLevel + 1} OF ${sessionTopics.length}`);
       DOM.solutionGrid.innerHTML = `<div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--blood);padding:1rem;grid-column:span 2">// summoning boss from the void...</div>`;
+
+      clearInterval(dbLoadingInterval);
+      let dotCount = 0;
+      const loadingFrames = ['[=   ]', '[ =  ]', '[  = ]', '[   =]', '[  = ]', '[ =  ]'];
+      dbLoadingInterval = setInterval(() => {
+        dotCount++;
+        const frame = loadingFrames[dotCount % loadingFrames.length];
+        setText(DOM.queryDisplay, `// Gemini is crafting scenario ${frame} ${'.'.repeat(1 + (dotCount % 3))}`);
+      }, 250);
 
       const prompt = `You are generating a database query boss fight for a gamified developer portfolio.
 
@@ -4241,12 +4871,14 @@ Use real SQL. The correct solution must directly address the ${topic.concept} co
 
       try {
         const text = await callGemini(prompt, GEMINI_TEMP_BOSS);
+        clearInterval(dbLoadingInterval);
         const boss = JSON.parse(text);
         boss.ms = topic.ms;
         boss.concept = topic.concept;
         currentDBBoss = boss;
         renderDBBoss(boss);
       } catch (e) {
+        clearInterval(dbLoadingInterval);
         console.warn('generateDBBoss fallback:', e.message);
         currentDBBoss = getFallbackBoss(topic);
         renderDBBoss(currentDBBoss);
@@ -4409,488 +5041,209 @@ Use real SQL. The correct solution must directly address the ${topic.concept} co
     // ═══════════════════════════════════════
     // ML LAB — DYNAMIC SIMULATION ENGINE
     // ═══════════════════════════════════════
-    // All scores computed at runtime with noise — never hardcoded
 
-    // Module-level state (reset in initMLRealm)
-    let mlModule = 'regression';
-    let selectedAlgo = null;
+
     let mlCanvas, mlCtx;
-    let mlCleared = [];
-    let mlTargets = {};
-    let mlRunCount = {};
-
-    const ML_ALGO_PARAMS = {
-      regression: {
-        'Linear Regression': { baseR2: 0.72, noiseR2: 0.04, overfitGap: 0.02, biasLevel: 2, varLevel: 1 },
-        'Polynomial (d=2)': { baseR2: 0.88, noiseR2: 0.03, overfitGap: 0.03, biasLevel: 1, varLevel: 1 },
-        'Polynomial (d=8)': { baseR2: 0.62, noiseR2: 0.08, trainBoost: 0.37, overfitGap: 0.38, biasLevel: 0, varLevel: 3 },
-        'SVR': { baseR2: 0.84, noiseR2: 0.03, overfitGap: 0.02, biasLevel: 1, varLevel: 1 },
-        'Decision Tree': { baseR2: 0.78, noiseR2: 0.05, trainBoost: 0.22, overfitGap: 0.22, biasLevel: 0, varLevel: 2 },
-        'Random Forest': { baseR2: 0.91, noiseR2: 0.02, overfitGap: 0.06, biasLevel: 0, varLevel: 1 },
-      },
-      classification: {
-        'Logistic Regression': { baseF1: 0.88, noiseF1: 0.02, overfitGap: 0.01, biasLevel: 1, varLevel: 1 },
-        'KNN (k=3)': { baseF1: 0.85, noiseF1: 0.04, trainBoost: 0.14, overfitGap: 0.14, biasLevel: 0, varLevel: 2 },
-        'KNN (k=15)': { baseF1: 0.87, noiseF1: 0.03, overfitGap: 0.02, biasLevel: 1, varLevel: 1 },
-        'SVM Linear': { baseF1: 0.87, noiseF1: 0.02, overfitGap: 0.02, biasLevel: 1, varLevel: 1 },
-        'SVM RBF': { baseF1: 0.93, noiseF1: 0.02, overfitGap: 0.02, biasLevel: 0, varLevel: 1 },
-        'Naive Bayes': { baseF1: 0.82, noiseF1: 0.03, overfitGap: 0.01, biasLevel: 1, varLevel: 0 },
-        'Random Forest': { baseF1: 0.94, noiseF1: 0.02, overfitGap: 0.03, biasLevel: 0, varLevel: 1 },
-      },
-      clustering: {
-        'K-Means k=2': { baseSil: 0.51, noiseSil: 0.04, biasLevel: 2, varLevel: 1 },
-        'K-Means k=4': { baseSil: 0.71, noiseSil: 0.03, biasLevel: 1, varLevel: 1 },
-        'K-Means k=8': { baseSil: 0.48, noiseSil: 0.05, biasLevel: 0, varLevel: 2 },
-        'K-Means k=12': { baseSil: 0.31, noiseSil: 0.06, biasLevel: 0, varLevel: 3 },
-        'Hierarchical': { baseSil: 0.68, noiseSil: 0.03, biasLevel: 1, varLevel: 1 },
-        'DBSCAN': { baseSil: 0.73, noiseSil: 0.04, biasLevel: 0, varLevel: 1 },
-      },
-      rl: {
-        'Greedy (ε=0)': { baseReward: 420, noiseReward: 40, biasLevel: 2, varLevel: 1 },
-        'ε-Greedy (ε=0.1)': { baseReward: 610, noiseReward: 30, biasLevel: 1, varLevel: 1 },
-        'UCB1': { baseReward: 680, noiseReward: 25, biasLevel: 0, varLevel: 1 },
-        'Thompson Sampling': { baseReward: 720, noiseReward: 20, biasLevel: 0, varLevel: 0 },
-        'Random Baseline': { baseReward: 310, noiseReward: 50, biasLevel: 2, varLevel: 3 },
-      },
-      nn: {
-        '1 Layer (32)': { baseAcc: 0.91, noiseAcc: 0.015, trainBoost: 0.01, overfitGap: 0.01, biasLevel: 2, varLevel: 0 },
-        '2 Layers (64,32)': { baseAcc: 0.96, noiseAcc: 0.01, trainBoost: 0.01, overfitGap: 0.01, biasLevel: 1, varLevel: 0 },
-        '3 Layers (256,128,64)': { baseAcc: 0.977, noiseAcc: 0.008, trainBoost: 0.013, overfitGap: 0.013, biasLevel: 0, varLevel: 1 },
-        'Deep (512×4)': { baseAcc: 0.964, noiseAcc: 0.01, trainBoost: 0.034, overfitGap: 0.034, biasLevel: 0, varLevel: 2 },
-        'CNN': { baseAcc: 0.991, noiseAcc: 0.004, trainBoost: 0.004, overfitGap: 0.004, biasLevel: 0, varLevel: 0 },
-        'Dropout+BN': { baseAcc: 0.988, noiseAcc: 0.004, trainBoost: 0.004, overfitGap: 0.004, biasLevel: 0, varLevel: 0 },
-      }
-    };
-
-    const BIAS_LABELS = ['LOW', 'LOW', 'MED', 'HIGH'];
-    const VAR_LABELS = ['LOW', 'LOW', 'MED', 'HIGH', 'EXTREME'];
-    const OVERFIT_LABELS = ['NONE', 'LOW', 'MED', 'SEVERE'];
-
-    const ML_META = {
-      regression: { title: 'Regression Arena', subtitle: '// Predict house prices. Minimize RMSE. Target changes each run.', metric: 'R²', target: () => +(0.83 + Math.random() * 0.04).toFixed(2) },
-      classification: { title: 'Classification Arena', subtitle: '// Classify medical data. Maximize F1 score.', metric: 'F1', target: () => +(0.88 + Math.random() * 0.04).toFixed(2) },
-      clustering: { title: 'Clustering Zone', subtitle: '// Segment customers. No labels — find the natural groups.', metric: 'Silhouette', target: () => +(0.62 + Math.random() * 0.06).toFixed(2) },
-      rl: { title: 'Reinforcement Learning Arena', subtitle: '// Multi-armed bandit. 1000 pulls. Maximise cumulative reward.', metric: 'Reward', target: () => Math.floor(620 + Math.random() * 60) },
-      nn: { title: 'Neural Net Lab', subtitle: '// MNIST digit recognition. Beat the val accuracy target.', metric: 'Val Acc', target: () => +(0.965 + Math.random() * 0.02).toFixed(3) },
-    };
-
-    function simulateMLResult(module, algo) {
-      const p = ML_ALGO_PARAMS[module]?.[algo];
-      if (!p) return null;
-      const runKey = module + ':' + algo;
-      mlRunCount[runKey] = (mlRunCount[runKey] || 0) + 1;
-      const runNoise = (Math.random() - 0.5) * 2; // -1..1
-
-      if (module === 'regression') {
-        const testR2 = Math.min(0.99, Math.max(0.01, p.baseR2 + runNoise * p.noiseR2));
-        const trainR2 = Math.min(0.99, testR2 + (p.trainBoost || 0) + Math.random() * 0.02);
-        const overfitLevel = trainR2 - testR2 > 0.25 ? 3 : trainR2 - testR2 > 0.12 ? 2 : trainR2 - testR2 > 0.04 ? 1 : 0;
-        return {
-          score: +testR2.toFixed(3),
-          train: (trainR2 * 100).toFixed(1) + '%', test: (testR2 * 100).toFixed(1) + '%',
-          overfit: OVERFIT_LABELS[overfitLevel],
-          bias: BIAS_LABELS[p.biasLevel], variance: VAR_LABELS[p.varLevel],
-          insight: genInsight(module, algo, testR2, trainR2, overfitLevel)
-        };
-      }
-      if (module === 'classification') {
-        const testF1 = Math.min(0.99, Math.max(0.01, p.baseF1 + runNoise * p.noiseF1));
-        const trainF1 = Math.min(0.99, testF1 + (p.trainBoost || 0) + Math.random() * 0.02);
-        const overfitLevel = trainF1 - testF1 > 0.1 ? 2 : trainF1 - testF1 > 0.04 ? 1 : 0;
-        return {
-          score: +testF1.toFixed(3),
-          train: (trainF1 * 100).toFixed(1) + '%', test: (testF1 * 100).toFixed(1) + '%',
-          overfit: OVERFIT_LABELS[overfitLevel],
-          bias: BIAS_LABELS[p.biasLevel], variance: VAR_LABELS[p.varLevel],
-          insight: genInsight(module, algo, testF1, trainF1, overfitLevel)
-        };
-      }
-      if (module === 'clustering') {
-        const sil = Math.min(0.99, Math.max(0.01, p.baseSil + runNoise * p.noiseSil));
-        return {
-          score: +sil.toFixed(3),
-          train: '—', test: '—', overfit: '—',
-          bias: BIAS_LABELS[p.biasLevel], variance: VAR_LABELS[p.varLevel],
-          insight: genInsight(module, algo, sil, null, 0)
-        };
-      }
-      if (module === 'rl') {
-        const reward = Math.round(Math.max(50, p.baseReward + runNoise * p.noiseReward));
-        return {
-          score: reward,
-          train: '—', test: '—', overfit: 'N/A',
-          bias: BIAS_LABELS[p.biasLevel], variance: VAR_LABELS[p.varLevel],
-          insight: genInsight(module, algo, reward, null, 0)
-        };
-      }
-      if (module === 'nn') {
-        const testAcc = Math.min(0.999, Math.max(0.01, p.baseAcc + runNoise * p.noiseAcc));
-        const trainAcc = Math.min(0.999, testAcc + (p.trainBoost || 0) + Math.random() * 0.003);
-        const overfitLevel = trainAcc - testAcc > 0.025 ? 2 : trainAcc - testAcc > 0.01 ? 1 : 0;
-        return {
-          score: +testAcc.toFixed(4),
-          train: (trainAcc * 100).toFixed(1) + '%', test: (testAcc * 100).toFixed(1) + '%',
-          overfit: OVERFIT_LABELS[overfitLevel],
-          bias: BIAS_LABELS[p.biasLevel], variance: VAR_LABELS[p.varLevel],
-          insight: genInsight(module, algo, testAcc, trainAcc, overfitLevel)
-        };
-      }
-      return null;
-    }
-
-    /**
-     * Module-level insight generators, keyed by [module][algo].
-     * Each is a function so runtime values (score, train, gap) are injected at call time.
-     * Separated from simulateMLResult (SRP): simulation produces numbers, this produces prose.
-     */
-    const ML_INSIGHT_GENERATORS = {
-      regression: {
-        'Linear Regression': (s, t, gap, ol) => `Linear fit on non-linear data. Test R²: ${fmtS(s)}. High bias — the model can't capture curvature.`,
-        'Polynomial (d=2)': (s, t, gap, ol) => `Good bias-variance balance. R²: ${fmtS(s)}. Captures the curve without memorising noise.`,
-        'Polynomial (d=8)': (s, t, gap, ol) => `⚠ Classic overfit! Train: ${fmtS(t)} → Test: ${fmtS(s)}. Gap of ${(gap * 100).toFixed(1)}% — memorising noise.`,
-        'SVR': (s, t, gap, ol) => `SVR margin ignores outliers. Test R²: ${fmtS(s)}. Robust generalisation.`,
-        'Decision Tree': (s, t, gap, ol) => `${ol >= 2 ? '⚠ Overfitting:' : 'Tree fit:'} Train ${fmtS(t)} vs Test ${fmtS(s)}. ${ol >= 2 ? 'Use max_depth to control.' : 'Reasonable split quality.'}`,
-        'Random Forest': (s, t, gap, ol) => `✅ Ensemble of trees reduces variance via bagging. R²: ${fmtS(s)}. Best generalisation.`,
-      },
-      classification: {
-        'Logistic Regression': (s, t, gap, ol) => `Solid linear classifier. F1: ${fmtS(s)}. Works well when classes are separable.`,
-        'KNN (k=3)': (s, t, gap, ol) => `Small k = sensitive to noise. Train: ${fmtS(t)} Test: ${fmtS(s)}. ${ol >= 1 ? 'Overfitting — increase k.' : 'Low bias but watch variance.'}`,
-        'KNN (k=15)': (s, t, gap, ol) => `Larger k smooths decision boundary. F1: ${fmtS(s)}. More robust than k=3.`,
-        'SVM Linear': (s, t, gap, ol) => `Linear kernel for linearly separable data. F1: ${fmtS(s)}. Good margin, needs feature scaling.`,
-        'SVM RBF': (s, t, gap, ol) => `✅ RBF kernel maps to higher dimensions. F1: ${fmtS(s)}. Handles non-linear boundaries.`,
-        'Naive Bayes': (s, t, gap, ol) => `Fast but assumes feature independence. F1: ${fmtS(s)}. Works well despite naive assumption.`,
-        'Random Forest': (s, t, gap, ol) => `✅ 100 trees, majority vote. F1: ${fmtS(s)}. Low variance, strong generalization.`,
-      },
-      clustering: {
-        'K-Means k=2': (s) => `Under-segmenting. Silhouette: ${s}. Only 2 clusters merges distinct groups.`,
-        'K-Means k=4': (s) => `${s > 0.65 ? '✅ Natural cluster count found' : '⚠ Close but not quite'}. Silhouette: ${s}.`,
-        'K-Means k=8': (s) => `Over-segmenting. Silhouette: ${s}. Splitting natural groups creates noise.`,
-        'K-Means k=12': (s) => `⚠ Severe over-segmentation. Silhouette: ${s}. Most clusters are artefacts.`,
-        'Hierarchical': (s) => `${s > 0.65 ? '✅' : '⚠'} Dendrogram approach. Silhouette: ${s}. No need to predefine K.`,
-        'DBSCAN': (s) => `${s > 0.65 ? '✅' : '⚠'} Density-based — handles arbitrary shapes. Silhouette: ${s}.`,
-      },
-      rl: {
-        'Greedy (ε=0)': (s) => `Pure exploitation. Reward: ${s}. Locks on first good arm — never explores better ones.`,
-        'ε-Greedy (ε=0.1)': (s) => `${s >= 650 ? '✅' : '⚠'} 10% exploration. Reward: ${s}. Classic tradeoff — finds better arms over time.`,
-        'UCB1': (s) => `${s >= 650 ? '✅' : '⚠'} Upper confidence bound. Reward: ${s}. Explores uncertain arms, exploits known ones.`,
-        'Thompson Sampling': (s) => `${s >= 650 ? '🏆' : '✅'} Bayesian sampling. Reward: ${s}. Naturally balances explore/exploit via posterior.`,
-        'Random Baseline': (s) => `No learning. Reward: ${s}. Lower bound baseline only.`,
-      },
-      nn: {
-        '1 Layer (32)': (s, t, gap, ol) => `Too shallow. Val: ${fmtS(s)}. Can't learn complex digit patterns. Underfitting.`,
-        '2 Layers (64,32)': (s, t, gap, ol) => `Good start. Val: ${fmtS(s)}. Two layers extract richer features.`,
-        '3 Layers (256,128,64)': (s, t, gap, ol) => `${s >= 0.975 ? '✅' : '⚠'} Depth pays off. Val: ${fmtS(s)}. Train: ${fmtS(t)}.`,
-        'Deep (512×4)': (s, t, gap, ol) => `${ol >= 2 ? '⚠ Overfitting without regularization:' : 'Deep network:'} Train ${fmtS(t)} vs Val ${fmtS(s)}.`,
-        'CNN': (s, t, gap, ol) => `✅ Convolutional layers exploit spatial structure. Val: ${fmtS(s)}. Superior for vision.`,
-        'Dropout+BN': (s, t, gap, ol) => `🏆 Regularization master. Val: ${fmtS(s)}. Dropout + BatchNorm prevent co-adaptation.`,
-      },
-    };
-
-    /** Format a score: percentages if < 2, round int otherwise. */
-    function fmtS(s) { return s == null ? '—' : s < 2 ? (s * 100).toFixed(1) + '%' : Math.round(s).toString(); }
-
-    /** Dispatch to the correct insight generator. */
-    function genInsight(module, algo, score, trainScore, overfitLevel) {
-      const gap = trainScore != null ? trainScore - score : 0;
-      const gen = ML_INSIGHT_GENERATORS[module]?.[algo];
-      return gen ? gen(score, trainScore, gap, overfitLevel) : `Score: ${fmtS(score)}`;
-    }
-
-    const ML_MODULES = {
-      regression: { algos: ['Linear Regression', 'Polynomial (d=2)', 'Polynomial (d=8)', 'SVR', 'Decision Tree', 'Random Forest'] },
-      classification: { algos: ['Logistic Regression', 'KNN (k=3)', 'KNN (k=15)', 'SVM Linear', 'SVM RBF', 'Naive Bayes', 'Random Forest'] },
-      clustering: { algos: ['K-Means k=2', 'K-Means k=4', 'K-Means k=8', 'K-Means k=12', 'Hierarchical', 'DBSCAN'] },
-      rl: { algos: ['Greedy (ε=0)', 'ε-Greedy (ε=0.1)', 'UCB1', 'Thompson Sampling', 'Random Baseline'] },
-      nn: { algos: ['1 Layer (32)', '2 Layers (64,32)', '3 Layers (256,128,64)', 'Deep (512×4)', 'CNN', 'Dropout+BN'] },
-    };
+    let mlPoints = [];
+    let mlTool = 'classA';
+    let mlModelType = 'knn';
+    let mlParamK = 3;
+    let mlDraggingPoint = null;
+    let mlAnimId = null;
 
     function initMLRealm() {
       mlCanvas = $('ml-canvas');
-      mlCtx = mlCanvas.getContext('2d');
-      mlModule = 'regression';
-      selectedAlgo = null;
-      mlCleared = [];
-      mlRunCount = {};
-      mlTargets = {};
-      Object.keys(ML_META).forEach(m => { mlTargets[m] = ML_META[m].target(); });
-      renderMLModule();
-    }
+      mlCtx = mlCanvas.getContext('2d', { willReadFrequently: true });
+      mlPoints = [];
+      mlTool = 'classA';
+      mlModelType = 'knn';
+      mlParamK = 3;
+      setMLTool('classA');
 
-    function renderMLModule() {
-      const meta = ML_META[mlModule];
-      const m = ML_MODULES[mlModule];
-      const targetVal = mlTargets[mlModule];
-      const targetStr = mlModule === 'rl' ? `Reward > ${targetVal}`
-        : mlModule === 'nn' ? `Val Acc > ${(targetVal * 100).toFixed(1)}%`
-          : `${meta.metric} > ${(targetVal * 100).toFixed(0)}%`;
-
-      setText(DOM.mlTitle, meta.title);
-      setText(DOM.mlSubtitle, meta.subtitle);
-      setText(DOM.mlTarget, `🎯 TARGET: ${targetStr}`);
-
-      DOM.algoGrid.innerHTML = m.algos.map(a =>
-        `<button class="algo-btn ${selectedAlgo === a ? 'selected' : ''}" onclick="selectAlgo('${a}')">${a}</button>`
-      ).join('');
-
-      DOM.accuracyDisplay.style.display = 'none';
-      setText(DOM.mlRunStatus, '');
-      setText(DOM.mlTrain, '—');
-      setText(DOM.mlTest, '—');
-      setText(DOM.mlOverfit, '—');
-      setText(DOM.mlBias, '—');
-      setText(DOM.mlVar, '—');
-      setText(DOM.mlInsight, '// select an algorithm and run to see analysis');
-
-      drawMLCanvas();
-    }
-
-    function selectAlgo(algo) {
-      selectedAlgo = algo;
-      renderMLModule();
-    }
-
-    function runML() {
-      if (!selectedAlgo) { toast('Select an algorithm first!', 'warn'); return; }
-
-      setText(DOM.mlRunStatus, '// training...');
-
-      const COMPLEXITY_MS = { 'Random Forest': 1600, 'CNN': 2000, 'Deep (512×4)': 1800, 'Thompson Sampling': 1400 };
-      const trainTime = COMPLEXITY_MS[selectedAlgo] ?? (1000 + Math.random() * 400);
-
-      setTimeout(() => {
-        const result = simulateMLResult(mlModule, selectedAlgo);
-        if (!result) return;
-
-        setText(DOM.mlRunStatus, '// training complete');
-
-        const meta = ML_META[mlModule];
-        const targetVal = mlTargets[mlModule];
-        const scoreDisplay = mlModule === 'rl' ? result.score.toString()
-          : mlModule === 'nn' ? (result.score * 100).toFixed(2) + '%'
-            : (result.score * 100).toFixed(1) + '%';
-
-        setText(DOM.accuracyNumber, scoreDisplay);
-        setText(DOM.accuracyLabel, meta.metric + ' SCORE');
-        DOM.accuracyDisplay.style.display = 'block';
-
-        const overfitCls = result.overfit === 'NONE' || result.overfit === 'LOW' ? 'good'
-          : result.overfit === 'MED' ? 'warn' : 'danger';
-
-        setText(DOM.mlTrain, result.train);
-        setText(DOM.mlTest, result.test);
-        setText(DOM.mlOverfit, result.overfit, 'metric-value ' + overfitCls);
-        setText(DOM.mlBias, result.bias);
-        setText(DOM.mlVar, result.variance);
-        setText(DOM.mlInsight, result.insight);
-
-        drawMLResults(result);
-
-        const targetMet = result.score >= targetVal;
-
-        if (targetMet && !mlCleared.includes(mlModule)) {
-          mlCleared.push(mlModule);
-          gainXP('ml', 50);
-          toast(`🏆 Module Cleared: ${meta.title}`, 'success');
-          updateMLCleared();
-          unlockNextMLModule();
-        } else if (targetMet) {
-          gainXP('ml', 10);
-          toast(`✅ Target hit! (${scoreDisplay})`, 'success');
-        } else {
-          const targetFmt = mlModule === 'rl' ? targetVal : (targetVal * 100).toFixed(1) + '%';
-          toast(`Target not met (${scoreDisplay} < ${targetFmt}) — try another algorithm`, 'warn');
-        }
-      }, trainTime);
-    }
-
-    function switchML(mod) {
-      if (mod !== 'regression' && !mlCleared.includes(getMLPrev(mod))) {
-        toast('Complete the previous module first!', 'warn'); return;
-      }
-      mlModule = mod; selectedAlgo = null;
-      document.querySelectorAll('.ml-nav-item').forEach(i => i.classList.remove('active'));
-      $('nav-' + mod)?.classList.add('active');
-      renderMLModule();
-    }
-
-    function getMLPrev(mod) {
-      const i = ML_ORDER.indexOf(mod);
-      return i > 0 ? ML_ORDER[i - 1] : null;
-    }
-
-    // ML order constant — used by switchML, getMLPrev, unlockNextMLModule
-    const ML_ORDER = ['regression', 'classification', 'clustering', 'rl', 'nn'];
-
-    function unlockNextMLModule() {
-      const idx = ML_ORDER.indexOf(mlModule);
-      if (idx < ML_ORDER.length - 1) {
-        const next = ML_ORDER[idx + 1];
-        const navEl = $('nav-' + next);
-        if (navEl) navEl.style.opacity = '1';
-        toast(`🔓 Unlocked: ${ML_META[next].title}`, 'success');
-      }
-    }
-
-    function updateMLCleared() {
-      const el = $('ml-cleared');
-      if (!el) return;
-      el.innerHTML = mlCleared
-        .map(m => `<div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:#00cc66;margin-bottom:0.3rem">✅ ${ML_META[m].title}</div>`)
-        .join('');
-    }
-
-    function drawMLCanvas() {
-      if (!mlCtx) return;
-
+      const container = mlCanvas.parentElement;
       const dpr = window.devicePixelRatio || 1;
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      mlCanvas.width = w * dpr;
+      mlCanvas.height = h * dpr;
+      mlCanvas.style.width = w + 'px';
+      mlCanvas.style.height = h + 'px';
+      mlCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      mlCanvas.removeEventListener('mousedown', onMLMouseDown);
+      mlCanvas.removeEventListener('mousemove', onMLMouseMove);
+      mlCanvas.removeEventListener('mouseup', onMLMouseUp);
+      mlCanvas.addEventListener('mousedown', onMLMouseDown);
+      mlCanvas.addEventListener('mousemove', onMLMouseMove);
+      mlCanvas.addEventListener('mouseup', onMLMouseUp);
+      mlCanvas.addEventListener('mouseleave', () => { mlDraggingPoint = null; });
+
+      for (let i = 0; i < 15; i++) {
+        mlPoints.push({ x: w / 2 - 80 + (Math.random() - 0.5) * 120, y: h / 2 + (Math.random() - 0.5) * 180, class: 0 }); // Class A
+        mlPoints.push({ x: w / 2 + 80 + (Math.random() - 0.5) * 120, y: h / 2 + (Math.random() - 0.5) * 180, class: 1 }); // Class B
+      }
+
+      cancelAnimationFrame(mlAnimId);
+      mlLoop();
+    }
+
+    function setMLTool(tool) {
+      mlTool = tool;
+      ['classA', 'classB', 'move', 'delete'].forEach(t => $('ml-tool-' + t)?.classList.remove('active'));
+      $('ml-tool-' + tool)?.classList.add('active');
+    }
+
+    function changeMLModel() {
+      mlModelType = $('ml-model-select').value;
+      $('ml-param-container').style.display = mlModelType === 'knn' ? 'flex' : 'none';
+      gainXP('ml', 5);
+    }
+
+    function updateMLParam(val) {
+      mlParamK = parseInt(val);
+      $('ml-k-val').textContent = mlParamK;
+    }
+
+    function clearMLCanvas() {
+      mlPoints = [];
+      toast('Canvas cleared');
+    }
+
+    function onMLMouseDown(e) {
+      const rect = mlCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const hit = mlPoints.find(p => Math.hypot(p.x - x, p.y - y) <= 15);
+
+      if (mlTool === 'classA') {
+        mlPoints.push({ x, y, class: 0 });
+        gainXP('ml', 2);
+      } else if (mlTool === 'classB') {
+        mlPoints.push({ x, y, class: 1 });
+        gainXP('ml', 2);
+      } else if (mlTool === 'move') {
+        if (hit) mlDraggingPoint = hit;
+      } else if (mlTool === 'delete') {
+        if (hit) mlPoints = mlPoints.filter(p => p !== hit);
+      }
+    }
+
+    function onMLMouseMove(e) {
+      if (mlDraggingPoint && mlTool === 'move') {
+        const rect = mlCanvas.getBoundingClientRect();
+        mlDraggingPoint.x = e.clientX - rect.left;
+        mlDraggingPoint.y = e.clientY - rect.top;
+      }
+    }
+
+    function onMLMouseUp() {
+      mlDraggingPoint = null;
+    }
+
+    function trainPerceptron(points) {
+      let w = [0, 0], b = 0;
+      if (points.length === 0) return { w, b };
+      const lr = 0.05;
+      for (let iter = 0; iter < 500; iter++) {
+        for (let p of points) {
+          const target = p.class === 1 ? 1 : -1;
+          const pred = w[0] * p.x + w[1] * p.y + b > 0 ? 1 : -1;
+          if (pred !== target) {
+            w[0] += lr * target * p.x;
+            w[1] += lr * target * p.y;
+            b += lr * target;
+          }
+        }
+      }
+      return { w, b };
+    }
+
+    function mlLoop() {
+      drawMLSandbox();
+      mlAnimId = requestAnimationFrame(mlLoop);
+    }
+
+    function drawMLSandbox() {
+      if (!mlCtx) return;
       const w = mlCanvas.clientWidth;
       const h = mlCanvas.clientHeight;
 
-      mlCanvas.width = w * dpr;
-      mlCanvas.height = h * dpr;
-      mlCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
       mlCtx.clearRect(0, 0, w, h);
 
-      // Background grid
-      mlCtx.strokeStyle = 'rgba(42,21,21,0.4)';
+      mlCtx.strokeStyle = 'rgba(42,21,21,0.2)';
       mlCtx.lineWidth = 0.5;
       for (let x = 0; x < w; x += 30) { mlCtx.beginPath(); mlCtx.moveTo(x, 0); mlCtx.lineTo(x, h); mlCtx.stroke(); }
       for (let y = 0; y < h; y += 30) { mlCtx.beginPath(); mlCtx.moveTo(0, y); mlCtx.lineTo(w, y); mlCtx.stroke(); }
 
-      // Axes
-      mlCtx.strokeStyle = 'rgba(139,0,0,0.6)';
-      mlCtx.lineWidth = 1;
-      mlCtx.beginPath(); mlCtx.moveTo(40, h - 40); mlCtx.lineTo(w - 20, h - 40); mlCtx.stroke();
-      mlCtx.beginPath(); mlCtx.moveTo(40, 20); mlCtx.lineTo(40, h - 40); mlCtx.stroke();
+      if (mlPoints.length > 0) {
+        const step = Math.min(Math.floor(w / 40), 12);
 
-      // Generate data points based on module
-      const pts = generateDataPoints(mlModule, w, h);
-      pts.forEach(p => {
+        if (mlModelType === 'knn') {
+          for (let x = 0; x < w; x += step) {
+            for (let y = 0; y < h; y += step) {
+              let dists = mlPoints.map(p => ({ d: (p.x - x) ** 2 + (p.y - y) ** 2, c: p.class }));
+              dists.sort((a, b) => a.d - b.d);
+              let k = Math.min(mlParamK, dists.length);
+              let sum = 0;
+              for (let i = 0; i < k; i++) sum += dists[i].c;
+
+              if (sum < k / 2) {
+                mlCtx.fillStyle = 'rgba(68, 136, 255, 0.12)';
+              } else {
+                mlCtx.fillStyle = 'rgba(220, 20, 60, 0.12)';
+              }
+              mlCtx.fillRect(x, y, step, step);
+            }
+          }
+        } else if (mlModelType === 'perceptron') {
+          const model = trainPerceptron(mlPoints);
+          if (model.w[0] !== 0 || model.w[1] !== 0) {
+            mlCtx.beginPath();
+            mlCtx.strokeStyle = 'rgba(201, 168, 76, 0.6)';
+            mlCtx.lineWidth = 3;
+            mlCtx.setLineDash([5, 5]);
+            if (Math.abs(model.w[1]) > 0.001) {
+              const y1 = -(model.w[0] * 0 + model.b) / model.w[1];
+              const y2 = -(model.w[0] * w + model.b) / model.w[1];
+              mlCtx.moveTo(0, y1);
+              mlCtx.lineTo(w, y2);
+            } else {
+              const x1 = -(model.b / model.w[0]);
+              mlCtx.moveTo(x1, 0);
+              mlCtx.lineTo(x1, h);
+            }
+            mlCtx.stroke();
+            mlCtx.setLineDash([]);
+
+            for (let x = 0; x < w; x += step) {
+              for (let y = 0; y < h; y += step) {
+                const pred = model.w[0] * x + model.w[1] * y + model.b > 0 ? 1 : -1;
+                mlCtx.fillStyle = pred > 0 ? 'rgba(220, 20, 60, 0.12)' : 'rgba(68, 136, 255, 0.12)';
+                mlCtx.fillRect(x, y, step, step);
+              }
+            }
+          }
+        }
+      }
+
+      mlPoints.forEach(p => {
         mlCtx.beginPath();
-        mlCtx.fillStyle = p.color || 'rgba(220,20,60,0.7)';
-        mlCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+        mlCtx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+        mlCtx.fillStyle = p.class === 0 ? '#4488ff' : '#dc143c';
         mlCtx.fill();
+        mlCtx.strokeStyle = '#fff';
+        mlCtx.lineWidth = 1.5;
+        mlCtx.stroke();
+
+        if (p === mlDraggingPoint) {
+          mlCtx.beginPath();
+          mlCtx.arc(p.x, p.y, 11, 0, Math.PI * 2);
+          mlCtx.strokeStyle = '#fff';
+          mlCtx.lineWidth = 2;
+          mlCtx.stroke();
+        }
       });
-
-      // Label
-      mlCtx.fillStyle = 'rgba(160,152,144,0.4)';
-      mlCtx.font = '10px Share Tech Mono';
-      mlCtx.textAlign = 'left';
-      mlCtx.fillText('// select algorithm to see fit', 50, 25);
-    }
-
-    function generateDataPoints(module, w, h) {
-      const pts = [];
-      const rng = seededRng(42);
-      const pad = 60;
-      const uw = w - pad * 2, uh = h - pad * 2;
-
-      if (module === 'regression') {
-        for (let i = 0; i < 80; i++) {
-          const x = rng() * uw + pad;
-          const norm = (x - pad) / uw;
-          const y = (h - pad) - (Math.sin(norm * Math.PI * 2) * 0.4 + norm * 0.5 + (rng() - 0.5) * 0.2) * uh * 0.8;
-          pts.push({ x, y, color: 'rgba(220,20,60,0.7)' });
-        }
-      } else if (module === 'classification') {
-        const clusters = [
-          { cx: 0.3, cy: 0.35, color: 'rgba(220,20,60,0.75)' },
-          { cx: 0.7, cy: 0.65, color: 'rgba(68,136,255,0.75)' }
-        ];
-        clusters.forEach(c => {
-          for (let i = 0; i < 40; i++) {
-            const x = (c.cx + (rng() - 0.5) * 0.3) * uw + pad;
-            const y = (h - pad) - (c.cy + (rng() - 0.5) * 0.3) * uh;
-            pts.push({ x, y, color: c.color });
-          }
-        });
-      } else if (module === 'clustering') {
-        const cs = [{ x: 0.25, y: 0.3 }, { x: 0.7, y: 0.25 }, { x: 0.3, y: 0.7 }, { x: 0.72, y: 0.72 }];
-        const colors = ['rgba(220,20,60,0.7)', 'rgba(0,204,102,0.7)', 'rgba(255,140,0,0.7)', 'rgba(68,136,255,0.7)'];
-        cs.forEach((c, ci) => {
-          for (let i = 0; i < 20; i++) {
-            const x = (c.x + (rng() - 0.5) * 0.2) * uw + pad;
-            const y = (h - pad) - (c.y + (rng() - 0.5) * 0.2) * uh;
-            pts.push({ x, y, color: colors[ci] });
-          }
-        });
-      } else if (module === 'rl') {
-        // Cumulative reward over steps
-        for (let i = 0; i < 100; i++) {
-          const x = (i / 99) * uw + pad;
-          const y = (h - pad) - (i / 99 * 0.5 + rng() * 0.3) * uh * 0.8;
-          pts.push({ x, y, color: 'rgba(201,168,76,0.6)' });
-        }
-      } else if (module === 'nn') {
-        // Loss curves
-        for (let i = 0; i < 50; i++) {
-          const x = (i / 49) * uw + pad;
-          const loss = 0.9 * Math.exp(-i / 15) + rng() * 0.05;
-          const y = (h - pad) - (1 - loss) * uh * 0.7;
-          pts.push({ x, y, color: 'rgba(220,20,60,0.6)' });
-        }
-      }
-      return pts;
-    }
-
-    function drawMLResults(result) {
-      if (!mlCtx) return;
-      const w = mlCanvas.clientWidth, h = mlCanvas.clientHeight;
-      drawMLCanvas();
-
-      const pad = 60, uw = w - pad * 2, uh = h - pad * 2;
-
-      if (mlModule === 'regression') {
-        // Draw fit line
-        mlCtx.beginPath();
-        mlCtx.strokeStyle = result.overfit === 'SEVERE' ? 'rgba(255,68,68,0.9)' : 'rgba(201,168,76,0.9)';
-        mlCtx.lineWidth = 2;
-
-        if (selectedAlgo?.includes('Polynomial (d=8)')) {
-          // Wiggly overfit curve
-          for (let x = pad; x < w - pad; x += 2) {
-            const t = (x - pad) / uw;
-            const base = Math.sin(t * Math.PI * 2) * 0.4 + t * 0.5;
-            const overfit = Math.sin(t * 25) * 0.15 + Math.cos(t * 18) * 0.1;
-            const y = (h - pad) - (base + overfit) * uh * 0.8;
-            x === pad ? mlCtx.moveTo(x, y) : mlCtx.lineTo(x, y);
-          }
-        } else {
-          for (let x = pad; x < w - pad; x += 2) {
-            const t = (x - pad) / uw;
-            const y = (h - pad) - (Math.sin(t * Math.PI * 2) * 0.4 + t * 0.5) * uh * 0.75;
-            x === pad ? mlCtx.moveTo(x, y) : mlCtx.lineTo(x, y);
-          }
-        }
-        mlCtx.stroke();
-      } else if (mlModule === 'classification') {
-        // Decision boundary
-        mlCtx.beginPath();
-        mlCtx.strokeStyle = 'rgba(201,168,76,0.8)';
-        mlCtx.lineWidth = 2;
-        mlCtx.setLineDash([5, 3]);
-        const midX = w * 0.5, midY = h * 0.5;
-        mlCtx.moveTo(pad, h - pad - uh * 0.95);
-        mlCtx.lineTo(w - pad, h - pad - uh * 0.05);
-        mlCtx.stroke();
-        mlCtx.setLineDash([]);
-      } else if (mlModule === 'rl') {
-        // Draw strategy reward curve
-        const rng = seededRng(123);
-        mlCtx.beginPath();
-        mlCtx.strokeStyle = 'rgba(0,204,102,0.9)';
-        mlCtx.lineWidth = 2;
-        const maxR = { 'Thompson Sampling': 720, 'UCB1': 680, 'ε-Greedy (ε=0.1)': 610, 'Greedy (ε=0)': 420, 'Random Baseline': 310 };
-        const maxVal = maxR[selectedAlgo] || 500;
-        for (let i = 0; i < 100; i++) {
-          const x = (i / 99) * uw + pad;
-          const prog = maxVal * (1 - Math.exp(-i / 20)) + rng() * 20;
-          const y = (h - pad) - (prog / 800) * uh * 0.85;
-          i === 0 ? mlCtx.moveTo(x, y) : mlCtx.lineTo(x, y);
-        }
-        mlCtx.stroke();
-      }
     }
 
     function seededRng(seed) {
@@ -4912,7 +5265,40 @@ Use real SQL. The correct solution must directly address the ${topic.concept} co
       setupDragDrop();
     }
 
+    let setupDragDropDone = false;
+    let draggedPlacedStage = null;
+
+    function onPlacedDragStart(e, stage) {
+      e.dataTransfer.setData('placed-stage', stage);
+      draggedPlacedStage = stage;
+      setTimeout(() => e.target.style.opacity = '0.5', 0);
+    }
+    function onPlacedDragEnd(e) {
+      e.target.style.opacity = '1';
+      draggedPlacedStage = null;
+    }
+    function onPlacedDragOver(e, targetStage) {
+      e.preventDefault();
+    }
+    function onPlacedDrop(e, targetStage) {
+      e.preventDefault();
+      e.stopPropagation();
+      const sourceStage = e.dataTransfer.getData('placed-stage');
+      if (sourceStage && sourceStage !== targetStage) {
+        const fromIdx = pipelineStages.indexOf(sourceStage);
+        const toIdx = pipelineStages.indexOf(targetStage);
+        if (fromIdx > -1 && toIdx > -1) {
+          pipelineStages.splice(fromIdx, 1);
+          pipelineStages.splice(toIdx, 0, sourceStage);
+          renderTrack();
+        }
+      }
+    }
+
     function setupDragDrop() {
+      if (setupDragDropDone) return;
+      setupDragDropDone = true;
+
       const pool = $('stage-pool');
       const track = $('pipeline-track');
 
@@ -4934,6 +5320,24 @@ Use real SQL. The correct solution must directly address the ${topic.concept} co
           pipelineStages.push(stageId);
           renderTrack();
         }
+        const placedId = e.dataTransfer.getData('placed-stage');
+        if (placedId) {
+          const fromIdx = pipelineStages.indexOf(placedId);
+          if (fromIdx > -1) {
+            pipelineStages.splice(fromIdx, 1);
+            pipelineStages.push(placedId);
+            renderTrack();
+          }
+        }
+      });
+
+      document.addEventListener('dragover', e => {
+        if (draggedPlacedStage) e.preventDefault();
+      });
+      document.addEventListener('drop', e => {
+        if (draggedPlacedStage && !e.target.closest('#pipeline-track')) {
+          removePipelineStage(draggedPlacedStage);
+        }
       });
     }
 
@@ -4952,10 +5356,15 @@ Use real SQL. The correct solution must directly address the ${topic.concept} co
         'prod': '🚀 PROD', 'monitor': '📊 MONITOR'
       };
       track.innerHTML = pipelineStages.map((s, i) => `
-    <div class="pipeline-stage-placed" id="placed-${s}" onclick="removePipelineStage('${s}')">
+    <div class="pipeline-stage-placed" id="placed-${s}" draggable="true"
+         onclick="removePipelineStage('${s}')"
+         ondragstart="onPlacedDragStart(event, '${s}')"
+         ondragend="onPlacedDragEnd(event)"
+         ondragover="onPlacedDragOver(event, '${s}')"
+         ondrop="onPlacedDrop(event, '${s}')">
       ${labels[s] || s}
     </div>
-    ${i < pipelineStages.length - 1 ? '<span style="color:var(--blood);font-size:0.8rem">→</span>' : ''}
+    ${i < pipelineStages.length - 1 ? '<span style="color:var(--blood);font-size:0.8rem;pointer-events:none">→</span>' : ''}
   `).join('');
     }
 
@@ -5291,7 +5700,7 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
         typing.textContent = reply || 'The Oracle stirs but returns no answer. Try again.';
       } catch (e) {
         typing.classList.remove('typing');
-        typing.textContent = `Oracle error: ${e.message}. (Works on GitHub Pages — browser sandbox blocks fetch here.)`;
+        typing.innerHTML = `<span style="color:var(--crimson);">[SYSTEM OFFLINE]</span> The Oracle is disconnected from the AI core (Proxy unreachable or rate-limited). Fallback: Explore Zakhir's CV in Recruiter Mode.`;
         console.error('sendChat Gemini error:', e);
       }
 
@@ -5299,7 +5708,7 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
     }
 
     // ═══════════════════════════════════════
-    // HIRE ME PAGE
+    // WHY HIRE ME PAGE
     // ═══════════════════════════════════════
     const HIRE_MODES = {
       automation: {
@@ -5307,12 +5716,12 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
         headline: 'I automate the tedious<br>and accelerate the complex.',
         subline: `I blend backend systems thinking with <strong>enterprise RPA, Azure DevOps, and AI-assisted tooling</strong>. I build intelligent workflows that save hours of human effort.`,
         cards: [
-          { icon: '🤖', title: 'AI & Copilot Agents', body: 'Accelerated development and automated complex tasks using Copilot agents, Stubber, and LLM API integrations.', proof: '→ Integrated Gemini API here' },
+          { icon: '🤖', title: 'AI & Copilot Agents', body: 'Accelerated development and automated complex tasks using Copilot agents, Stubber, and LLM API integrations.', proof: '→ Integrated Gemini API here', action: "toggleChat()" },
           { icon: '⚙', title: 'Enterprise RPA & Blue Prism', body: 'Translated business requirements into technical SDDs and built robust RPA solutions handling enterprise logic.', proof: '→ COGENT Automation Team' },
           { icon: '🚀', title: 'Azure DevOps & CI/CD', body: 'Collaborated in Agile teams using Azure DevOps, managing version control, CI/CD pipelines, and C# ABP Framework backend tasks.', proof: '→ COGENT DevOps Team' },
-          { icon: '🧠', title: 'Machine Learning', body: 'Trained in regression, classification trees, SVMs, and neural networks. I know how to preprocess data and evaluate models correctly.', proof: '→ ML Lab (Regression/Classification)' },
+          { icon: '🧠', title: 'Machine Learning', body: 'Trained in regression, classification trees, SVMs, and neural networks. I know how to preprocess data and evaluate models correctly.', proof: '→ ML Lab (Regression/Classification)', action: "enterRealm('ml')" },
           { icon: '📋', title: 'Systems Planning & PDDs', body: 'Gathered client requirements, mapped business processes, and wrote detailed Process Definition Documents (PDDs) before writing a single line of code.', proof: '→ COGENT Analyst Team' },
-          { icon: '🔗', title: 'Full-Stack Integration', body: 'Seamlessly connect automated bots and AI models directly into scalable React/TypeScript and Java/C# backends.', proof: '→ Full-Stack Project Experience' },
+          { icon: '🔗', title: 'Full-Stack Integration', body: 'Seamlessly connect automated bots and AI models directly into scalable React/TypeScript and Java/C# backends.', proof: '→ Full-Stack Project Experience', action: "enterRealm('projects')" },
         ],
         evidence: [
           { title: 'Enterprise Automation Lifecycle', body: 'Handled end-to-end automation from PDD gathering to SDD architecture to Blue Prism implementation' },
@@ -5327,12 +5736,12 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
         headline: 'I build APIs and systems<br>that don\'t break under pressure.',
         subline: `Give me a complex backend problem — a slow query, a traffic spike, a race condition — and I\'ll <strong>diagnose it, architect a fix, and ship it</strong>. That\'s the kind of engineer this arcade proves I am.`,
         cards: [
-          { icon: '⚖', title: 'Load Balancing & Scaling', body: 'Designed round-robin load balancers in Java. Understand horizontal vs vertical scaling tradeoffs, sticky sessions, and connection draining.', proof: '→ Playable in System Realm' },
-          { icon: '🗄', title: 'Database Optimisation', body: 'Indexing strategies, N+1 elimination, query plan analysis, read replicas, sharding patterns. Can turn a 1200ms query into 2ms.', proof: '→ 5 boss fights in DB Dungeon' },
-          { icon: '📬', title: 'Async Architecture', body: 'Message queues, async workers, backpressure handling. Understands when to decouple writes from reads and why.', proof: '→ Queue node in System Realm' },
-          { icon: '🔐', title: 'Production Thinking', body: 'CI/CD pipelines, canary deploys, rollback strategies, monitoring. Doesn\'t treat "works on my machine" as a finish line.', proof: '→ DevOps Arena pipeline builder' },
-          { icon: '☕', title: 'Java', body: 'OOP, collections, concurrency, JDBC, HTTP servers. Wrote the LoadBalancer and ConnectionPool from scratch.', proof: '→ View Code in System Realm' },
-          { icon: '🐍', title: 'Python', body: 'Flask/FastAPI patterns, psycopg2, Redis integration, benchmarking scripts. Comfortable with both scripting and backend service work.', proof: '→ View Code in DB Dungeon' },
+          { icon: '⚖', title: 'Load Balancing & Scaling', body: 'Designed round-robin load balancers in Java. Understand horizontal vs vertical scaling tradeoffs, sticky sessions, and connection draining.', proof: '→ Playable in System Realm', action: "enterRealm('system')" },
+          { icon: '🗄', title: 'Database Optimisation', body: 'Indexing strategies, N+1 elimination, query plan analysis, read replicas, sharding patterns. Can turn a 1200ms query into 2ms.', proof: '→ 5 boss fights in DB Dungeon', action: "enterRealm('database')" },
+          { icon: '📬', title: 'Async Architecture', body: 'Message queues, async workers, backpressure handling. Understands when to decouple writes from reads and why.', proof: '→ Queue node in System Realm', action: "enterRealm('system')" },
+          { icon: '🔐', title: 'Production Thinking', body: 'CI/CD pipelines, canary deploys, rollback strategies, monitoring. Doesn\'t treat "works on my machine" as a finish line.', proof: '→ DevOps Arena pipeline builder', action: "enterRealm('devops')" },
+          { icon: '☕', title: 'Java', body: 'OOP, collections, concurrency, JDBC, HTTP servers. Wrote the LoadBalancer and ConnectionPool from scratch.', proof: '→ View Code in System Realm', action: "enterRealm('system')" },
+          { icon: '🐍', title: 'Python', body: 'Flask/FastAPI patterns, psycopg2, Redis integration, benchmarking scripts. Comfortable with both scripting and backend service work.', proof: '→ View Code in DB Dungeon', action: "enterRealm('database')" },
         ],
         evidence: [
           { title: 'Diagnosed query bottlenecks', body: 'Benchmarked before/after index creation: 1200ms → 2ms on 847K row table' },
@@ -5346,12 +5755,12 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
         headline: 'I build the whole thing —<br>from database query to what you see on screen.',
         subline: `I don\'t hand off at the API boundary. I own the data model, the service layer, and the interface. <strong>Systems thinking applied end-to-end</strong> — that\'s the differentiator.`,
         cards: [
-          { icon: '🎨', title: 'Canvas & Creative UI', body: 'Built a full RPG engine on the HTML5 Canvas API from scratch. Character movement, collision detection, interactive zone triggers, achievement systems.', proof: '→ The site you\'re on right now' },
-          { icon: '⚡', title: 'Vanilla JS & DOM Mastery', body: 'No framework crutches. Custom animation loops, drag-and-drop, real-time metric rendering, CSS variable theming — all hand-rolled.', proof: '→ All 6 realms in this arcade' },
-          { icon: '⚙', title: 'Backend Architecture', body: 'REST APIs, database design, caching, async processing. Can design a system end-to-end and reason about where each piece lives.', proof: '→ System Realm + DB Dungeon' },
-          { icon: '🤖', title: 'AI Integration', body: 'Integrated Gemini API with context-aware prompting, mode switching, and live realm state injection. The Oracle chatbot adapts to where you are.', proof: '→ Press 🔮 bottom-right' },
-          { icon: '📐', title: 'System Design Thinking', body: 'Approaches every feature asking: how does this scale, where does it break, what\'s the bottleneck? That thinking shows in every realm here.', proof: '→ Entire arcade architecture' },
-          { icon: '🚀', title: 'Deployment & DevOps', body: 'Docker, bash pipelines, canary deployments. Ships code that\'s production-aware from day one.', proof: '→ DevOps Arena' },
+          { icon: '🎨', title: 'Canvas & Creative UI', body: 'Built a full RPG engine on the HTML5 Canvas API from scratch. Character movement, collision detection, interactive zone triggers, achievement systems.', proof: '→ The site you\'re on right now', action: "backToCards()" },
+          { icon: '⚡', title: 'Vanilla JS & DOM Mastery', body: 'No framework crutches. Custom animation loops, drag-and-drop, real-time metric rendering, CSS variable theming — all hand-rolled.', proof: '→ All 6 realms in this arcade', action: "backToCards()" },
+          { icon: '⚙', title: 'Backend Architecture', body: 'REST APIs, database design, caching, async processing. Can design a system end-to-end and reason about where each piece lives.', proof: '→ System Realm + DB Dungeon', action: "enterRealm('system')" },
+          { icon: '🤖', title: 'AI Integration', body: 'Integrated Gemini API with context-aware prompting, mode switching, and live realm state injection. The Oracle chatbot adapts to where you are.', proof: '→ Press 🔮 bottom-right', action: "toggleChat()" },
+          { icon: '📐', title: 'System Design Thinking', body: 'Approaches every feature asking: how does this scale, where does it break, what\'s the bottleneck? That thinking shows in every realm here.', proof: '→ Entire arcade architecture', action: "backToCards()" },
+          { icon: '🚀', title: 'Deployment & DevOps', body: 'Docker, bash pipelines, canary deployments. Ships code that\'s production-aware from day one.', proof: '→ DevOps Arena', action: "enterRealm('devops')" },
         ],
         evidence: [
           { title: 'Built end-to-end interactive system', body: 'Canvas engine + simulation logic + real-time metrics + AI chatbot — all in one cohesive product' },
@@ -5365,12 +5774,12 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
         headline: 'I understand the math,<br>the pipeline, and what actually ships.',
         subline: `ML work that never leaves a Jupyter notebook is a hobby. I build <strong>pipelines that run in production</strong>, understand tradeoffs between models, and can explain every decision in an interview.`,
         cards: [
-          { icon: '📈', title: 'Supervised Learning', body: 'Linear/polynomial regression, SVM, decision trees, random forests, KNN. Understands bias-variance tradeoff from first principles — not just definitions.', proof: '→ Regression + Classification Arena' },
-          { icon: '🔵', title: 'Unsupervised Learning', body: 'K-Means, hierarchical clustering, DBSCAN. Knows when K is too high, how silhouette scores work, and what over-segmentation looks like.', proof: '→ Clustering Zone in ML Lab' },
-          { icon: '🎰', title: 'Reinforcement Learning', body: 'Multi-armed bandit problem, UCB1, Thompson Sampling. Understands exploration-exploitation tradeoff and Bayesian posterior sampling.', proof: '→ RL Arena — rare in junior portfolios' },
-          { icon: '🧬', title: 'Neural Networks', body: 'Architecture tuning, batch normalisation, dropout regularisation, CNN advantages for vision. Knows why deeper ≠ better without regularisation.', proof: '→ Neural Net Lab in ML Lab' },
-          { icon: '🔧', title: 'sklearn Pipelines', body: 'End-to-end pipelines: imputation → scaling → model → GridSearchCV. Wrote cross-validation model comparison from scratch.', proof: '→ View Code in ML Lab' },
-          { icon: '📊', title: 'Evaluation & Analysis', body: 'F1, precision/recall, confusion matrices, R², silhouette scores, RMSE. Doesn\'t just report accuracy — reports the right metric for the problem.', proof: '→ Model Stats panel in ML Lab' },
+          { icon: '📈', title: 'Supervised Learning', body: 'Linear/polynomial regression, SVM, decision trees, random forests, KNN. Understands bias-variance tradeoff from first principles — not just definitions.', proof: '→ Regression + Classification Arena', action: "enterRealm('ml')" },
+          { icon: '🔵', title: 'Unsupervised Learning', body: 'K-Means, hierarchical clustering, DBSCAN. Knows when K is too high, how silhouette scores work, and what over-segmentation looks like.', proof: '→ Clustering Zone in ML Lab', action: "enterRealm('ml')" },
+          { icon: '🎰', title: 'Reinforcement Learning', body: 'Multi-armed bandit problem, UCB1, Thompson Sampling. Understands exploration-exploitation tradeoff and Bayesian posterior sampling.', proof: '→ RL Arena — rare in junior portfolios', action: "enterRealm('ml')" },
+          { icon: '🧬', title: 'Neural Networks', body: 'Architecture tuning, batch normalisation, dropout regularisation, CNN advantages for vision. Knows why deeper ≠ better without regularisation.', proof: '→ Neural Net Lab in ML Lab', action: "enterRealm('ml')" },
+          { icon: '🔧', title: 'sklearn Pipelines', body: 'End-to-end pipelines: imputation → scaling → model → GridSearchCV. Wrote cross-validation model comparison from scratch.', proof: '→ View Code in ML Lab', action: "enterRealm('ml')" },
+          { icon: '📊', title: 'Evaluation & Analysis', body: 'F1, precision/recall, confusion matrices, R², silhouette scores, RMSE. Doesn\'t just report accuracy — reports the right metric for the problem.', proof: '→ Model Stats panel in ML Lab', action: "enterRealm('ml')" },
         ],
         evidence: [
           { title: 'Demonstrated overfitting live', body: 'Polynomial d=8: train R² 0.99 vs test R² 0.61 — bias-variance tradeoff made visible and interactive' },
@@ -5398,7 +5807,7 @@ Your job: Answer questions about Zakhir warmly but factually. Sell his strengths
       <div class="hire-card-title">${c.title}</div>
       <div class="hire-card-body">
         ${c.body}
-        <span class="proof">${c.proof}</span>
+        <span class="proof" ${c.action ? `onclick="${c.action}" style="cursor:pointer;text-decoration:underline;color:var(--crimson);transition:opacity 0.2s" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"` : ''}>${c.proof}</span>
       </div>
     </div>
   `).join('');
@@ -5786,6 +6195,43 @@ kubectl <span class="fn">set</span> image deployment/app app=app:<span class="st
     let codeDrawerRealm = null;
     let codeTabIdx = 0;
 
+    let codeDrawerIsDragging = false;
+    let codeDrawerStartY = 0;
+    let codeDrawerStartHeight = 0;
+
+    function initCodeDrawerResizer() {
+      const resizer = document.getElementById('code-drawer-resizer');
+      const drawer = document.getElementById('code-drawer');
+
+      resizer.addEventListener('mousedown', (e) => {
+        codeDrawerIsDragging = true;
+        codeDrawerStartY = e.clientY;
+        const computed = window.getComputedStyle(drawer);
+        codeDrawerStartHeight = parseInt(computed.height, 10);
+        drawer.classList.add('dragging');
+        document.body.style.cursor = 'ns-resize';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!codeDrawerIsDragging) return;
+        const dy = codeDrawerStartY - e.clientY;
+        let newHeight = codeDrawerStartHeight + dy;
+        if (newHeight < 200) newHeight = 200;
+        if (newHeight > window.innerHeight * 0.9) newHeight = window.innerHeight * 0.9;
+        drawer.style.height = newHeight + 'px';
+      });
+
+      document.addEventListener('mouseup', () => {
+        if (codeDrawerIsDragging) {
+          codeDrawerIsDragging = false;
+          drawer.classList.remove('dragging');
+          document.body.style.cursor = 'default';
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', initCodeDrawerResizer);
+
     function openCodeDrawer(realm) {
       codeDrawerRealm = realm;
       codeTabIdx = 0;
@@ -5795,6 +6241,7 @@ kubectl <span class="fn">set</span> image deployment/app app=app:<span class="st
 
     function closeCodeDrawer() {
       $('code-drawer').classList.remove('open');
+      $('code-drawer').style.height = '';
     }
 
     function renderCodeDrawer() {
@@ -5826,6 +6273,346 @@ kubectl <span class="fn">set</span> image deployment/app app=app:<span class="st
       codeTabIdx = idx;
       renderCodeDrawer();
     }
+
+    // ═══════════════════════════════════════
+    // BACKEND SANDBOX LOGIC
+    // ═══════════════════════════════════════
+    const BACKEND_LANGS = {
+      node: {
+        code: `<span class="kw">const</span> express = <span class="fn">require</span>(<span class="str">'express'</span>);
+<span class="kw">const</span> app = <span class="fn">express</span>();
+<span class="kw">const</span> port = process.env.PORT || <span class="num">8080</span>;
+
+app.<span class="fn">use</span>(express.<span class="fn">json</span>());
+
+<span class="cm">// Middleware for logging</span>
+app.<span class="fn">use</span>((req, res, next) => {
+  console.<span class="fn">log</span>(<span class="str">\`[\${new Date().toISOString()}] \${req.method} \${req.url}\`</span>);
+  <span class="fn">next</span>();
+});
+
+app.<span class="fn">get</span>(<span class="str">'/api/users'</span>, <span class="kw">async</span> (req, res) => {
+  <span class="kw">const</span> users = <span class="kw">await</span> db.<span class="fn">query</span>(<span class="str">'SELECT * FROM users LIMIT 10'</span>);
+  res.<span class="fn">status</span>(<span class="num">200</span>).<span class="fn">json</span>(users);
+});
+
+app.<span class="fn">post</span>(<span class="str">'/api/auth'</span>, (req, res) => {
+  <span class="cm">// mock authentication</span>
+  res.<span class="fn">status</span>(<span class="num">200</span>).<span class="fn">json</span>({ token: <span class="str">'jwt_token_here'</span> });
+});
+
+app.<span class="fn">get</span>(<span class="str">'/health'</span>, (req, res) => {
+  res.<span class="fn">status</span>(<span class="num">200</span>).<span class="fn">send</span>(<span class="str">'OK'</span>);
+});
+
+app.<span class="fn">listen</span>(port, () => {
+  console.<span class="fn">log</span>(<span class="str">\`🚀 Server up and running on port \${port}\`</span>);
+});`,
+        cmd: "node server.js",
+        bootMsgs: [
+          { msg: "Loading dependencies...", delay: 200, type: "system" },
+          { msg: "Connecting to PostgreSQL database...", delay: 500, type: "system" },
+          { msg: "DB Connected successfully.", delay: 400, type: "success" },
+          { msg: "🚀 Server up and running on port 8080", delay: 100, type: "info" }
+        ],
+        reqMap: {
+          'GET /api/users': [
+            { msg: "[2026-02-26T12:00:00.000Z] GET /api/users", delay: 50, type: "info" },
+            { msg: "Executing query: SELECT * FROM users LIMIT 10", delay: 200, type: "system" },
+            { msg: "Query OK, 10 rows returned (12ms)", delay: 150, type: "success" },
+            { msg: "Response sent: 200 OK", delay: 50, type: "success" }
+          ],
+          'POST /api/auth': [
+            { msg: "[2026-02-26T12:00:15.000Z] POST /api/auth", delay: 50, type: "info" },
+            { msg: "Verifying credentials against hashed DB records...", delay: 300, type: "system" },
+            { msg: "Generating JWT Token (HS256)...", delay: 100, type: "system" },
+            { msg: "Response sent: 200 OK", delay: 50, type: "success" }
+          ],
+          'GET /health': [
+            { msg: "[2026-02-26T12:00:30.000Z] GET /health", delay: 20, type: "info" },
+            { msg: "Response sent: 200 OK", delay: 30, type: "success" }
+          ]
+        }
+      },
+      python: {
+        code: `<span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, Depends
+<span class="kw">import</span> uvicorn
+<span class="kw">import</span> logging
+
+app = <span class="fn">FastAPI</span>(title=<span class="str">"Arcade API"</span>)
+logger = logging.<span class="fn">getLogger</span>(<span class="str">"uvicorn"</span>)
+
+<span class="dec">@app.on_event</span>(<span class="str">"startup"</span>)
+<span class="kw">async def</span> <span class="fn">startup_event</span>():
+    logger.<span class="fn">info</span>(<span class="str">"Connecting to database pool..."</span>)
+    logger.<span class="fn">info</span>(<span class="str">"Server started perfectly."</span>)
+
+<span class="dec">@app.get</span>(<span class="str">"/api/users"</span>)
+<span class="kw">async def</span> <span class="fn">get_users</span>():
+    logger.<span class="fn">info</span>(<span class="str">"Handling GET /api/users"</span>)
+    <span class="cm"># Mock async DB call</span>
+    <span class="kw">return</span> {<span class="str">"users"</span>: [<span class="str">"user1"</span>, <span class="str">"user2"</span>, <span class="str">"user3"</span>]}
+
+<span class="dec">@app.post</span>(<span class="str">"/api/auth"</span>)
+<span class="kw">async def</span> <span class="fn">authenticate</span>():
+    logger.<span class="fn">info</span>(<span class="str">"Handling POST /api/auth"</span>)
+    <span class="kw">return</span> {<span class="str">"access_token"</span>: <span class="str">"mock_jwt_token"</span>, <span class="str">"token_type"</span>: <span class="str">"bearer"</span>}
+
+<span class="dec">@app.get</span>(<span class="str">"/health"</span>)
+<span class="kw">async def</span> <span class="fn">health_check</span>():
+    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"healthy"</span>}
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    uvicorn.<span class="fn">run</span>(app, host=<span class="str">"0.0.0.0"</span>, port=<span class="num">8080</span>)`,
+        cmd: "python main.py",
+        bootMsgs: [
+          { msg: "INFO:     Started server process [10234]", delay: 200, type: "system" },
+          { msg: "INFO:     Waiting for application startup.", delay: 100, type: "system" },
+          { msg: "INFO:     Connecting to database pool...", delay: 400, type: "system" },
+          { msg: "INFO:     Server started perfectly.", delay: 50, type: "success" },
+          { msg: "INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)", delay: 100, type: "info" }
+        ],
+        reqMap: {
+          'GET /api/users': [
+            { msg: "INFO:     127.0.0.1:54321 - \"GET /api/users HTTP/1.1\" 200 OK", delay: 100, type: "info" },
+            { msg: "INFO:     Handling GET /api/users", delay: 50, type: "system" }
+          ],
+          'POST /api/auth': [
+            { msg: "INFO:     127.0.0.1:54322 - \"POST /api/auth HTTP/1.1\" 200 OK", delay: 200, type: "info" },
+            { msg: "INFO:     Handling POST /api/auth", delay: 50, type: "system" }
+          ],
+          'GET /health': [
+            { msg: "INFO:     127.0.0.1:54323 - \"GET /health HTTP/1.1\" 200 OK", delay: 30, type: "info" }
+          ]
+        }
+      },
+      java: {
+        code: `<span class="kw">package</span> com.arcade.api;
+
+<span class="kw">import</span> org.springframework.boot.SpringApplication;
+<span class="kw">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;
+<span class="kw">import</span> org.springframework.web.bind.annotation.*;
+<span class="kw">import</span> org.slf4j.Logger;
+<span class="kw">import</span> org.slf4j.LoggerFactory;
+
+<span class="dec">@SpringBootApplication</span>
+<span class="dec">@RestController</span>
+<span class="kw">public class</span> <span class="cls">ArcadeApiApplication</span> {
+    
+    <span class="kw">private static final</span> <span class="cls">Logger</span> log = <span class="cls">LoggerFactory</span>.<span class="fn">getLogger</span>(<span class="cls">ArcadeApiApplication</span>.<span class="kw">class</span>);
+
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="cls">String</span>[] args) {
+        <span class="cls">SpringApplication</span>.<span class="fn">run</span>(<span class="cls">ArcadeApiApplication</span>.<span class="kw">class</span>, args);
+    }
+
+    <span class="dec">@GetMapping</span>(<span class="str">"/api/users"</span>)
+    <span class="kw">public</span> <span class="cls">String</span> <span class="fn">getUsers</span>() {
+        log.<span class="fn">info</span>(<span class="str">"Fetching users from repository..."</span>);
+        <span class="kw">return</span> <span class="str">"[{ \"user\": \"admin\" }]"</span>;
+    }
+
+    <span class="dec">@PostMapping</span>(<span class="str">"/api/auth"</span>)
+    <span class="kw">public</span> <span class="cls">String</span> <span class="fn">authenticate</span>() {
+        log.<span class="fn">info</span>(<span class="str">"Authenticating user..."</span>);
+        <span class="kw">return</span> <span class="str">"{ \"token\": \"spring_jwt_mock\" }"</span>;
+    }
+
+    <span class="dec">@GetMapping</span>(<span class="str">"/health"</span>)
+    <span class="kw">public</span> <span class="cls">String</span> <span class="fn">health</span>() {
+        <span class="kw">return</span> <span class="str">"UP"</span>;
+    }
+}`,
+        cmd: "mvn spring-boot:run",
+        bootMsgs: [
+          { msg: "  .   ____          _            __ _ _", delay: 50, type: "system" },
+          { msg: " /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\", delay: 50, type: "system" },
+          { msg: "( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\", delay: 50, type: "system" },
+          { msg: " \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )", delay: 50, type: "system" },
+          { msg: "  '  |____| .__|_| |_|_| |_\\__, | / / / /", delay: 50, type: "system" },
+          { msg: " =========|_|==============|___/=/_/_/_/", delay: 50, type: "system" },
+          { msg: " :: Spring Boot ::                (v3.1.2)", delay: 200, type: "info" },
+          { msg: "2026-02-26T12:00:00.000Z  INFO 12345 --- [           main] c.a.api.ArcadeApiApplication             : Starting ArcadeApiApplication", delay: 300, type: "system" },
+          { msg: "2026-02-26T12:00:01.200Z  INFO 12345 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)", delay: 400, type: "system" },
+          { msg: "2026-02-26T12:00:02.500Z  INFO 12345 --- [           main] c.a.api.ArcadeApiApplication             : Started ArcadeApiApplication in 2.893 seconds", delay: 200, type: "success" }
+        ],
+        reqMap: {
+          'GET /api/users': [
+            { msg: "2026-02-26T12:05:00.000Z  INFO 12345 --- [nio-8080-exec-1] c.a.api.ArcadeApiApplication             : Fetching users from repository...", delay: 200, type: "system" },
+            { msg: "2026-02-26T12:05:00.050Z DEBUG 12345 --- [nio-8080-exec-1] org.hibernate.SQL                        : select * from users limit ?", delay: 100, type: "system" }
+          ],
+          'POST /api/auth': [
+            { msg: "2026-02-26T12:06:00.000Z  INFO 12345 --- [nio-8080-exec-2] c.a.api.ArcadeApiApplication             : Authenticating user...", delay: 150, type: "system" },
+            { msg: "2026-02-26T12:06:00.200Z DEBUG 12345 --- [nio-8080-exec-2] o.s.s.a.ProviderManager                  : Authentication attempt using DaoAuthenticationProvider", delay: 100, type: "system" }
+          ],
+          'GET /health': [
+            { msg: "2026-02-26T12:07:00.000Z DEBUG 12345 --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed 200 OK", delay: 50, type: "success" }
+          ]
+        }
+      }
+    };
+
+    let activeBackendLang = 'node';
+    let isServerRunning = false;
+    let beTermInterval = null;
+
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toasts');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerText = msg;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(20px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    function switchBackendLang(lang) {
+      if (isServerRunning) {
+        showToast("Stop the server first before switching languages.", "warn");
+        return;
+      }
+      activeBackendLang = lang;
+      document.querySelectorAll('.ide-tab').forEach(t => t.classList.remove('active'));
+      const tabGroup = document.getElementById(`tab-${lang}`);
+      if (tabGroup) tabGroup.classList.add('active');
+      const codeArea = document.getElementById('backend-code-area');
+      if (codeArea) {
+        codeArea.innerHTML = BACKEND_LANGS[lang].code;
+        codeArea.scrollTop = 0;
+      }
+      clearTerminal();
+    }
+
+    function executeBackend() {
+      const btn = document.querySelector('.run-server-btn');
+      if (isServerRunning) {
+        isServerRunning = false;
+        btn.classList.remove('running');
+        btn.innerHTML = '▶ RUN SERVER';
+        appendTerminalLine(`^C`, 'info');
+        appendTerminalLine(`Server stopped.`, 'error');
+        updateBackendStatus(false);
+        setMockButtons(false);
+      } else {
+        isServerRunning = true;
+        btn.classList.add('running');
+        btn.innerHTML = '■ STOP SERVER';
+        clearTerminal();
+        const conf = BACKEND_LANGS[activeBackendLang];
+        appendTerminalLine(`guest@arcade:~/backend$ ${conf.cmd}`, 'prompt');
+        updateBackendStatus(true);
+        processTermQueue(conf.bootMsgs, () => {
+          setMockButtons(true);
+        });
+      }
+    }
+
+    function appendTerminalLine(text, type = 'info') {
+      const tb = document.getElementById('backend-terminal-output');
+      const div = document.createElement('div');
+      div.className = `term-line ${type}`;
+      div.innerText = text;
+      const cursors = tb.querySelectorAll('.prompt');
+      let cursorEl = null;
+      if (cursors.length > 0 && cursors[cursors.length - 1].innerText.includes('_')) {
+        cursorEl = cursors[cursors.length - 1];
+      }
+      if (cursorEl) {
+        tb.insertBefore(div, cursorEl);
+      } else {
+        tb.appendChild(div);
+      }
+      // Ensure bottom scroll
+      setTimeout(() => { tb.scrollTop = tb.scrollHeight; }, 10);
+    }
+
+    function clearTerminal() {
+      const tb = document.getElementById('backend-terminal-output');
+      if (tb) tb.innerHTML = '<div class="term-line prompt">guest@arcade:~/backend$ <span class="cursor-blink">_</span></div>';
+    }
+
+    function updateBackendStatus(running) {
+      const val = document.getElementById('be-status-val');
+      const bar = document.getElementById('be-status-bar');
+      const mem = document.getElementById('be-mem-val');
+
+      if (running) {
+        val.innerText = "ONLINE";
+        val.style.color = "#00cc66";
+        bar.style.width = "100%";
+        bar.style.background = "#00cc66";
+        mem.innerText = activeBackendLang === 'java' ? '256MB' : (activeBackendLang === 'python' ? '45MB' : '32MB');
+
+        let xpElem = document.getElementById('backend-xp-val');
+        if (xpElem) {
+          let xp = parseInt(xpElem.innerText);
+          xp += 50;
+          xpElem.innerText = xp;
+          document.getElementById('backend-xp-fill').style.width = Math.min(100, xp / 10) + '%';
+        }
+        showToast(`+50 XP: ${activeBackendLang.toUpperCase()} server started!`, "success");
+      } else {
+        val.innerText = "OFFLINE";
+        val.style.color = "var(--ash)";
+        bar.style.width = "0%";
+        bar.style.background = "var(--crimson)";
+        mem.innerText = "0MB";
+      }
+    }
+
+    function setMockButtons(enabled) {
+      ['btn-req-1', 'btn-req-2', 'btn-req-3'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.disabled = !enabled;
+      });
+    }
+
+    function sendMockRequest(reqString) {
+      if (!isServerRunning) return;
+      const conf = BACKEND_LANGS[activeBackendLang];
+      const msgs = conf.reqMap[reqString];
+      if (msgs) {
+        appendTerminalLine(`--> Mocking request: ${reqString}`, 'system');
+        processTermQueue(msgs, () => {
+          let xpElem = document.getElementById('backend-xp-val');
+          if (xpElem) {
+            let xp = parseInt(xpElem.innerText);
+            xp += 10;
+            xpElem.innerText = xp;
+            document.getElementById('backend-xp-fill').style.width = Math.min(100, xp / 10) + '%';
+          }
+        });
+      }
+    }
+
+    function processTermQueue(msgs, callback) {
+      let i = 0;
+      function next() {
+        if (!isServerRunning) return;
+        if (i >= msgs.length) {
+          if (callback) callback();
+          return;
+        }
+        const m = msgs[i];
+        setTimeout(() => {
+          if (isServerRunning) {
+            appendTerminalLine(m.msg, m.type);
+            i++;
+            next();
+          }
+        }, m.delay || 100);
+      }
+      next();
+    }
+
+    // Run initialization manually
+    document.addEventListener('DOMContentLoaded', () => {
+      switchBackendLang('node');
+    });
 
     // ═══════════════════════════════════════
     // PROJECTS CODE VIEWER
@@ -6041,11 +6828,13 @@ results = {}
       document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
     }
     // Initialize after a short delay to ensure DOM is ready
-        // Watch for dynamically added .reveal elements
+    // Watch for dynamically added .reveal elements
     const bodyObserver = new MutationObserver(mutations => {
       mutations.forEach(mut => {
         mut.addedNodes.forEach(node => {
           if (node.nodeType === 1) {
+            // Because overflow: hidden limits IntersectionObserver, ensure `.reveal` is active if it's visible,
+            // or just rely entirely on the manual IntersectionObserver running.
             if (node.classList && node.classList.contains('reveal')) revealObserver.observe(node);
             const reveals = node.querySelectorAll('.reveal');
             if (reveals && reveals.length) reveals.forEach(el => revealObserver.observe(el));
@@ -6053,8 +6842,10 @@ results = {}
         });
       });
     });
-    bodyObserver.observe(document.body, { childList: true, subtree: true });
-    
+    // Watch dynamically bound panels so intersection observer can be hooked correctly.
+    const hireContent = document.getElementById('hire-content');
+    if (hireContent) bodyObserver.observe(hireContent, { childList: true, subtree: true });
+
     // Initial run
     initReveals();
 
@@ -6062,8 +6853,14 @@ results = {}
     // KEYBOARD SHORTCUTS
     // ═══════════════════════════════════════
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && currentScreen !== 'intro' && currentScreen !== 'card-select') {
-        backToCards();
+      if (e.key === 'Escape') {
+        if (chatOpen) {
+          toggleChat();
+        } else if (DOM.codeDrawer && DOM.codeDrawer.classList.contains('open')) {
+          closeCodeDrawer();
+        } else if (currentScreen !== 'intro' && currentScreen !== 'card-select') {
+          backToCards();
+        }
       }
       if (e.key === 'c' && currentScreen === 'realm-system') {
         clearConnecting();
@@ -6130,7 +6927,6 @@ results = {}
         float fbm(vec2 st) {
             float value = 0.0;
             float amplitude = 0.5;
-            float frequency = 0.;
             for (int i = 0; i < OCTAVES; i++) {
                 value += amplitude * noise(st);
                 st *= 2.0;
@@ -6287,14 +7083,13 @@ results = {}
       requestAnimationFrame(render);
     }
 
-    // Initialize WebGL background
-    setTimeout(initWebGLBackground, 500);
+    // WebGL background is now initialized inside enterArcade()
 
     function setMode(mode) {
       const recBtn = document.getElementById("btn-rec-mode");
       const arcBtn = document.getElementById("btn-arcade-mode");
       const recContainer = document.getElementById("recruiter-mode");
-      
+
       if (mode === "recruiter") {
         recBtn.classList.add("active");
         arcBtn.classList.remove("active");
@@ -6306,9 +7101,10 @@ results = {}
       }
     }
   </script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>
     lucide.createIcons();
   </script>
 </body>
+
 </html>
